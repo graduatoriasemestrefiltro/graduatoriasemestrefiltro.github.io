@@ -178,7 +178,8 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
     return subjects.reduce((acc, subject) => {
       acc[subject] = results
         .filter((r) => r.materia === subject)
-        .sort((a, b) => parseFloat(b.punteggio) - parseFloat(a.punteggio));
+        .sort((a, b) => parseFloat(b.punteggio) - parseFloat(a.punteggio))
+        .map((s, i) => ({ ...s, posizione: i + 1 }));
       return acc;
     }, {} as Record<string, Result[]>);
   }, [results]);
