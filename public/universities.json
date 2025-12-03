@@ -1,0 +1,222 @@
+[
+    {
+        "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+        "id": "03",
+        "region": "Emilia-Romagna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi del MOLISE",
+        "id": "39",
+        "region": "Molise"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+        "id": "C8",
+        "region": "Piemonte"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi della BASILICATA",
+        "id": "38",
+        "region": "Basilicata"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+        "id": "49",
+        "region": "Campania"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi dell'AQUILA",
+        "id": "55",
+        "region": "Abruzzo"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di BARI ALDO MORO",
+        "id": "02",
+        "region": "Puglia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di BRESCIA",
+        "id": "46",
+        "region": "Lombardia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+        "id": "04",
+        "region": "Sardegna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di CAMERINO",
+        "id": "06",
+        "region": "Marche"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di CATANIA",
+        "id": "08",
+        "region": "Sicilia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di FERRARA",
+        "id": "09",
+        "region": "Emilia-Romagna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di FIRENZE",
+        "id": "10",
+        "region": "Toscana"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di FOGGIA",
+        "id": "C9",
+        "region": "Puglia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di GENOVA",
+        "id": "11",
+        "region": "Liguria"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di MESSINA",
+        "id": "14",
+        "region": "Sicilia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di MILANO",
+        "id": "15",
+        "region": "Lomabrdia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+        "id": "C6",
+        "region": "Lombardia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+        "id": "17",
+        "region": "Emilia-Romagna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+        "id": "18",
+        "region": "Campania"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di NAPOLI \"Parthenope\"",
+        "id": "41",
+        "region": "Campania"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di PADOVA",
+        "id": "19",
+        "region": "Veneto"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di PALERMO",
+        "id": "20",
+        "region": "Sicilia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di PARMA",
+        "id": "21",
+        "region": "Emilia-Romagna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di PAVIA",
+        "id": "22",
+        "region": "Lombardia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di PERUGIA",
+        "id": "23",
+        "region": "Umbria"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+        "id": "26",
+        "region": "Lazio"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di ROMA \"Tor Vergata\"",
+        "id": "27",
+        "region": "Lazio"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di SALERNO",
+        "id": "28",
+        "region": "Campania"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di SASSARI",
+        "id": "29",
+        "region": "Sardegna"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di SIENA",
+        "id": "30",
+        "region": "Toscana"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di TERAMO",
+        "id": "A8",
+        "region": "Abruzzo"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di TORINO",
+        "id": "31",
+        "region": "Piemonte"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di TRENTO",
+        "id": "62",
+        "region": "Trentino-Alto Adige"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di TRIESTE",
+        "id": "33",
+        "region": "Friuli-Venezia Giulia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di UDINE",
+        "id": "34",
+        "region": "Friuli-Venezia Giulia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi di VERONA",
+        "id": "40",
+        "region": "Veneto"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+        "id": "53",
+        "region": "Abruzzo"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+        "id": "C7",
+        "region": "Lombardia"
+    },
+    {
+        "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+        "id": "C5",
+        "region": "Calabria"
+    },
+    {
+        "nome": "Universit\u00e0 del SALENTO",
+        "id": "12",
+        "region": "Puglia"
+    },
+    {
+        "nome": "Universit\u00e0 della CALABRIA",
+        "id": "05",
+        "region": "Calabria"
+    },
+    {
+        "nome": "Universit\u00e0 di PISA",
+        "id": "24",
+        "region": "Toscana"
+    },
+    {
+        "nome": "Universit\u00e0 Politecnica delle MARCHE",
+        "id": "01",
+        "region": "Marche"
+    }
+]
