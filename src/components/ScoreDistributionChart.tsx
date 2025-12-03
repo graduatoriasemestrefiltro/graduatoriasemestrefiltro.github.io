@@ -17,6 +17,7 @@ interface ScoreDistributionChartProps {
   studentAggregates: StudentAggregate[];
   activeTab?: string;
   onTabChange?: (tab: string) => void;
+  selectedUniversities?: string[];
 }
 
 type ViewMode = "generale" | "fisica" | "chimica" | "biologia";
@@ -25,7 +26,8 @@ export const ScoreDistributionChart = ({
   results, 
   studentAggregates,
   activeTab: externalTab,
-  onTabChange 
+  onTabChange,
+  selectedUniversities = []
 }: ScoreDistributionChartProps) => {
   const [internalTab, setInternalTab] = useState<ViewMode>("generale");
   
@@ -41,6 +43,16 @@ export const ScoreDistributionChart = ({
     }
   };
 
+  const filteredResults = useMemo(() => {
+    if (selectedUniversities.length === 0) return results;
+    return results.filter((r) => selectedUniversities.includes(r.universita.nome));
+  }, [results, selectedUniversities]);
+
+  const filteredAggregates = useMemo(() => {
+    if (selectedUniversities.length === 0) return studentAggregates;
+    return studentAggregates.filter((s) => selectedUniversities.includes(s.universita));
+  }, [studentAggregates, selectedUniversities]);
+
   const chartData = useMemo(() => {
     // Create data for each integer score from -3 to 31
     const scores = Array.from({ length: 35 }, (_, i) => i - 3);
@@ -49,26 +61,26 @@ export const ScoreDistributionChart = ({
       const data: any = { score: score.toString() };
       
       if (viewMode === "fisica") {
-        data.count = results.filter(
+        data.count = filteredResults.filter(
           (r) => r.materia === "fisica" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "chimica") {
-        data.count = results.filter(
+        data.count = filteredResults.filter(
           (r) => r.materia === "chimica" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "biologia") {
-        data.count = results.filter(
+        data.count = filteredResults.filter(
           (r) => r.materia === "biologia" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "media") {
-        data.count = studentAggregates.filter(
+        data.count = filteredAggregates.filter(
           (s) => s.media !== undefined && Math.round(s.media) === score
         ).length;
       }
       
       return data;
     });
-  }, [results, studentAggregates, viewMode]);
+  }, [filteredResults, filteredAggregates, viewMode]);
 
   const getBarColor = () => {
     switch (viewMode) {

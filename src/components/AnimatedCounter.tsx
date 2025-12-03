@@ -26,15 +26,17 @@ export const AnimatedCounter = ({
       if (!startTime.current) startTime.current = timestamp;
       const progress = Math.min((timestamp - startTime.current) / duration, 1);
       
+      if (progress >= 1) {
+        setDisplayValue(value);
+        return;
+      }
+      
       // Easing function (ease-out-expo)
       const easeOutExpo = 1 - Math.pow(2, -10 * progress);
       const currentValue = easeOutExpo * value;
       
       setDisplayValue(currentValue);
-
-      if (progress < 1) {
-        animationFrame.current = requestAnimationFrame(animate);
-      }
+      animationFrame.current = requestAnimationFrame(animate);
     };
 
     startTime.current = null;

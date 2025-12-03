@@ -142,9 +142,8 @@ export const useProcessedData = () => {
     });
   });
   
-  // Update with actual data from results
+  // Update with actual data from results (track subject completion only, not avgScore yet)
   processedResults.forEach((r) => {
-    const score = parseFloat(r.punteggio);
     // Convert ID to string to handle both string and number IDs from JSON
     const uniId = String(r.universita.id);
     const existing = uniMap.get(uniId);
@@ -162,13 +161,23 @@ export const useProcessedData = () => {
         existing.hasBiologia = true;
         existing.studentsBiologia++;
       }
-
-      existing.avgScore = (existing.avgScore * existing.totalStudents + score) / (existing.totalStudents + 1);
-      existing.totalStudents++;
       // If any result is from survey, mark university as from survey
       if (r.is_from_survey) {
         existing.isFromSurvey = true;
       }
+    }
+  });
+
+  // Calculate avgScore per university using student averages (media delle medie)
+  studentAggregates.forEach((student) => {
+    if (student.media === undefined) return;
+    
+    // Find university by name
+    const uniEntry = Array.from(uniMap.entries()).find(([_, uni]) => uni.nome === student.universita);
+    if (uniEntry) {
+      const [uniId, uni] = uniEntry;
+      uni.avgScore = (uni.avgScore * uni.totalStudents + student.media) / (uni.totalStudents + 1);
+      uni.totalStudents++;
     }
   });
 
@@ -230,7 +239,7 @@ export const useProcessedData = () => {
   const regionStats = Array.from(regionMap.values());
 
   // Global stats
-  const totalSpots = 21574;
+  const totalSpots = 19196;
   const totalUniversities = universities.length;
   const fullyQualified = studentAggregates.filter((s) => s.fullyQualified).length;
   const almostQualified = studentAggregates.filter((s) => s.allPassed && !s.fullyQualified).length;
@@ -238,6 +247,12 @@ export const useProcessedData = () => {
   // Exclude survey universities from official counts
   const universitiesWithOfficialData = universityStats.filter((u) => u.totalStudents > 0 && !u.isFromSurvey).length;
   const universitiesComplete = universityStats.filter((u) => u.hasChimica && u.hasFisica && u.hasBiologia && !u.isFromSurvey).length;
+
+  // Calculate average of student averages (media delle medie)
+  const studentsWithMedia = studentAggregates.filter(s => s.media !== undefined);
+  const avgOfAverages = studentsWithMedia.length > 0 
+    ? studentsWithMedia.reduce((acc, s) => acc + s.media!, 0) / studentsWithMedia.length 
+    : 0;
 
   const globalStats = {
     totalSpots,
@@ -250,7 +265,7 @@ export const useProcessedData = () => {
     universitiesFromSurvey,
     totalResults: results.length,
     uniqueStudents: studentAggregates.length,
-    avgScore: results.length > 0 ? results.reduce((acc, r) => acc + parseFloat(r.punteggio), 0) / results.length : 0,
+    avgScore: avgOfAverages,
   };
 
   return {

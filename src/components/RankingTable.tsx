@@ -12,7 +12,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList } from "lucide-react";
+import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList, Filter } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { formatUniversityName } from "@/lib/formatters";
 import {
   Dialog,
@@ -51,6 +53,7 @@ interface RankingTableProps {
   studentAggregates: StudentAggregate[];
   activeTab?: string;
   onTabChange?: (tab: string) => void;
+  selectedUniversities?: string[];
 }
 
 const PositionBadge = ({ position }: { position: number }) => {
@@ -137,6 +140,10 @@ const GeneralRankingCard = ({ student, position }: { student: any; position: num
       <span className="text-muted-foreground">Media:</span>
       <span className="font-mono font-bold">{student.media?.toFixed(2)}</span>
     </div>
+    <div className="flex items-center justify-between text-sm">
+      <span className="text-muted-foreground">Totale:</span>
+      <span className="font-mono">{((student.fisica || 0) + (student.chimica || 0) + (student.biologia || 0)).toFixed(2)}</span>
+    </div>
     <div className="grid grid-cols-3 gap-2 text-xs">
       <div className="text-center p-1.5 rounded bg-secondary/50">
         <p className="text-muted-foreground">Fisica</p>
@@ -171,10 +178,11 @@ const SubjectRankingCard = ({ result, position }: { result: Result; position: nu
   </div>
 );
 
-export const RankingTable = ({ results, studentAggregates, activeTab: externalTab, onTabChange }: RankingTableProps) => {
+export const RankingTable = ({ results, studentAggregates, activeTab: externalTab, onTabChange, selectedUniversities = [] }: RankingTableProps) => {
   const [search, setSearch] = useState("");
   const [internalTab, setInternalTab] = useState("generale");
   const [generalPage, setGeneralPage] = useState(1);
+  const [onlyCompleteExams, setOnlyCompleteExams] = useState(false);
   const [subjectPages, setSubjectPages] = useState<Record<string, number>>({
     fisica: 1,
     chimica: 1,
@@ -202,22 +210,31 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
   };
 
   const generalRanking = useMemo(() => {
-    return [...studentAggregates]
-      .filter((s) => s.media !== undefined)
+    let filtered = [...studentAggregates].filter((s) => s.media !== undefined);
+    if (onlyCompleteExams) {
+      filtered = filtered.filter((s) => s.completedExams === 3);
+    }
+    if (selectedUniversities.length > 0) {
+      filtered = filtered.filter((s) => selectedUniversities.includes(s.universita));
+    }
+    return filtered
       .sort((a, b) => (b.media || 0) - (a.media || 0))
       .map((s, i) => ({ ...s, posizione: i + 1 }));
-  }, [studentAggregates]);
+  }, [studentAggregates, onlyCompleteExams, selectedUniversities]);
 
   const subjectRankings = useMemo(() => {
     const subjects = ["fisica", "chimica", "biologia"] as const;
     return subjects.reduce((acc, subject) => {
-      acc[subject] = results
-        .filter((r) => r.materia === subject)
+      let filtered = results.filter((r) => r.materia === subject);
+      if (selectedUniversities.length > 0) {
+        filtered = filtered.filter((r) => selectedUniversities.includes(r.universita.nome));
+      }
+      acc[subject] = filtered
         .sort((a, b) => parseFloat(b.punteggio) - parseFloat(a.punteggio))
         .map((s, i) => ({ ...s, posizione: i + 1 }));
       return acc;
     }, {} as Record<string, Result[]>);
-  }, [results]);
+  }, [results, selectedUniversities]);
 
   const filteredGeneralRanking = filterResults(generalRanking, search);
   const generalTotalPages = Math.ceil(filteredGeneralRanking.length / ITEMS_PER_PAGE);
@@ -226,11 +243,16 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
     generalPage * ITEMS_PER_PAGE
   );
 
-  // Reset page when search changes
+  // Reset page when search or filter changes
   const handleSearchChange = (value: string) => {
     setSearch(value);
     setGeneralPage(1);
     setSubjectPages({ fisica: 1, chimica: 1, biologia: 1 });
+  };
+
+  const handleCompleteExamsToggle = (checked: boolean) => {
+    setOnlyCompleteExams(checked);
+    setGeneralPage(1);
   };
 
   return (
@@ -245,6 +267,18 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
             className="pl-9 w-full sm:w-[300px] bg-secondary/50 border-border"
           />
         </div>
+        {activeTab === "generale" && (
+          <div className="flex items-center gap-2">
+            <Switch
+              id="complete-exams"
+              checked={onlyCompleteExams}
+              onCheckedChange={handleCompleteExamsToggle}
+            />
+            <Label htmlFor="complete-exams" className="text-sm text-muted-foreground cursor-pointer">
+              tutti gli esami svolti
+            </Label>
+          </div>
+        )}
       </div>
 
       <Tabs value={activeTab} onValueChange={handleTabChange}>
@@ -279,10 +313,11 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                   <TableHead className="w-16 sticky top-0 bg-card">#</TableHead>
                   <TableHead className="min-w-[180px] sticky top-0 bg-card">Etichetta</TableHead>
                   <TableHead className="sticky top-0 bg-card">Università</TableHead>
-                  <TableHead className="text-right sticky top-0 bg-card">Media</TableHead>
                   <TableHead className="text-right sticky top-0 bg-card">Fisica</TableHead>
                   <TableHead className="text-right sticky top-0 bg-card">Chimica</TableHead>
                   <TableHead className="text-right sticky top-0 bg-card">Biologia</TableHead>
+                  <TableHead className="text-right sticky top-0 bg-card">Media</TableHead>
+                  <TableHead className="text-right sticky top-0 bg-card">Totale</TableHead>
                   <TableHead className="text-center sticky top-0 bg-card">Stato</TableHead>
                 </TableRow>
               </TableHeader>
@@ -301,9 +336,6 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                     <TableCell className="text-xs max-w-[200px] truncate">
                       {formatUniversityName(student.universita)}
                     </TableCell>
-                    <TableCell className="text-right font-bold font-mono">
-                      {student.media?.toFixed(2)}
-                    </TableCell>
                     <TableCell className="text-right font-mono">
                       {student.fisica?.toFixed(2) || "-"}
                     </TableCell>
@@ -312,6 +344,12 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                     </TableCell>
                     <TableCell className="text-right font-mono">
                       {student.biologia?.toFixed(2) || "-"}
+                    </TableCell>
+                    <TableCell className="text-right font-bold font-mono">
+                      {student.media?.toFixed(2)}
+                    </TableCell>
+                    <TableCell className="text-right font-bold font-mono">
+                      {((student.fisica || 0) + (student.chimica || 0) + (student.biologia || 0)).toFixed(2)}
                     </TableCell>
                     <TableCell className="text-center">
                       {student.fullyQualified ? (
