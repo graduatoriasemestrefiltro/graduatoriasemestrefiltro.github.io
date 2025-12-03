@@ -50,19 +50,19 @@ export const ScoreDistributionChart = ({
       
       if (viewMode === "fisica") {
         data.count = results.filter(
-          (r) => r.materia === "fisica" && Math.floor(parseFloat(r.punteggio)) === score
+          (r) => r.materia === "fisica" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "chimica") {
         data.count = results.filter(
-          (r) => r.materia === "chimica" && Math.floor(parseFloat(r.punteggio)) === score
+          (r) => r.materia === "chimica" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "biologia") {
         data.count = results.filter(
-          (r) => r.materia === "biologia" && Math.floor(parseFloat(r.punteggio)) === score
+          (r) => r.materia === "biologia" && Math.round(parseFloat(r.punteggio)) === score
         ).length;
       } else if (viewMode === "media") {
         data.count = studentAggregates.filter(
-          (s) => s.media !== undefined && Math.floor(s.media) === score
+          (s) => s.media !== undefined && Math.round(s.media) === score
         ).length;
       }
       

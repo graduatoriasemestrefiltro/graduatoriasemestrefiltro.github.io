@@ -145,7 +145,9 @@ export const useProcessedData = () => {
   // Update with actual data from results
   processedResults.forEach((r) => {
     const score = parseFloat(r.punteggio);
-    const existing = uniMap.get(r.universita.id);
+    // Convert ID to string to handle both string and number IDs from JSON
+    const uniId = String(r.universita.id);
+    const existing = uniMap.get(uniId);
     
     if (existing) {
       if (r.materia === "chimica") {
