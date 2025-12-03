@@ -228,7 +228,7 @@ const Graduatorie = () => {
             <span className="text-2xl font-bold font-mono">{filteredStats.avgMedia.toFixed(2)}</span>
             <p className="text-sm text-muted-foreground mt-1">
               <span className="text-success font-semibold">{filteredStats.passRateMedia.toFixed(1)}%</span>
-              <br />≥18 in tutti gli esami
+              <br />≥18 in tutti gli esami svolti
             </p>
           </div>
           <div className="rounded-xl border border-border p-4 bg-card shadow-card">
