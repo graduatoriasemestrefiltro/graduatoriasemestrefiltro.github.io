@@ -46,6 +46,7 @@ const Index = () => {
           totalUniversities={globalStats.totalUniversities}
           completeUniversities={globalStats.universitiesComplete}
           partialUniversities={globalStats.universitiesWithData - globalStats.universitiesComplete}
+          surveyUniversities={globalStats.universitiesFromSurvey}
         />
 
         {/* Main Grid */}

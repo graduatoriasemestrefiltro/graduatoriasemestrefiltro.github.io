@@ -12,8 +12,37 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList } from "lucide-react";
 import { formatUniversityName } from "@/lib/formatters";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+const SurveyBadge = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
+        <ClipboardList className="h-3 w-3" />
+        <span>sondaggio</span>
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-purple-700">
+          <ClipboardList className="h-5 w-5" />
+          Dati da sondaggio
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Dati raccolti tramite sondaggio svolto tra gli studenti. Da considerarsi indicativi e non ufficiali.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
 
 const ITEMS_PER_PAGE = 50;
 
@@ -90,7 +119,10 @@ const GeneralRankingCard = ({ student, position }: { student: any; position: num
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
         <PositionBadge position={position} />
-        <span className="font-mono text-xs">{student.etichetta}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-mono text-xs">{student.etichetta}</span>
+          {student.isFromSurvey && <SurveyBadge />}
+        </div>
       </div>
       {student.fullyQualified ? (
         <Badge className="bg-success/20 text-success border-success/30 text-xs">Idoneo</Badge>
@@ -128,7 +160,10 @@ const SubjectRankingCard = ({ result, position }: { result: Result; position: nu
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
         <PositionBadge position={position} />
-        <span className="font-mono text-xs">{result.etichetta}</span>
+        <div className="flex flex-col gap-1">
+          <span className="font-mono text-xs">{result.etichetta}</span>
+          {result.is_from_survey && <SurveyBadge />}
+        </div>
       </div>
       <span className="font-mono font-bold">{parseFloat(result.punteggio).toFixed(2)}</span>
     </div>
@@ -258,7 +293,10 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                       <PositionBadge position={student.posizione} />
                     </TableCell>
                     <TableCell className="font-mono text-xs">
-                      {student.etichetta}
+                      <div className="flex flex-col gap-1">
+                        <span>{student.etichetta}</span>
+                        {student.isFromSurvey && <SurveyBadge />}
+                      </div>
                     </TableCell>
                     <TableCell className="text-xs max-w-[200px] truncate">
                       {formatUniversityName(student.universita)}
@@ -347,7 +385,10 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                           <PositionBadge position={startIndex + index + 1} />
                         </TableCell>
                         <TableCell className="font-mono text-xs">
-                          {result.etichetta}
+                          <div className="flex flex-col gap-1">
+                            <span>{result.etichetta}</span>
+                            {result.is_from_survey && <SurveyBadge />}
+                          </div>
                         </TableCell>
                         <TableCell className="text-xs max-w-[200px] truncate">
                           {formatUniversityName(result.universita.nome)}

@@ -7,6 +7,7 @@ export interface Result {
     nome: string;
     id: string;
   };
+  is_from_survey?: boolean;
 }
 
 export interface StudentAggregate {
@@ -19,6 +20,7 @@ export interface StudentAggregate {
   allPassed: boolean; // ≥18 in all completed
   fullyQualified: boolean; // ≥18 in all 3
   universita: string;
+  isFromSurvey: boolean;
 }
 
 export interface UniversityStats {
@@ -33,6 +35,7 @@ export interface UniversityStats {
   studentsChimica: number;
   studentsFisica: number;
   studentsBiologia: number;
+  isFromSurvey: boolean;
 }
 
 export interface RegionStats {

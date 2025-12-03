@@ -11,9 +11,38 @@ import {
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { Search, ArrowUpDown, ArrowUp, ArrowDown, ClipboardList } from "lucide-react";
 import { SubjectBadge } from "./SubjectBadge";
 import { formatUniversityName } from "@/lib/formatters";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+const SurveyBadge = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
+        <ClipboardList className="h-3 w-3" />
+        <span>sondaggio</span>
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-purple-700">
+          <ClipboardList className="h-5 w-5" />
+          Dati da sondaggio
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Dati raccolti tramite sondaggio svolto tra gli studenti. Da considerarsi indicativi e non ufficiali.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
 
 interface UniversityTableProps {
   universities: UniversityStats[];
@@ -31,6 +60,7 @@ const UniversityCard = ({ uni }: { uni: any }) => (
       <div className="flex-1 min-w-0">
         <h4 className="font-medium truncate">{formatUniversityName(uni.nome)}</h4>
         <p className="text-xs text-muted-foreground">{uni.regione}</p>
+        {uni.isFromSurvey && <div className="mt-2"><SurveyBadge /></div>}
       </div>
       <div className="flex gap-1">
         <SubjectBadge subject="F" active={uni.hasFisica} />
@@ -191,7 +221,10 @@ export const UniversityTable = ({ universities, studentAggregates, limit }: Univ
               {displayData.map((uni) => (
                 <TableRow key={uni.id} className="hover:bg-secondary/20">
                   <TableCell className="font-medium">
-                    {formatUniversityName(uni.nome)}
+                    <div>
+                      {formatUniversityName(uni.nome)}
+                      {uni.isFromSurvey && <div className="mt-1"><SurveyBadge /></div>}
+                    </div>
                   </TableCell>
                   <TableCell className="text-muted-foreground text-sm">
                     {uni.regione}

@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Result, StudentAggregate, UniversityStats, RegionStats } from "@/types/results";
 
+// Debug flag: set to true to simulate survey data for Bari Aldo Moro
+const DEBUG_SURVEY_BARI = false;
+
 interface UniversityInfo {
   nome: string;
   id: string;
@@ -68,10 +71,18 @@ export const useProcessedData = () => {
     uniNameMap.set(u.id, u.nome);
   });
 
+  // Debug: mark Bari data as survey if flag is enabled
+  const processedResults = DEBUG_SURVEY_BARI 
+    ? results.map(r => ({
+        ...r,
+        is_from_survey: r.universita.id === "02" ? true : r.is_from_survey
+      }))
+    : results;
+
   // Aggregate by student
   const studentMap = new Map<string, StudentAggregate>();
   
-  results.forEach((r) => {
+  processedResults.forEach((r) => {
     const score = parseFloat(r.punteggio);
     const existing = studentMap.get(r.etichetta) || {
       etichetta: r.etichetta,
@@ -79,6 +90,7 @@ export const useProcessedData = () => {
       allPassed: true,
       fullyQualified: false,
       universita: r.universita.nome,
+      isFromSurvey: false,
     };
 
     existing[r.materia] = score;
@@ -87,6 +99,10 @@ export const useProcessedData = () => {
       existing.allPassed = false;
     }
     existing.universita = r.universita.nome;
+    // If any result is from survey, mark student as from survey
+    if (r.is_from_survey) {
+      existing.isFromSurvey = true;
+    }
 
     studentMap.set(r.etichetta, existing);
   });
@@ -122,11 +138,12 @@ export const useProcessedData = () => {
       studentsChimica: 0,
       studentsFisica: 0,
       studentsBiologia: 0,
+      isFromSurvey: false,
     });
   });
   
   // Update with actual data from results
-  results.forEach((r) => {
+  processedResults.forEach((r) => {
     const score = parseFloat(r.punteggio);
     const existing = uniMap.get(r.universita.id);
     
@@ -146,6 +163,10 @@ export const useProcessedData = () => {
 
       existing.avgScore = (existing.avgScore * existing.totalStudents + score) / (existing.totalStudents + 1);
       existing.totalStudents++;
+      // If any result is from survey, mark university as from survey
+      if (r.is_from_survey) {
+        existing.isFromSurvey = true;
+      }
     }
   });
 
@@ -211,8 +232,10 @@ export const useProcessedData = () => {
   const totalUniversities = universities.length;
   const fullyQualified = studentAggregates.filter((s) => s.fullyQualified).length;
   const almostQualified = studentAggregates.filter((s) => s.allPassed && !s.fullyQualified).length;
-  const universitiesWithData = universityStats.filter((u) => u.totalStudents > 0).length;
-  const universitiesComplete = universityStats.filter((u) => u.hasChimica && u.hasFisica && u.hasBiologia).length;
+  const universitiesFromSurvey = universityStats.filter((u) => u.isFromSurvey && u.totalStudents > 0).length;
+  // Exclude survey universities from official counts
+  const universitiesWithOfficialData = universityStats.filter((u) => u.totalStudents > 0 && !u.isFromSurvey).length;
+  const universitiesComplete = universityStats.filter((u) => u.hasChimica && u.hasFisica && u.hasBiologia && !u.isFromSurvey).length;
 
   const globalStats = {
     totalSpots,
@@ -220,8 +243,9 @@ export const useProcessedData = () => {
     fullyQualified,
     almostQualified,
     remainingSpots: totalSpots - fullyQualified,
-    universitiesWithData,
+    universitiesWithData: universitiesWithOfficialData,
     universitiesComplete,
+    universitiesFromSurvey,
     totalResults: results.length,
     uniqueStudents: studentAggregates.length,
     avgScore: results.length > 0 ? results.reduce((acc, r) => acc + parseFloat(r.punteggio), 0) / results.length : 0,
