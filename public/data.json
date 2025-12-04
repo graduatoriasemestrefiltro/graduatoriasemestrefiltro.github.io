@@ -71736,6 +71736,105 @@
         }
     },
     {
+        "etichetta": "SRV-JAXBPRR",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-JAXBPRR",
+        "punteggio": "23.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-JAXBPRR",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-7ROBEW9",
+        "punteggio": "19.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-7ROBEW9",
+        "punteggio": "18.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-7ROBEW9",
+        "punteggio": "26.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-PBXD5JB",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-PBXD5JB",
+        "punteggio": "17.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-PBXD5JB",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
         "etichetta": "SRV-1AZKOYO",
         "punteggio": "21.60",
         "materia": "fisica",
@@ -71865,39 +71964,6 @@
             "nome": "Universit\u00e0 degli Studi di VERONA",
             "id": "40",
             "region": "Veneto"
-        }
-    },
-    {
-        "etichetta": "SRV-0QZ7A7A",
-        "punteggio": "31.00",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
-            "id": "03",
-            "region": "Emilia-Romagna"
-        }
-    },
-    {
-        "etichetta": "SRV-0QZ7A7A",
-        "punteggio": "31.00",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
-            "id": "03",
-            "region": "Emilia-Romagna"
-        }
-    },
-    {
-        "etichetta": "SRV-0QZ7A7A",
-        "punteggio": "31.00",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
-            "id": "03",
-            "region": "Emilia-Romagna"
         }
     },
     {
