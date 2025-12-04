@@ -396,14 +396,16 @@ const Graduatorie = () => {
           </div>
         </div>
 
-        {/* Score Distribution */}
-        <ScoreDistributionChart 
-          results={results} 
-          studentAggregates={studentAggregates}
-          activeTab={activeTab}
-          onTabChange={(tab) => setActiveTab(tab as ViewMode)}
-          selectedUniversities={selectedUniversities}
-        />
+        {/* Score Distribution - hidden on mobile due to iOS Safari performance issues */}
+        <div className="hidden sm:block">
+          <ScoreDistributionChart 
+            results={results} 
+            studentAggregates={studentAggregates}
+            activeTab={activeTab}
+            onTabChange={(tab) => setActiveTab(tab as ViewMode)}
+            selectedUniversities={selectedUniversities}
+          />
+        </div>
       </div>
     </Layout>
   );
