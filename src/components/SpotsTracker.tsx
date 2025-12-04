@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { AnimatedCounter } from "./AnimatedCounter";
-import { CheckCircle2, Clock, Trophy, Users, TrendingUp, HelpCircle } from "lucide-react";
+import { CheckCircle2, Clock, Trophy, Users, TrendingUp, HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -7,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 interface SpotsTrackerProps {
   totalSpots: number;
@@ -48,6 +50,8 @@ export const SpotsTracker = ({
   estimatedIdonei,
   estimatedPotenziali,
 }: SpotsTrackerProps) => {
+  const [showEstimate, setShowEstimate] = useState(false);
+  
   // Consider both fully and potentially qualified as "assigned"
   const totalAssigned = fullyQualified + potentiallyQualified;
   const assignedPercent = (totalAssigned / totalSpots) * 100;
@@ -133,9 +137,23 @@ export const SpotsTracker = ({
           </div>
         </div>
 
-        {/* Estimated data */}
+        {/* Toggle button for estimated data */}
         {hasEstimates && (
-          <div className="space-y-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowEstimate(!showEstimate)}
+            className="w-full text-muted-foreground hover:text-foreground"
+          >
+            <TrendingUp className="h-4 w-4 mr-2" />
+            {showEstimate ? "Nascondi stima proiettata" : "Mostra stima proiettata"}
+            {showEstimate ? <ChevronUp className="h-4 w-4 ml-2" /> : <ChevronDown className="h-4 w-4 ml-2" />}
+          </Button>
+        )}
+
+        {/* Estimated data */}
+        {hasEstimates && showEstimate && (
+          <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground flex items-center">
                 Riempimento (stima proiettata)

@@ -81,7 +81,7 @@ export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsPr
       <div className="flex items-center gap-2 mb-3">
         <Database className="h-4 w-4 text-muted-foreground" />
         <h4 className="text-sm font-medium">Fonti dati raccolti</h4>
-        <span className="ml-auto text-sm text-muted-foreground">
+        <span className="hidden sm:inline ml-auto text-sm text-muted-foreground">
           <span className="font-mono font-semibold text-foreground">{totalCollected.toLocaleString("it-IT")}</span>
           {" / "}
           <span className="font-mono">{totalEnrolled.toLocaleString("it-IT")}</span>
@@ -117,6 +117,14 @@ export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsPr
             );
           });
         })()}
+      </div>
+
+      {/* Mobile stats - shown at bottom */}
+      <div className="sm:hidden mt-2 text-sm text-muted-foreground text-center">
+        <span className="font-mono font-semibold text-foreground">{totalCollected.toLocaleString("it-IT")}</span>
+        {" / "}
+        <span className="font-mono">{totalEnrolled.toLocaleString("it-IT")}</span>
+        {" "}studenti ({collectedPercent.toFixed(1)}%)
       </div>
 
       {includeSurveyData && (
