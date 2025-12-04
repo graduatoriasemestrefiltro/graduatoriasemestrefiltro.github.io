@@ -72957,6 +72957,336 @@
         }
     },
     {
+        "etichetta": "SRV-EQ8DBO0",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-EQ8DBO0",
+        "punteggio": "19.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-EQ8DBO0",
+        "punteggio": "27.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-5BO4NMO",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-5BO4NMO",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-5BO4NMO",
+        "punteggio": "9.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB2NB",
+        "punteggio": "6.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB2NB",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB2NB",
+        "punteggio": "13.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-D49KLKB",
+        "punteggio": "7.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-D49KLKB",
+        "punteggio": "6.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-D49KLKB",
+        "punteggio": "12.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-OBYDJBV",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-OBYDJBV",
+        "punteggio": "10.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-OBYDJBV",
+        "punteggio": "12.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJAER",
+        "punteggio": "12.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJAER",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJAER",
+        "punteggio": "18.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRLO0",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 del SALENTO",
+            "id": "12",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRLO0",
+        "punteggio": "8.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 del SALENTO",
+            "id": "12",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRLO0",
+        "punteggio": "24.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 del SALENTO",
+            "id": "12",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZEQZ",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZEQZ",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZEQZ",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-WOXRLPN",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-WOXRLPN",
+        "punteggio": "18.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-WOXRLPN",
+        "punteggio": "23.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-KYAE9J8",
+        "punteggio": "21.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYAE9J8",
+        "punteggio": "22.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYAE9J8",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "SRV-ZX4NKEM",
         "punteggio": "3.00",
         "materia": "fisica",
