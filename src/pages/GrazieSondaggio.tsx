@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SURVEY_URL = 'https://graduatoriasemestrefiltro.github.io/#/sondaggio';
 const HOME_URL = 'https://graduatoriasemestrefiltro.github.io';
-const SHARE_MESSAGE = `Hai fatto il test di medicina? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n🔗 Compila il sondaggio: ${SURVEY_URL}\n📈 Guarda le statistiche: ${HOME_URL}`;
+const SHARE_MESSAGE = `Hai sostenuto gli esami del semestre filtro? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n🔗 Compila il sondaggio: ${SURVEY_URL}\n📈 Guarda le statistiche: ${HOME_URL}`;
 
 const GrazieSondaggio = () => {
   const [copied, setCopied] = useState(false);
@@ -36,7 +36,7 @@ const GrazieSondaggio = () => {
 
   const handleTelegramShare = () => {
     trackEvent('Share: Telegram');
-    const url = `https://t.me/share/url?url=${encodeURIComponent(SURVEY_URL)}&text=${encodeURIComponent('Hai fatto il test di medicina? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n📈 Guarda le statistiche: ' + HOME_URL)}`;
+    const url = `https://t.me/share/url?url=${encodeURIComponent(SURVEY_URL)}&text=${encodeURIComponent('Hai sostenuto gli esami del semestre filtro? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n📈 Guarda le statistiche: ' + HOME_URL)}`;
     window.open(url, '_blank');
   };
 
