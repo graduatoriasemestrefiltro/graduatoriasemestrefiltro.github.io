@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, Copy, MessageCircle, Send, Heart, AlertTriangle, Github } from 'lucide-react';
@@ -20,6 +20,10 @@ const GrazieSondaggio = () => {
       (window as any).umami.track(eventName);
     }
   };
+
+  useEffect(() => {
+    trackEvent('Thank you page view');
+  }, []);
 
   const handleCopyLink = async () => {
     trackEvent('Share: Copy link');
