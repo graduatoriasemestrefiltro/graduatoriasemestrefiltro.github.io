@@ -71736,6 +71736,72 @@
         }
     },
     {
+        "etichetta": "SRV-44RBZPA",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBZPA",
+        "punteggio": "24.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBZPA",
+        "punteggio": "12.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-AQXEV4Q",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-AQXEV4Q",
+        "punteggio": "17.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-AQXEV4Q",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
         "etichetta": "SRV-PDLDBZ1",
         "punteggio": "22.50",
         "materia": "fisica",
