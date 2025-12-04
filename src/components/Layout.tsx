@@ -22,7 +22,8 @@ export const Layout = ({ children }: LayoutProps) => {
       <div className="bg-amber-100 border-b border-amber-200 px-4 py-2">
         <p className="text-center text-xs text-amber-700 flex items-center justify-center gap-1.5">
           <AlertTriangle className="h-3 w-3" />
-          <span>Sito non ufficiale - i dati potrebbero essere non aggiornati o incompleti</span>
+          <span className="hidden sm:inline">sito non ufficiale - i dati potrebbero essere non aggiornati o incompleti</span>
+          <span className="sm:hidden">sito non ufficiale - i dati potrebbero essere incompleti</span>
         </p>
       </div>
 
@@ -35,11 +36,11 @@ export const Layout = ({ children }: LayoutProps) => {
       {/* Footer */}
       <footer className="border-t border-border/50 bg-card/30 mt-auto">
         <div className="container mx-auto px-4 py-6">
-          <div className="max-w-3xl mx-auto text-center space-y-3">
-            <p className="text-sm text-muted-foreground">
-              <strong>Disclaimer:</strong> Questo sito <strong>non è ufficiale</strong> e non è affiliato in alcun modo con il Ministero dell'Università e della Ricerca o con Universitaly.
-            </p>
+          <div className="max-w-3xl mx-auto text-center space-y-1.5">
             <p className="text-xs text-muted-foreground">
+              <strong>Disclaimer:</strong> Questo sito <strong>non è ufficiale</strong> e non è affiliato in alcun modo con il Ministero dell'Università e della Ricerca, Universitaly o qualsiasi università.
+            </p>
+            <p className="text-[10px] text-muted-foreground">
               I dati grezzi sono recuperati pubblicamente da{" "}
               <a 
                 href="https://www.universitaly.it" 
@@ -53,8 +54,15 @@ export const Layout = ({ children }: LayoutProps) => {
               Non viene fornita alcuna garanzia di accuratezza, completezza o affidabilità dei dati presentati. 
               Il sito è realizzato senza alcun fine di lucro, esclusivamente a scopo informativo e di aggregazione.
             </p>
-            <p className="text-xs text-muted-foreground">
-              Per segnalazioni, errori o suggerimenti, apri un issue su{" "}
+            <p className="text-[10px] text-muted-foreground">
+              Per segnalazioni, errori o suggerimenti, scrivi a{" "}
+              <a 
+                href="mailto:semestrefiltro2025@atomicmail.io"
+                className="underline hover:text-foreground transition-colors"
+              >
+                semestrefiltro2025@atomicmail.io
+              </a>
+              {" "}o apri un issue su{" "}
               <a 
                 href="https://github.com/graduatoriasemestrefiltro/graduatoriasemestrefiltro.github.io" 
                 target="_blank" 
