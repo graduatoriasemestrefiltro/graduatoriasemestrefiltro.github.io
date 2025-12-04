@@ -128,33 +128,66 @@ export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsPr
       </div>
 
       {includeSurveyData && (
-        <Dialog>
-          <DialogTrigger asChild>
-            <button className="mt-2 text-xs text-muted-foreground hover:text-foreground hover:underline underline-offset-2 flex items-center gap-1">
-              <Info className="h-3 w-3" />
-              note sulla deduplicazione
-            </button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Deduplicazione dei dati</DialogTitle>
-            </DialogHeader>
-            <div className="text-sm text-muted-foreground space-y-3">
-              <p>
-                Nonostante i tentativi di deduplicazione, potrebbe esserci una minima sovrapposizione tra i dati provenienti da fonti diverse.
-              </p>
-              <p>
-                <strong>Sondaggio UniMi:</strong> dai dati raccolti da Logica Test, rimuoviamo manualmente gli studenti UniMi, per i quali viene utilizzato il sondaggio dedicato dell'università, più completo e numeroso.
-              </p>
-              <p>
-                <strong>Sondaggio interno:</strong> gli studenti UniMi che tentano di compilare il sondaggio interno vengono automaticamente reindirizzati al sondaggio dedicato della loro università.
-              </p>
-              <p>
-                <strong>Logica Test:</strong> durante la compilazione del sondaggio interno, chiediamo se si è già compilato il modulo di Logica Test e, in caso affermativo, di indicare il proprio username, così da poter escludere i duplicati. Vengono inoltre considerati duplicati gli studenti della stessa università che hanno ottenuto lo stesso voto in tutti e 3 gli esami, con precisione al decimo, in quanto statisticamente poco plausibile rispetto alla possibilità che l'username non sia stato indicato correttamente o non sia stato indicato affatto.
-              </p>
-            </div>
-          </DialogContent>
-        </Dialog>
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="text-xs text-muted-foreground hover:text-foreground hover:underline underline-offset-2 flex items-center gap-1">
+                <Info className="h-3 w-3" />
+                info sulle fonti
+              </button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Da dove vengono questi dati?</DialogTitle>
+              </DialogHeader>
+              <div className="text-sm text-muted-foreground space-y-3">
+                <p>
+                  Per costruire questa graduatoria ufficiosa, abbiamo raccolto dati da più fonti. Ecco cosa c'è dietro ogni numero! 🔍
+                </p>
+                <p>
+                  <strong className="text-blue-600">Dati ministeriali:</strong> il 3 dicembre, sul portale Universitaly erano comparsi brevemente i risultati parziali di 7 università su 44, in forma anonima. La sera stessa sono stati rimossi. Contattando CINECA, ci è stato comunicato che si era trattato di una prova tecnica, e che sono in attesa dell'autorizzazione del Ministero per la pubblicazione effettiva. 🤞
+                </p>
+                <p>
+                  <strong className="text-purple-600">Sondaggio interno:</strong> il nostro sondaggio aperto a tutti gli studenti! Compila il form in pochi secondi per contribuire anche tu. Ogni risposta aiuta a rendere la graduatoria più completa e affidabile. 💜
+                </p>
+                <p>
+                  <strong className="text-indigo-600">Sondaggio UniMi:</strong> i rappresentanti degli studenti dell'Università Statale di Milano hanno raccolto i dati dei loro colleghi con un sondaggio dedicato. Grazie a loro abbiamo una copertura eccezionale per UniMi! 🎉
+                </p>
+                <p>
+                  <strong className="text-emerald-600">Logica Test:</strong> un'altra community di studenti che ha raccolto dati tramite un Google Form. Abbiamo integrato i loro risultati (escludendo i duplicati) per avere un quadro più ampio. 🤝
+                </p>
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="text-xs text-muted-foreground hover:text-foreground hover:underline underline-offset-2 flex items-center gap-1">
+                <Info className="h-3 w-3" />
+                note sulla deduplicazione
+              </button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Deduplicazione dei dati</DialogTitle>
+              </DialogHeader>
+              <div className="text-sm text-muted-foreground space-y-3">
+                <p>
+                  Nonostante i tentativi di deduplicazione, potrebbe esserci una minima sovrapposizione tra i dati provenienti da fonti diverse.
+                </p>
+                <p>
+                  <strong>Sondaggio UniMi:</strong> dai dati raccolti da Logica Test, rimuoviamo manualmente gli studenti UniMi, per i quali viene utilizzato il sondaggio dedicato dell'università, più completo e numeroso.
+                </p>
+                <p>
+                  <strong>Sondaggio interno:</strong> gli studenti UniMi che tentano di compilare il sondaggio interno vengono automaticamente reindirizzati al sondaggio dedicato della loro università.
+                </p>
+                <p>
+                  <strong>Logica Test:</strong> durante la compilazione del sondaggio interno, chiediamo se si è già compilato il modulo di Logica Test e, in caso affermativo, di indicare il proprio username, così da poter escludere i duplicati. Vengono inoltre considerati duplicati gli studenti della stessa università che hanno ottenuto lo stesso voto in tutti e 3 gli esami, con precisione al decimo, in quanto statisticamente poco plausibile rispetto alla possibilità che l'username non sia stato indicato correttamente o non sia stato indicato affatto.
+                </p>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       )}
     </div>
   );

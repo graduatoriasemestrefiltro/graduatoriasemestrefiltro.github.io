@@ -30,13 +30,13 @@ const Index = () => {
     globalStats,
   } = useProcessedData();
   
-  const { getEnrollment, getTotalEnrollment, loading: enrollmentsLoading } = useEnrollments();
+  const { getEnrollment, getTotalEnrollment } = useEnrollments();
 
   // Calculate estimated totals
   const estimatedTotals = useMemo(() => {
-    if (enrollmentsLoading || !studentAggregates.length) return null;
+    if (!studentAggregates.length) return null;
     return calculateEstimatedTotals(studentAggregates, getEnrollment, getTotalEnrollment, projectionMethod);
-  }, [studentAggregates, getEnrollment, getTotalEnrollment, enrollmentsLoading, projectionMethod]);
+  }, [studentAggregates, getEnrollment, getTotalEnrollment, projectionMethod]);
 
   if (isLoading) {
     return <LoadingState />;

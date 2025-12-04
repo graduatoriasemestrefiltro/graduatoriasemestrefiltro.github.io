@@ -1,9 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { StudentAggregate } from "@/types/results";
-
-interface EnrollmentData {
-  [universityName: string]: number;
-}
+import { universityEnrollments } from "@/data/universityEnrollments";
 
 // Normalize university name for matching
 const normalizeUniName = (name: string): string => {
@@ -62,33 +59,17 @@ const SPECIAL_MAPPINGS: Record<string, { aliases: string[], excludeIf?: string[]
 };
 
 export const useEnrollments = () => {
-  const [enrollments, setEnrollments] = useState<EnrollmentData>({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/data/university_enrollments.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setEnrollments(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load enrollments:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  const getEnrollment = (universityName: string): number | null => {
+  const getEnrollment = useMemo(() => (universityName: string): number | null => {
     // Direct match
-    if (enrollments[universityName]) {
-      return enrollments[universityName];
+    if (universityEnrollments[universityName]) {
+      return universityEnrollments[universityName];
     }
     
     const normalizedSearch = normalizeUniName(universityName);
     
     // Check special mappings first (with exclusions)
     for (const [enrollmentKey, config] of Object.entries(SPECIAL_MAPPINGS)) {
-      if (enrollments[enrollmentKey]) {
+      if (universityEnrollments[enrollmentKey]) {
         // Check if any exclusion term is present
         const hasExclusion = config.excludeIf?.some(excl => 
           normalizedSearch.includes(excl)
@@ -97,7 +78,7 @@ export const useEnrollments = () => {
         if (!hasExclusion) {
           for (const alias of config.aliases) {
             if (normalizedSearch.includes(alias) || alias === normalizedSearch) {
-              return enrollments[enrollmentKey];
+              return universityEnrollments[enrollmentKey];
             }
           }
         }
@@ -105,7 +86,7 @@ export const useEnrollments = () => {
     }
     
     // Exact normalized match
-    for (const [key, value] of Object.entries(enrollments)) {
+    for (const [key, value] of Object.entries(universityEnrollments)) {
       if (normalizeUniName(key) === normalizedSearch) {
         return value;
       }
@@ -115,7 +96,7 @@ export const useEnrollments = () => {
     // and it's not a common word like "MILANO", "NAPOLI", "ROMA"
     const commonCityWords = ["MILANO", "NAPOLI", "ROMA", "TORINO", "FIRENZE", "BOLOGNA", "PALERMO", "CATANIA", "GENOVA"];
     
-    for (const [key, value] of Object.entries(enrollments)) {
+    for (const [key, value] of Object.entries(universityEnrollments)) {
       const normalizedKey = normalizeUniName(key);
       const searchWords = normalizedSearch.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
       const keyWords = normalizedKey.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
@@ -131,13 +112,13 @@ export const useEnrollments = () => {
     }
     
     return null;
-  };
+  }, []);
 
-  const getTotalEnrollment = (): number => {
-    return Object.values(enrollments).reduce((sum, val) => sum + val, 0);
-  };
+  const getTotalEnrollment = useMemo(() => (): number => {
+    return Object.values(universityEnrollments).reduce((sum, val) => sum + val, 0);
+  }, []);
 
-  return { enrollments, loading, getEnrollment, getTotalEnrollment };
+  return { enrollments: universityEnrollments, loading: false, getEnrollment, getTotalEnrollment };
 };
 
 export type ProjectionMethod = "per-university" | "national";

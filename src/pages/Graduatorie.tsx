@@ -173,7 +173,11 @@ const Graduatorie = () => {
     };
   }, [results, studentAggregates, selectedUniversities]);
 
-  if (isLoading) {
+  // Show loading if data is loading OR if we have a URL param but haven't initialized the filter yet
+  const hasUrlParam = searchParams.get("uni") !== null;
+  const waitingForInit = hasUrlParam && !initialized;
+
+  if (isLoading || waitingForInit) {
     return <LoadingState />;
   }
 

@@ -34,19 +34,19 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
-          {/* Logo */}
-          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2">
+        <div className="flex items-center justify-between sm:justify-between h-14">
+          {/* Logo - hidden on mobile */}
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hidden sm:flex items-center gap-2 shrink-0">
             <div className="p-1.5 rounded-lg gradient-primary">
               <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold tracking-tight">Semestre Filtro 2025</h1>
+            <div className="hidden md:block">
+              <h1 className="text-lg font-bold tracking-tight whitespace-nowrap">Semestre Filtro 2025</h1>
             </div>
           </Link>
 
-          {/* Navigation */}
-          <nav className="flex items-center gap-1">
+          {/* Navigation - centered on mobile */}
+          <nav className="flex items-center gap-1 sm:mx-0 mx-auto">
             {navItems.map((item) => {
               const isActive = location.pathname === item.to;
               return (
@@ -141,13 +141,12 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
             {onRefresh && (
               <Button
                 variant="outline"
-                size="sm"
+                size="icon"
                 onClick={onRefresh}
                 disabled={isLoading}
-                className="gap-1.5"
+                className="hidden sm:flex h-8 w-8"
               >
                 <RefreshCw className={cn("h-4 w-4", isLoading && "animate-spin")} />
-                <span className="hidden sm:inline">Aggiorna</span>
               </Button>
             )}
           </div>
