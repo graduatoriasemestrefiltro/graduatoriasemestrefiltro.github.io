@@ -71736,6 +71736,138 @@
         }
     },
     {
+        "etichetta": "SRV-GDXEJOK",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-GDXEJOK",
+        "punteggio": "23.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-GDXEJOK",
+        "punteggio": "21.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNO2D",
+        "punteggio": "18.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRIESTE",
+            "id": "33",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNO2D",
+        "punteggio": "20.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRIESTE",
+            "id": "33",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNO2D",
+        "punteggio": "18.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRIESTE",
+            "id": "33",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXN8BN",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXN8BN",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXN8BN",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJ45Y",
+        "punteggio": "24.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di GENOVA",
+            "id": "11",
+            "region": "Liguria"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJ45Y",
+        "punteggio": "24.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di GENOVA",
+            "id": "11",
+            "region": "Liguria"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEJ45Y",
+        "punteggio": "24.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di GENOVA",
+            "id": "11",
+            "region": "Liguria"
+        }
+    },
+    {
         "etichetta": "SRV-RJRBGGO",
         "punteggio": "20.20",
         "materia": "fisica",
