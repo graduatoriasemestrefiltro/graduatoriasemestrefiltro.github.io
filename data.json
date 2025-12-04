@@ -71736,6 +71736,72 @@
         }
     },
     {
+        "etichetta": "SRV-RJRB2V2",
+        "punteggio": "8.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-RJRB2V2",
+        "punteggio": "12.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-RJRB2V2",
+        "punteggio": "8.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRQM0",
+        "punteggio": "4.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRQM0",
+        "punteggio": "5.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-VGVRQM0",
+        "punteggio": "4.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
         "etichetta": "SRV-AQXEJKQ",
         "punteggio": "13.00",
         "materia": "fisica",
