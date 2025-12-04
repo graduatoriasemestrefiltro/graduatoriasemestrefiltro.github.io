@@ -142,7 +142,7 @@ export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsPr
                 <strong>Sondaggio interno:</strong> gli studenti UniMi che tentano di compilare il sondaggio interno vengono automaticamente reindirizzati al sondaggio dedicato della loro università.
               </p>
               <p>
-                <strong>Logica Test:</strong> durante la compilazione del sondaggio interno, chiediamo se si è già compilato il modulo di Logica Test e, in caso affermativo, di indicare il proprio username, così da poter escludere i duplicati.
+                <strong>Logica Test:</strong> durante la compilazione del sondaggio interno, chiediamo se si è già compilato il modulo di Logica Test e, in caso affermativo, di indicare il proprio username, così da poter escludere i duplicati. Vengono inoltre considerati duplicati gli studenti della stessa università che hanno ottenuto lo stesso voto in tutti e 3 gli esami, con precisione al decimo, in quanto statisticamente poco plausibile rispetto alla possibilità che l'username non sia stato indicato correttamente o non sia stato indicato affatto.
               </p>
             </div>
           </DialogContent>
