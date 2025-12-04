@@ -21,15 +21,44 @@ const normalizeUniName = (name: string): string => {
 };
 
 // Special mappings for universities with unusual naming in enrollment data
-const SPECIAL_MAPPINGS: Record<string, string[]> = {
-  'Roma "Sapienza"': ["SAPIENZA", "ROMA SAPIENZA", "LA SAPIENZA"],
-  'Roma "Tor Vergata"': ["TOR VERGATA", "ROMA TOR VERGATA"],
-  "Universita' di Catania": ["CATANIA"],
-  "Universita' di Bologna": ["BOLOGNA", "ALMA MATER"],
-  "Universita' di Genova": ["GENOVA"],
-  "Universita' degli Studi di Milano": ["MILANO", "STATALE DI MILANO"],
-  "Universita' degli Studi di Palermo": ["PALERMO"],
-  "Universita' degli Studi di Napoli Federico II": ["NAPOLI FEDERICO II", "FEDERICO II"],
+// Format: enrollmentKey -> { aliases: string[], excludeIf: string[] }
+const SPECIAL_MAPPINGS: Record<string, { aliases: string[], excludeIf?: string[] }> = {
+  'Roma "Sapienza"': { 
+    aliases: ["SAPIENZA", "ROMA SAPIENZA", "LA SAPIENZA"],
+    excludeIf: ["TOR VERGATA"]
+  },
+  'Roma "Tor Vergata"': { 
+    aliases: ["TOR VERGATA", "ROMA TOR VERGATA"] 
+  },
+  "Universita' di Catania": { 
+    aliases: ["CATANIA"] 
+  },
+  "Universita' di Bologna": { 
+    aliases: ["BOLOGNA", "ALMA MATER"] 
+  },
+  "Universita' di Genova": { 
+    aliases: ["GENOVA"] 
+  },
+  "Universita' degli Studi di Milano": { 
+    aliases: ["STATALE MILANO", "STATALE DI MILANO"],
+    excludeIf: ["BICOCCA", "POLITECNICO"]  // Don't match Milano-Bicocca or Politecnico
+  },
+  "UNIVERSITA' DEGLI STUDI DI MILANO-BICOCCA": {
+    aliases: ["BICOCCA", "MILANO-BICOCCA", "MILANO BICOCCA"]
+  },
+  "Universita' degli Studi di Palermo": { 
+    aliases: ["PALERMO"] 
+  },
+  "Universita' degli Studi di Napoli Federico II": { 
+    aliases: ["NAPOLI FEDERICO II", "FEDERICO II"],
+    excludeIf: ["PARTHENOPE", "VANVITELLI", "CAMPANIA"]
+  },
+  "UNIVERSITA' DEGLI STUDI DI NAPOLI PARTHENOPE": {
+    aliases: ["PARTHENOPE", "NAPOLI PARTHENOPE"]
+  },
+  "UNIVERSITA' DEGLI STUDI DELLA CAMPANIA \"LUIGI VANVITELLI\"": {
+    aliases: ["VANVITELLI", "CAMPANIA VANVITELLI", "LUIGI VANVITELLI"]
+  },
 };
 
 export const useEnrollments = () => {
@@ -57,35 +86,44 @@ export const useEnrollments = () => {
     
     const normalizedSearch = normalizeUniName(universityName);
     
-    // Check special mappings first
-    for (const [enrollmentKey, aliases] of Object.entries(SPECIAL_MAPPINGS)) {
+    // Check special mappings first (with exclusions)
+    for (const [enrollmentKey, config] of Object.entries(SPECIAL_MAPPINGS)) {
       if (enrollments[enrollmentKey]) {
-        for (const alias of aliases) {
-          if (normalizedSearch.includes(alias) || alias.includes(normalizedSearch)) {
-            return enrollments[enrollmentKey];
+        // Check if any exclusion term is present
+        const hasExclusion = config.excludeIf?.some(excl => 
+          normalizedSearch.includes(excl)
+        );
+        
+        if (!hasExclusion) {
+          for (const alias of config.aliases) {
+            if (normalizedSearch.includes(alias) || alias === normalizedSearch) {
+              return enrollments[enrollmentKey];
+            }
           }
         }
       }
     }
     
-    // Normalized match
+    // Exact normalized match
     for (const [key, value] of Object.entries(enrollments)) {
       if (normalizeUniName(key) === normalizedSearch) {
         return value;
       }
     }
     
-    // Partial match (more flexible)
+    // Strict partial match - only if a unique identifying word matches
+    // and it's not a common word like "MILANO", "NAPOLI", "ROMA"
+    const commonCityWords = ["MILANO", "NAPOLI", "ROMA", "TORINO", "FIRENZE", "BOLOGNA", "PALERMO", "CATANIA", "GENOVA"];
+    
     for (const [key, value] of Object.entries(enrollments)) {
       const normalizedKey = normalizeUniName(key);
-      // Check if key words match
-      const searchWords = normalizedSearch.split(" ").filter(w => w.length > 3);
-      const keyWords = normalizedKey.split(" ").filter(w => w.length > 3);
+      const searchWords = normalizedSearch.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
+      const keyWords = normalizedKey.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
       
-      // If main identifying word matches
+      // Match on unique identifying words (not city names)
       for (const searchWord of searchWords) {
         for (const keyWord of keyWords) {
-          if (searchWord === keyWord && searchWord.length > 4) {
+          if (searchWord === keyWord) {
             return value;
           }
         }
