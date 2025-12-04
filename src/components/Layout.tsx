@@ -50,7 +50,7 @@ export const Layout = ({ children }: LayoutProps) => {
               >
                 universitaly.it
               </a>
-              ; alcuni dati provengono da sondaggi svolti direttamente da noi o dai rappresentanti delle varie università.
+              ; alcuni dati provengono da sondaggi svolti direttamente da noi, dai rappresentanti delle varie università o da Logica Test.
               Non viene fornita alcuna garanzia di accuratezza, completezza o affidabilità dei dati presentati. 
               Il sito è realizzato senza alcun fine di lucro, esclusivamente a scopo informativo e di aggregazione.
             </p>

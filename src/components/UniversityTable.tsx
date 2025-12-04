@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Search, ArrowUpDown, ArrowUp, ArrowDown, ClipboardList, HelpCircle } from "lucide-react";
 import { SubjectBadge } from "./SubjectBadge";
 import { formatUniversityName } from "@/lib/formatters";
+import { CONFIG } from "@/lib/config";
 import {
   Dialog,
   DialogContent,
@@ -85,11 +86,13 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
         <p className="text-xs text-muted-foreground">{uni.regione}</p>
         {uni.isFromSurvey && <div className="mt-2"><SurveyBadge /></div>}
       </div>
-      <div className="flex gap-1">
-        <SubjectBadge subject="F" active={uni.hasFisica} />
-        <SubjectBadge subject="C" active={uni.hasChimica} />
-        <SubjectBadge subject="B" active={uni.hasBiologia} />
-      </div>
+      {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
+        <div className="flex gap-1">
+          <SubjectBadge subject="F" active={uni.hasFisica} />
+          <SubjectBadge subject="C" active={uni.hasChimica} />
+          <SubjectBadge subject="B" active={uni.hasBiologia} />
+        </div>
+      )}
     </div>
       <div className="flex gap-4 text-sm">
         <div className="flex-1 space-y-2 pr-3 border-r border-border">
@@ -292,7 +295,9 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                   <SortButton column="nome" label="Università" />
                 </TableHead>
                 <TableHead>Regione</TableHead>
-                <TableHead className="text-center">Materie</TableHead>
+                {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
+                  <TableHead className="text-center">Materie</TableHead>
+                )}
                 <TableHead className="text-right">
                   <SortButton column="uniqueStudents" label="Studenti" />
                 </TableHead>
@@ -335,16 +340,18 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                       {uni.isFromSurvey && <div className="mt-1"><SurveyBadge /></div>}
                     </div>
                   </TableCell>
-                  <TableCell className="text-muted-foreground text-sm">
-                    {uni.regione}
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex justify-center gap-1">
-                      <SubjectBadge subject="F" active={uni.hasFisica} />
-                      <SubjectBadge subject="C" active={uni.hasChimica} />
-                      <SubjectBadge subject="B" active={uni.hasBiologia} />
-                    </div>
-                  </TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      {uni.regione}
+                    </TableCell>
+                    {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
+                      <TableCell>
+                        <div className="flex justify-center gap-1">
+                          <SubjectBadge subject="F" active={uni.hasFisica} />
+                          <SubjectBadge subject="C" active={uni.hasChimica} />
+                          <SubjectBadge subject="B" active={uni.hasBiologia} />
+                        </div>
+                      </TableCell>
+                    )}
                   <TableCell className="text-right font-mono">
                     {uni.uniqueStudents.toLocaleString("it-IT")}
                   </TableCell>

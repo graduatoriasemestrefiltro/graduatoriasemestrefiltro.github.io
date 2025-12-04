@@ -2,6 +2,7 @@ import { useProcessedData } from "@/hooks/useResults";
 import { Layout } from "@/components/Layout";
 import { SpotsTracker } from "@/components/SpotsTracker";
 import { DataLoadingTracker } from "@/components/DataLoadingTracker";
+import { DataCollectionStats } from "@/components/DataCollectionStats";
 import { ItalyMap } from "@/components/ItalyMap";
 import { DashboardCard } from "@/components/DashboardCard";
 import { UniversityTable } from "@/components/UniversityTable";
@@ -11,6 +12,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ClipboardList, ExternalLink, Mail } from "lucide-react";
+import { CONFIG } from "@/lib/config";
 
 
 const Index = () => {
@@ -44,13 +46,17 @@ const Index = () => {
           potentiallyQualified={globalStats.almostQualified}
         />
 
-        {/* Data Loading Tracker */}
-        <DataLoadingTracker
-          totalUniversities={globalStats.totalUniversities}
-          completeUniversities={globalStats.universitiesComplete}
-          partialUniversities={globalStats.universitiesWithData - globalStats.universitiesComplete}
-          surveyUniversities={globalStats.universitiesFromSurvey}
-        />
+        {/* Data Loading Tracker or Data Collection Stats */}
+        {CONFIG.HIDE_DATA_LOADING_TRACKER ? (
+          <DataCollectionStats studentAggregates={studentAggregates} />
+        ) : (
+          <DataLoadingTracker
+            totalUniversities={globalStats.totalUniversities}
+            completeUniversities={globalStats.universitiesComplete}
+            partialUniversities={globalStats.universitiesWithData - globalStats.universitiesComplete}
+            surveyUniversities={globalStats.universitiesFromSurvey}
+          />
+        )}
 
         {/* Survey Call to Action */}
         <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 border-purple-200/50 dark:from-purple-950/40 dark:to-indigo-950/40 dark:border-purple-800/50 overflow-hidden">

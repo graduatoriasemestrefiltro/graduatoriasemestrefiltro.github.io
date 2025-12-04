@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList, Filter } from "lucide-react";
+import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList, Filter, HelpCircle } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { formatUniversityName } from "@/lib/formatters";
@@ -24,27 +24,50 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const SurveyBadge = () => (
-  <Dialog>
-    <DialogTrigger asChild>
-      <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
-        <ClipboardList className="h-3 w-3" />
-        <span>sondaggio</span>
-      </button>
-    </DialogTrigger>
-    <DialogContent className="max-w-sm">
-      <DialogHeader>
-        <DialogTitle className="flex items-center gap-2 text-purple-700">
-          <ClipboardList className="h-5 w-5" />
-          Dati da sondaggio
-        </DialogTitle>
-      </DialogHeader>
-      <p className="text-sm text-muted-foreground">
-        Dati raccolti tramite sondaggio svolto tra gli studenti. Da considerarsi indicativi e non ufficiali.
-      </p>
-    </DialogContent>
-  </Dialog>
-);
+const getSurveySource = (etichetta?: string) => {
+  if (!etichetta) return null;
+  if (etichetta.startsWith("UNIMI-")) {
+    return "dati raccolti tramite sondaggio condotto interamente dai rappresentanti degli studenti dell'Università degli Studi di Milano (UniMi).";
+  }
+  if (etichetta.startsWith("SRV-")) {
+    return "dati raccolti tramite il sondaggio condotto direttamente su questo sito.";
+  }
+  if (etichetta.startsWith("LOGI-")) {
+    return "dati provenienti dal sondaggio di Logica Test.";
+  }
+  return null;
+};
+
+const SurveyBadge = ({ etichetta }: { etichetta?: string }) => {
+  const sourceInfo = getSurveySource(etichetta);
+  
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
+          <ClipboardList className="h-3 w-3" />
+          <span>sondaggio</span>
+        </button>
+      </DialogTrigger>
+      <DialogContent className="max-w-sm">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2 text-purple-700">
+            <ClipboardList className="h-5 w-5" />
+            Dati da sondaggio
+          </DialogTitle>
+        </DialogHeader>
+        <p className="text-sm text-muted-foreground">
+          Dati raccolti tramite sondaggio svolto tra gli studenti. Da considerarsi indicativi e non ufficiali.
+        </p>
+        {sourceInfo && (
+          <p className="text-sm text-muted-foreground border-t pt-3 mt-2">
+            <strong>Fonte:</strong> {sourceInfo}
+          </p>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const ITEMS_PER_PAGE = 50;
 
@@ -124,7 +147,7 @@ const GeneralRankingCard = ({ student, position }: { student: any; position: num
         <PositionBadge position={position} />
         <div className="flex flex-col gap-1">
           <span className="font-mono text-xs">{student.etichetta}</span>
-          {student.isFromSurvey && <SurveyBadge />}
+          {student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
         </div>
       </div>
       {student.fullyQualified ? (
@@ -169,7 +192,7 @@ const SubjectRankingCard = ({ result, position }: { result: Result; position: nu
         <PositionBadge position={position} />
         <div className="flex flex-col gap-1">
           <span className="font-mono text-xs">{result.etichetta}</span>
-          {result.is_from_survey && <SurveyBadge />}
+          {result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
         </div>
       </div>
       <span className="font-mono font-bold">{parseFloat(result.punteggio).toFixed(2)}</span>
@@ -277,6 +300,22 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
             <Label htmlFor="complete-exams" className="text-sm text-muted-foreground cursor-pointer">
               tutti gli esami svolti
             </Label>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="text-muted-foreground hover:text-foreground transition-colors">
+                  <HelpCircle className="h-4 w-4" />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Filtro "tutti gli esami svolti"</DialogTitle>
+                </DialogHeader>
+                <p className="text-sm text-muted-foreground">
+                  Quando attivo, questo filtro mostra solo gli studenti che hanno completato tutte e tre le prove (Fisica, Chimica e Biologia). 
+                  Gli studenti che hanno sostenuto solo una o due prove vengono esclusi dalla graduatoria generale.
+                </p>
+              </DialogContent>
+            </Dialog>
           </div>
         )}
       </div>
@@ -330,7 +369,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                     <TableCell className="font-mono text-xs">
                       <div className="flex flex-col gap-1">
                         <span>{student.etichetta}</span>
-                        {student.isFromSurvey && <SurveyBadge />}
+                        {student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
                       </div>
                     </TableCell>
                     <TableCell className="text-xs max-w-[200px] truncate">
@@ -425,7 +464,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                         <TableCell className="font-mono text-xs">
                           <div className="flex flex-col gap-1">
                             <span>{result.etichetta}</span>
-                            {result.is_from_survey && <SurveyBadge />}
+                            {result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
                           </div>
                         </TableCell>
                         <TableCell className="text-xs max-w-[200px] truncate">

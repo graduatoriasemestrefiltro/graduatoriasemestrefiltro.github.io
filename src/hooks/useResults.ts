@@ -293,7 +293,7 @@ export const useProcessedData = () => {
   return {
     isLoading,
     error,
-    results,
+    results: processedResults,
     studentAggregates,
     universityStats,
     regionStats,

@@ -288,7 +288,7 @@ const Graduatorie = () => {
         {/* Qualified Students Average Stats Cards */}
         <div className="space-y-2 mt-6">
           <p className="text-sm text-muted-foreground">
-            Medie calcolate considerando solo gli studenti con ≥18: per la media generale solo idonei/potenziali ({filteredStats.qualifiedCount.toLocaleString("it-IT")}), per le singole materie chi ha superato quell'esame
+            Le medie qui sotto sono calcolate considerando solo gli studenti con ≥18: per la media generale solo idonei/potenziali ({filteredStats.qualifiedCount.toLocaleString("it-IT")}), per le singole materie chi ha superato quell'esame
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="rounded-xl border border-success/30 p-4 bg-success/5 shadow-card">
