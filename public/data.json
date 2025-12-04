@@ -72957,6 +72957,39 @@
         }
     },
     {
+        "etichetta": "SRV-YPRNPXX",
+        "punteggio": "12.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FERRARA",
+            "id": "09",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNPXX",
+        "punteggio": "21.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FERRARA",
+            "id": "09",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNPXX",
+        "punteggio": "21.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FERRARA",
+            "id": "09",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
         "etichetta": "SRV-EKE5E14",
         "punteggio": "10.00",
         "materia": "fisica",
