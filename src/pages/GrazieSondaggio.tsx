@@ -4,8 +4,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Check, Copy, MessageCircle, Send, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const SURVEY_URL = 'https://tally.so/r/eq5d0x';
-const SHARE_MESSAGE = 'Hai fatto il test di medicina? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊';
+const SURVEY_URL = 'https://graduatoriasemestrefiltro.github.io/#/sondaggio';
+const HOME_URL = 'https://graduatoriasemestrefiltro.github.io';
+const SHARE_MESSAGE = `Hai fatto il test di medicina? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n🔗 Compila il sondaggio: ${SURVEY_URL}\n📈 Guarda le statistiche: ${HOME_URL}`;
 
 const GrazieSondaggio = () => {
   const [copied, setCopied] = useState(false);
@@ -29,13 +30,13 @@ const GrazieSondaggio = () => {
 
   const handleWhatsAppShare = () => {
     trackEvent('Share: WhatsApp');
-    const url = `https://wa.me/?text=${encodeURIComponent(`${SHARE_MESSAGE}\n${SURVEY_URL}`)}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(SHARE_MESSAGE)}`;
     window.open(url, '_blank');
   };
 
   const handleTelegramShare = () => {
     trackEvent('Share: Telegram');
-    const url = `https://t.me/share/url?url=${encodeURIComponent(SURVEY_URL)}&text=${encodeURIComponent(SHARE_MESSAGE)}`;
+    const url = `https://t.me/share/url?url=${encodeURIComponent(SURVEY_URL)}&text=${encodeURIComponent('Hai fatto il test di medicina? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n📈 Guarda le statistiche: ' + HOME_URL)}`;
     window.open(url, '_blank');
   };
 
