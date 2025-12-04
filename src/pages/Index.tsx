@@ -63,7 +63,7 @@ const Index = () => {
             >
               semestrefiltro2025@atomicmail.io
             </a>
-            . I dati verranno pubblicati su questo sito per permettere a tutti gli studenti una consultazione più semplice e immediata. Ogni contributo è prezioso: insieme possiamo aiutarci a orientarci meglio in questi giorni decisivi per la scelta sul voto. Grazie di cuore! 💜
+            . I dati verranno pubblicati su questo sito per permettere a tutti gli studenti una consultazione più immediata. Ogni contributo è prezioso: insieme possiamo aiutarci a orientarci meglio in questi giorni decisivi per la scelta sul voto. Grazie di cuore! 💜
           </AlertDescription>
         </Alert>
 
