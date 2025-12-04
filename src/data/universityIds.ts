@@ -34,7 +34,7 @@ export const universityMappings: UniversityMapping[] = [
   { id: "w3x4y5z6", name: "Università degli Studi di PARMA", keywords: ["parma"] },
   { id: "x4y5z6a7", name: "Università degli Studi di PAVIA", keywords: ["pavia"] },
   { id: "y5z6a7b8", name: "Università degli Studi di PERUGIA", keywords: ["perugia"] },
-  { id: "z6a7b8c9", name: "Università degli Studi del PIEMONTE ORIENTALE \"Amedeo Avogadro\"", keywords: ["piemonte orientale", "avogadro"] },
+  { id: "z6a7b8c9", name: "Università degli Studi del PIEMONTE ORIENTALE \"Amedeo Avogadro\"", keywords: ["piemonte", "avogadro"] },
   { id: "a7b8c9d0", name: "Università di PISA", keywords: ["pisa"] },
   { id: "b8c9d0e1", name: "Politecnico di BARI", keywords: ["politecnico bari"] },
   { id: "c9d0e1f2", name: "Università Politecnica delle MARCHE", keywords: ["marche"] },

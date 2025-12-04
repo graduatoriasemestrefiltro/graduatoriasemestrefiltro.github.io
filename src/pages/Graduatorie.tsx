@@ -57,11 +57,24 @@ const Graduatorie = () => {
         // Resolve UUID to university name
         const resolvedName = getNameById(urlUniId);
         if (resolvedName) {
-          // Find matching university in available list
-          const matchedUni = availableUniversities.find(
-            u => u.toLowerCase() === resolvedName.toLowerCase() || 
-                 formatUniversityName(u).toLowerCase() === formatUniversityName(resolvedName).toLowerCase()
-          );
+          // Normalize for comparison - removes accents and quotes
+          const normalize = (s: string) => s
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/['"'`]/g, "")
+            .replace(/\s+/g, ' ')
+            .trim();
+          
+          // Find matching university in available list using normalized comparison
+          const normalizedResolved = normalize(resolvedName);
+          const matchedUni = availableUniversities.find(u => {
+            const normalizedU = normalize(u);
+            // Check if normalized names match or one contains the other
+            return normalizedU === normalizedResolved || 
+                   normalizedU.includes(normalizedResolved) || 
+                   normalizedResolved.includes(normalizedU);
+          });
           if (matchedUni) {
             setSelectedUniversities([matchedUni]);
           }
