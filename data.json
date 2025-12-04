@@ -71736,6 +71736,39 @@
         }
     },
     {
+        "etichetta": "SRV-2EZBO5D",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZBO5D",
+        "punteggio": "22.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZBO5D",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
+    },
+    {
         "etichetta": "SRV-44RBZPA",
         "punteggio": "20.00",
         "materia": "fisica",
