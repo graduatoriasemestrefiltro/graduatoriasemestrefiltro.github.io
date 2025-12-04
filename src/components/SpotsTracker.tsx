@@ -75,11 +75,11 @@ export const SpotsTracker = ({
         </div>
         <div className="relative h-4 bg-secondary rounded-full overflow-hidden">
           <div
-            className="absolute inset-y-0 left-0 gradient-success transition-all duration-1000 rounded-full"
+            className="absolute inset-y-0 left-0 gradient-success transition-all duration-1000 rounded-l-full"
             style={{ width: `${fullyPercent}%` }}
           />
           <div
-            className="absolute inset-y-0 gradient-warning transition-all duration-1000 rounded-full opacity-70"
+            className="absolute inset-y-0 gradient-warning transition-all duration-1000 rounded-r-full opacity-70"
             style={{ left: `${fullyPercent}%`, width: `${potentiallyPercent}%` }}
           />
         </div>
