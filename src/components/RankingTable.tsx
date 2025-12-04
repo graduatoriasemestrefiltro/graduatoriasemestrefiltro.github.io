@@ -342,7 +342,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
 
         <TabsContent value="generale">
           {/* Mobile: Cards */}
-          <div className="md:hidden space-y-3 max-h-[500px] overflow-y-auto pr-2">
+          <div className="md:hidden space-y-3">
             {paginatedGeneralRanking.map((student) => (
               <GeneralRankingCard key={student.etichetta} student={student} position={student.posizione} />
             ))}
@@ -438,7 +438,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
           return (
             <TabsContent key={subject} value={subject}>
               {/* Mobile: Cards */}
-              <div className="md:hidden space-y-3 max-h-[500px] overflow-y-auto pr-2">
+              <div className="md:hidden space-y-3">
                 {paginatedSubject.map((result, index) => (
                   <SubjectRankingCard 
                     key={`${result.etichetta}-${result.materia}`} 

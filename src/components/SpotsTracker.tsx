@@ -138,7 +138,7 @@ export const SpotsTracker = ({
         {/* Actual data */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Riempimento (dati raccolti)</span>
+            <span className="text-muted-foreground">Riempimento</span>
             <span className="font-mono font-medium">
               {assignedPercent.toFixed(2)}%
             </span>
