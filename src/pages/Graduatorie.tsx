@@ -78,18 +78,22 @@ const Graduatorie = () => {
   useEffect(() => {
     if (!initialized) return;
     
+    const currentUniParam = searchParams.get("uni");
+    
     if (selectedUniversities.length === 1) {
       const uniId = nameToId.get(selectedUniversities[0]);
-      if (uniId) {
+      // Only update if different from current URL
+      if (uniId && currentUniParam !== uniId) {
         setSearchParams({ uni: uniId }, { replace: true });
       }
-    } else if (selectedUniversities.length === 0) {
-      setSearchParams({}, { replace: true });
-    } else {
-      // Multiple universities - clear URL param
-      setSearchParams({}, { replace: true });
+    } else if (selectedUniversities.length === 0 || selectedUniversities.length > 1) {
+      // Only clear if there's something to clear
+      if (currentUniParam !== null) {
+        setSearchParams({}, { replace: true });
+      }
     }
-  }, [selectedUniversities, initialized, setSearchParams, nameToId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedUniversities, initialized]);
 
   const toggleUniversity = (uni: string) => {
     setSelectedUniversities(prev => {
@@ -396,16 +400,14 @@ const Graduatorie = () => {
           </div>
         </div>
 
-        {/* Score Distribution - hidden on mobile due to iOS Safari performance issues */}
-        <div className="hidden sm:block">
-          <ScoreDistributionChart 
-            results={results} 
-            studentAggregates={studentAggregates}
-            activeTab={activeTab}
-            onTabChange={(tab) => setActiveTab(tab as ViewMode)}
-            selectedUniversities={selectedUniversities}
-          />
-        </div>
+        {/* Score Distribution */}
+        <ScoreDistributionChart 
+          results={results} 
+          studentAggregates={studentAggregates}
+          activeTab={activeTab}
+          onTabChange={(tab) => setActiveTab(tab as ViewMode)}
+          selectedUniversities={selectedUniversities}
+        />
       </div>
     </Layout>
   );
