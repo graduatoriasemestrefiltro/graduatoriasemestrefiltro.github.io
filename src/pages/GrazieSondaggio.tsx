@@ -65,70 +65,58 @@ const GrazieSondaggio = () => {
               Grazie per aver compilato il sondaggio!
             </h1>
             
-            <p className="text-gray-600 mb-6">
-              Ogni risposta ci aiuta a costruire statistiche più complete e affidabili. 
-              <span className="font-medium text-purple-700"> Condividi il sondaggio con i tuoi compagni di corso</span> per 
-              rendere i dati ancora più utili per tutti! 💜
+            <p className="text-gray-600 mb-4 text-sm">
+              <span className="font-semibold text-purple-700">Condividi il sondaggio con i tuoi compagni di corso</span> per rendere i dati ancora più utili! 💜
             </p>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-              <p className="text-sm text-blue-700">
+            <div className="flex gap-2 mb-6">
+              <Button
+                onClick={handleWhatsAppShare}
+                className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                WhatsApp
+              </Button>
+
+              <Button
+                onClick={handleTelegramShare}
+                size="icon"
+                className="bg-sky-500 hover:bg-sky-600 text-white"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+
+              <Button
+                onClick={handleCopyLink}
+                size="icon"
+                variant="outline"
+                className="border-purple-200 hover:bg-purple-50"
+              >
+                {copied ? (
+                  <Check className="h-4 w-4 text-green-600" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 mb-3">
+              <p className="text-xs text-blue-700">
                 ⏱️ I tuoi risultati saranno visibili sul sito entro <strong>5 minuti</strong>.
               </p>
             </div>
 
             {formattedId && (
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-gray-600 mb-2">
-                  Il tuo codice identificativo anonimo è:
-                </p>
-                <code className="block bg-white px-4 py-2 rounded-md text-lg font-mono font-bold text-purple-700 border border-purple-200 mb-2">
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
+                <p className="text-xs text-gray-600 mb-1">Il tuo codice identificativo anonimo:</p>
+                <code className="block bg-white px-3 py-1.5 rounded-md text-base font-mono font-bold text-purple-700 border border-purple-200 mb-1.5">
                   {formattedId}
                 </code>
-                <p className="text-xs text-gray-500 mb-1">
-                  Salvalo se vuoi ritrovarti tra i risultati: sarà visibile nella colonna "etichetta".
-                </p>
-                <p className="text-xs text-gray-400">
-                  Ricorda: non si tratta della graduatoria ufficiale, ma di una stima fatta da studenti, per studenti, basata sui dati dei sondaggi.
+                <p className="text-xs text-gray-500">
+                  Se vuoi, salvalo per ritrovarti nella colonna "etichetta". Ricorda: questa è una stima basata sui sondaggi, non la graduatoria ufficiale.
                 </p>
               </div>
             )}
-
-            <div className="space-y-3 mb-6">
-              <Button
-                onClick={handleWhatsAppShare}
-                className="w-full bg-green-500 hover:bg-green-600 text-white"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Condividi su WhatsApp
-              </Button>
-
-              <Button
-                onClick={handleTelegramShare}
-                className="w-full bg-sky-500 hover:bg-sky-600 text-white"
-              >
-                <Send className="mr-2 h-5 w-5" />
-                Condividi su Telegram
-              </Button>
-
-              <Button
-                onClick={handleCopyLink}
-                variant="outline"
-                className="w-full border-purple-200 hover:bg-purple-50"
-              >
-                {copied ? (
-                  <>
-                    <Check className="mr-2 h-5 w-5 text-green-600" />
-                    Link copiato!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="mr-2 h-5 w-5" />
-                    Copia link del sondaggio
-                  </>
-                )}
-              </Button>
-            </div>
 
             <div className="pt-4 border-t border-gray-100">
               <Link 
