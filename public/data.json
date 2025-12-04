@@ -72957,6 +72957,336 @@
         }
     },
     {
+        "etichetta": "SRV-0QZBROZ",
+        "punteggio": "25.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-0QZBROZ",
+        "punteggio": "23.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-0QZBROZ",
+        "punteggio": "19.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-D49K6X5",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-D49K6X5",
+        "punteggio": "17.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-D49K6X5",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-EKED7JX",
+        "punteggio": "20.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-EKED7JX",
+        "punteggio": "21.10",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-EKED7JX",
+        "punteggio": "23.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-GDXD64O",
+        "punteggio": "16.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GDXD64O",
+        "punteggio": "22.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GDXD64O",
+        "punteggio": "25.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-XXDJPWL",
+        "punteggio": "6.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-XXDJPWL",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-XXDJPWL",
+        "punteggio": "14.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-AQX5Q2X",
+        "punteggio": "17.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-AQX5Q2X",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-AQX5Q2X",
+        "punteggio": "13.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1MYKV",
+        "punteggio": "9.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1MYKV",
+        "punteggio": "17.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1MYKV",
+        "punteggio": "20.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PARMA",
+            "id": "21",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-44RJLMB",
+        "punteggio": "9.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RJLMB",
+        "punteggio": "25.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RJLMB",
+        "punteggio": "19.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ6BB",
+        "punteggio": "12.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ6BB",
+        "punteggio": "17.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ6BB",
+        "punteggio": "20.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDJ9E",
+        "punteggio": "21.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDJ9E",
+        "punteggio": "23.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDJ9E",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
         "etichetta": "SRV-RJRA8JO",
         "punteggio": "23.60",
         "materia": "fisica",
