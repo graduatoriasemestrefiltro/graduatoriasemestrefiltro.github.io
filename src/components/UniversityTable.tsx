@@ -26,7 +26,6 @@ import {
 import { CircularProgress } from "./CircularProgress";
 import { CoverageDetailDialog } from "./CoverageDetailDialog";
 import { useEnrollments } from "@/hooks/useEnrollments";
-import { useUniversityIds } from "@/hooks/useUniversityIds";
 
 interface SourcesBreakdown {
   ministerial: number;
@@ -285,7 +284,6 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
   const [sortKey, setSortKey] = useState<SortKey>("avgScore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const { getEnrollment } = useEnrollments();
-  const { findUniversityByPartialMatch } = useUniversityIds();
 
   // Calculate per-source exam counts per university
   const sourceBreakdownByUni = useMemo(() => {
@@ -464,17 +462,14 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
 
       {/* Mobile: Cards */}
       <div className="md:hidden space-y-3 pr-2">
-        {displayData.map((uni) => {
-          const uniMapping = findUniversityByPartialMatch(uni.nome);
-          return (
-            <UniversityCard 
-              key={uni.id} 
-              uni={uni} 
-              showSubjectAverages={showSubjectAverages}
-              universityId={uniMapping?.id}
-            />
-          );
-        })}
+        {displayData.map((uni) => (
+          <UniversityCard 
+            key={uni.id} 
+            uni={uni} 
+            showSubjectAverages={showSubjectAverages}
+            universityId={uni.id}
+          />
+        ))}
       </div>
 
       {/* Desktop: Table */}
@@ -537,9 +532,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
               </TableRow>
             </TableHeader>
             <TableBody>
-              {displayData.map((uni) => {
-                const uniMapping = findUniversityByPartialMatch(uni.nome);
-                return (
+              {displayData.map((uni) => (
                 <TableRow key={uni.id} className="hover:bg-secondary/20">
                   <TableCell className="font-medium">
                     <div>
@@ -610,9 +603,9 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                     )}
                   </TableCell>
                   <TableCell className="text-center">
-                    {uni.uniqueStudents > 0 && uniMapping ? (
+                    {uni.uniqueStudents > 0 && uni.id ? (
                       <Link 
-                        to={`/graduatorie?uni=${uniMapping.id}`}
+                        to={`/graduatorie?uni=${uni.id}`}
                         onClick={() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                           if (typeof window !== 'undefined' && (window as any).umami) {
@@ -627,7 +620,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                     ) : null}
                   </TableCell>
                 </TableRow>
-              )})}
+              ))}
             </TableBody>
           </Table>
         </div>

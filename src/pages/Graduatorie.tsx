@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useUniversityIds } from "@/hooks/useUniversityIds";
 
 type ViewMode = "generale" | "fisica" | "chimica" | "biologia";
 
@@ -30,7 +29,6 @@ const Graduatorie = () => {
   const [activeTab, setActiveTab] = useState<ViewMode>("generale");
   const [selectedUniversities, setSelectedUniversities] = useState<string[]>([]);
   const [initialized, setInitialized] = useState(false);
-  const { getNameById, findUniversityByPartialMatch } = useUniversityIds();
   const {
     isLoading,
     error,
@@ -49,49 +47,41 @@ const Graduatorie = () => {
       .sort((a, b) => formatUniversityName(a).localeCompare(formatUniversityName(b)));
   }, [universityStats]);
 
+  // Create ID <-> name lookup maps
+  const { idToName, nameToId } = useMemo(() => {
+    if (!universityStats) return { idToName: new Map(), nameToId: new Map() };
+    const idToName = new Map<string, string>();
+    const nameToId = new Map<string, string>();
+    universityStats.forEach(u => {
+      idToName.set(u.id, u.nome);
+      nameToId.set(u.nome, u.id);
+    });
+    return { idToName, nameToId };
+  }, [universityStats]);
+
   // Initialize from URL on first load
   useEffect(() => {
-    if (!initialized && availableUniversities.length > 0) {
+    if (!initialized && universityStats && universityStats.length > 0) {
       const urlUniId = searchParams.get("uni");
       if (urlUniId) {
-        // Resolve UUID to university name
-        const resolvedName = getNameById(urlUniId);
-        if (resolvedName) {
-          // Normalize for comparison - removes accents and quotes
-          const normalize = (s: string) => s
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/['"'`]/g, "")
-            .replace(/\s+/g, ' ')
-            .trim();
-          
-          // Find matching university in available list using normalized comparison
-          const normalizedResolved = normalize(resolvedName);
-          const matchedUni = availableUniversities.find(u => {
-            const normalizedU = normalize(u);
-            // Check if normalized names match or one contains the other
-            return normalizedU === normalizedResolved || 
-                   normalizedU.includes(normalizedResolved) || 
-                   normalizedResolved.includes(normalizedU);
-          });
-          if (matchedUni) {
-            setSelectedUniversities([matchedUni]);
-          }
+        // Find university by ID directly
+        const matchedUniName = idToName.get(urlUniId);
+        if (matchedUniName) {
+          setSelectedUniversities([matchedUniName]);
         }
       }
       setInitialized(true);
     }
-  }, [availableUniversities, searchParams, initialized, getNameById]);
+  }, [universityStats, searchParams, initialized, idToName]);
 
   // Update URL when selection changes
   useEffect(() => {
     if (!initialized) return;
     
     if (selectedUniversities.length === 1) {
-      const uniMapping = findUniversityByPartialMatch(selectedUniversities[0]);
-      if (uniMapping) {
-        setSearchParams({ uni: uniMapping.id }, { replace: true });
+      const uniId = nameToId.get(selectedUniversities[0]);
+      if (uniId) {
+        setSearchParams({ uni: uniId }, { replace: true });
       }
     } else if (selectedUniversities.length === 0) {
       setSearchParams({}, { replace: true });
@@ -99,7 +89,7 @@ const Graduatorie = () => {
       // Multiple universities - clear URL param
       setSearchParams({}, { replace: true });
     }
-  }, [selectedUniversities, initialized, setSearchParams, findUniversityByPartialMatch]);
+  }, [selectedUniversities, initialized, setSearchParams, nameToId]);
 
   const toggleUniversity = (uni: string) => {
     setSelectedUniversities(prev => {
