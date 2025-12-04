@@ -72957,6 +72957,501 @@
         }
     },
     {
+        "etichetta": "SRV-MELN8LA",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MELN8LA",
+        "punteggio": "6.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MELN8LA",
+        "punteggio": "11.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOLM",
+        "punteggio": "8.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOLM",
+        "punteggio": "19.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOLM",
+        "punteggio": "26.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-PDL18ZX",
+        "punteggio": "19.30",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-PDL18ZX",
+        "punteggio": "22.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-PDL18ZX",
+        "punteggio": "23.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-B5XJNJ0",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-B5XJNJ0",
+        "punteggio": "9.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-B5XJNJ0",
+        "punteggio": "11.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOQN",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOQN",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-VLXQOQN",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ1GP",
+        "punteggio": "1.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ1GP",
+        "punteggio": "11.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-68GJ1GP",
+        "punteggio": "11.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GXA9OAZ",
+        "punteggio": "7.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-GXA9OAZ",
+        "punteggio": "10.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-GXA9OAZ",
+        "punteggio": "5.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-EKEDBRB",
+        "punteggio": "25.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-EKEDBRB",
+        "punteggio": "24.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-EKEDBRB",
+        "punteggio": "28.80",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM0BD",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM0BD",
+        "punteggio": "16.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM0BD",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-MELNRP8",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MELNRP8",
+        "punteggio": "22.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MELNRP8",
+        "punteggio": "15.60",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYA5PGZ",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-KYA5PGZ",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-KYA5PGZ",
+        "punteggio": "27.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZABLA",
+        "punteggio": "10.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZABLA",
+        "punteggio": "23.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZABLA",
+        "punteggio": "24.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM04J",
+        "punteggio": "18.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM04J",
+        "punteggio": "20.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-XXEM04J",
+        "punteggio": "19.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-YPR20Q0",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPR20Q0",
+        "punteggio": "10.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPR20Q0",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDLZN",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDLZN",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-BZQDLZN",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
         "etichetta": "SRV-MELNRZA",
         "punteggio": "4.00",
         "materia": "fisica",
@@ -95300,6 +95795,72 @@
     {
         "etichetta": "SRV-GXAKP7Z",
         "punteggio": "9.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZBAD9",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZBAD9",
+        "punteggio": "18.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZBAD9",
+        "punteggio": "14.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-Q4XAGYO",
+        "punteggio": "12.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-Q4XAGYO",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-Q4XAGYO",
+        "punteggio": "20.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
