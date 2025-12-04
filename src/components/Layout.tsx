@@ -49,7 +49,8 @@ export const Layout = ({ children }: LayoutProps) => {
               >
                 universitaly.it
               </a>
-              . Non viene fornita alcuna garanzia di accuratezza, completezza o affidabilità dei dati presentati. 
+              ; alcuni dati provengono da sondaggi svolti direttamente da noi o dai rappresentanti delle varie università.
+              Non viene fornita alcuna garanzia di accuratezza, completezza o affidabilità dei dati presentati. 
               Il sito è realizzato senza alcun fine di lucro, esclusivamente a scopo informativo e di aggregazione.
             </p>
             <p className="text-xs text-muted-foreground">
