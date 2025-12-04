@@ -82,6 +82,15 @@ const Graduatorie = () => {
     const fullyQualified = filteredAggregates.filter(s => s.fullyQualified).length;
     const potentiallyQualified = filteredAggregates.filter(s => s.allPassed && !s.fullyQualified).length;
 
+    // Stats for qualified students only (idonei + potenziali) - for media generale
+    const qualifiedAggregates = filteredAggregates.filter(s => s.allPassed);
+    const qualifiedMediaScores = qualifiedAggregates.filter(s => s.media !== undefined).map(s => s.media!);
+
+    // Stats for students who passed each subject (≥18 in that subject)
+    const passedFisicaScores = fisicaScores.filter(s => s >= 18);
+    const passedChimicaScores = chimicaScores.filter(s => s >= 18);
+    const passedBiologiaScores = biologiaScores.filter(s => s >= 18);
+
     return {
       avgMedia: calcAvg(mediaScores),
       avgFisica: calcAvg(fisicaScores),
@@ -94,6 +103,16 @@ const Graduatorie = () => {
       uniqueStudents,
       fullyQualified,
       potentiallyQualified,
+      // Qualified-only stats
+      qualifiedAvgMedia: calcAvg(qualifiedMediaScores),
+      qualifiedCount: qualifiedAggregates.length,
+      // Passed subject stats (≥18 in that subject)
+      passedAvgFisica: calcAvg(passedFisicaScores),
+      passedAvgChimica: calcAvg(passedChimicaScores),
+      passedAvgBiologia: calcAvg(passedBiologiaScores),
+      passedFisicaCount: passedFisicaScores.length,
+      passedChimicaCount: passedChimicaScores.length,
+      passedBiologiaCount: passedBiologiaScores.length,
     };
   }, [results, studentAggregates, selectedUniversities]);
 
@@ -263,6 +282,47 @@ const Graduatorie = () => {
               <span className="text-success font-semibold">{filteredStats.passRateBiologia.toFixed(1)}%</span>
               <br />≥18
             </p>
+          </div>
+        </div>
+
+        {/* Qualified Students Average Stats Cards */}
+        <div className="space-y-2 mt-6">
+          <p className="text-sm text-muted-foreground">
+            Medie calcolate considerando solo gli studenti con ≥18: per la media generale solo idonei/potenziali ({filteredStats.qualifiedCount.toLocaleString("it-IT")}), per le singole materie chi ha superato quell'esame
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="rounded-xl border border-success/30 p-4 bg-success/5 shadow-card">
+              <div className="flex items-center gap-2 mb-2">
+                <Calculator className="h-4 w-4 text-purple-500" />
+                <span className="text-sm text-muted-foreground">Media generale</span>
+              </div>
+              <span className="text-2xl font-bold font-mono">{filteredStats.qualifiedAvgMedia.toFixed(2)}</span>
+              <p className="text-xs text-success mt-1">{filteredStats.qualifiedCount.toLocaleString("it-IT")} idonei/potenziali</p>
+            </div>
+            <div className="rounded-xl border border-success/30 p-4 bg-success/5 shadow-card">
+              <div className="flex items-center gap-2 mb-2">
+                <Atom className="h-4 w-4 text-blue-500" />
+                <span className="text-sm text-muted-foreground">Media fisica</span>
+              </div>
+              <span className="text-2xl font-bold font-mono">{filteredStats.passedAvgFisica.toFixed(2)}</span>
+              <p className="text-xs text-success mt-1">{filteredStats.passedFisicaCount.toLocaleString("it-IT")} studenti ≥18</p>
+            </div>
+            <div className="rounded-xl border border-success/30 p-4 bg-success/5 shadow-card">
+              <div className="flex items-center gap-2 mb-2">
+                <Beaker className="h-4 w-4 text-green-500" />
+                <span className="text-sm text-muted-foreground">Media chimica</span>
+              </div>
+              <span className="text-2xl font-bold font-mono">{filteredStats.passedAvgChimica.toFixed(2)}</span>
+              <p className="text-xs text-success mt-1">{filteredStats.passedChimicaCount.toLocaleString("it-IT")} studenti ≥18</p>
+            </div>
+            <div className="rounded-xl border border-success/30 p-4 bg-success/5 shadow-card">
+              <div className="flex items-center gap-2 mb-2">
+                <Dna className="h-4 w-4 text-amber-500" />
+                <span className="text-sm text-muted-foreground">Media biologia</span>
+              </div>
+              <span className="text-2xl font-bold font-mono">{filteredStats.passedAvgBiologia.toFixed(2)}</span>
+              <p className="text-xs text-success mt-1">{filteredStats.passedBiologiaCount.toLocaleString("it-IT")} studenti ≥18</p>
+            </div>
           </div>
         </div>
 
