@@ -71,6 +71,12 @@ const GrazieSondaggio = () => {
               rendere i dati ancora più utili per tutti! 💜
             </p>
 
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
+              <p className="text-sm text-blue-700">
+                ⏱️ I tuoi risultati saranno visibili sul sito entro <strong>5 minuti</strong>.
+              </p>
+            </div>
+
             {formattedId && (
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
                 <p className="text-sm text-gray-600 mb-2">
