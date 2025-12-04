@@ -72957,6 +72957,336 @@
         }
     },
     {
+        "etichetta": "SRV-ODKLNVA",
+        "punteggio": "3.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-ODKLNVA",
+        "punteggio": "10.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-ODKLNVA",
+        "punteggio": "17.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GXAKPGJ",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GXAKPGJ",
+        "punteggio": "10.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GXAKPGJ",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNARB",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNARB",
+        "punteggio": "23.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNARB",
+        "punteggio": "25.60",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNA7X",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNA7X",
+        "punteggio": "17.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRNA7X",
+        "punteggio": "23.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-Y5XRAD6",
+        "punteggio": "7.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-Y5XRAD6",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-Y5XRAD6",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZ2DP",
+        "punteggio": "11.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZ2DP",
+        "punteggio": "21.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZ2DP",
+        "punteggio": "27.80",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-JAXBADQ",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-JAXBADQ",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-JAXBADQ",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRN5OD",
+        "punteggio": "14.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRENTO",
+            "id": "62",
+            "region": "Trentino-Alto Adige"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRN5OD",
+        "punteggio": "14.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRENTO",
+            "id": "62",
+            "region": "Trentino-Alto Adige"
+        }
+    },
+    {
+        "etichetta": "SRV-YPRN5OD",
+        "punteggio": "11.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TRENTO",
+            "id": "62",
+            "region": "Trentino-Alto Adige"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZLEZ",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZLEZ",
+        "punteggio": "19.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LZBZLEZ",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBVBO",
+        "punteggio": "12.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBVBO",
+        "punteggio": "18.10",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBVBO",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "SRV-EQ8DWGO",
         "punteggio": "9.00",
         "materia": "fisica",
