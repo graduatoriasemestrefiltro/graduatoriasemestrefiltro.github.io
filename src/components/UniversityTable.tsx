@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { UniversityStats, StudentAggregate } from "@/types/results";
+import { UniversityStats, StudentAggregate, Result } from "@/types/results";
 import {
   Table,
   TableBody,
@@ -11,7 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, ArrowUpDown, ArrowUp, ArrowDown, ClipboardList, HelpCircle } from "lucide-react";
+import { Search, ArrowUpDown, ArrowUp, ArrowDown, ClipboardList, HelpCircle, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SubjectBadge } from "./SubjectBadge";
 import { formatUniversityName } from "@/lib/formatters";
 import { CONFIG } from "@/lib/config";
@@ -23,29 +24,80 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { CircularProgress } from "./CircularProgress";
+import { CoverageDetailDialog } from "./CoverageDetailDialog";
 import { useEnrollments } from "@/hooks/useEnrollments";
 
-const SurveyBadge = () => (
-  <Dialog>
-    <DialogTrigger asChild>
-      <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
-        <ClipboardList className="h-3 w-3" />
-        <span>sondaggio</span>
-      </button>
-    </DialogTrigger>
-    <DialogContent className="max-w-sm">
-      <DialogHeader>
-        <DialogTitle className="flex items-center gap-2 text-purple-700">
-          <ClipboardList className="h-5 w-5" />
-          Dati da sondaggio
-        </DialogTitle>
-      </DialogHeader>
-      <p className="text-sm text-muted-foreground">
-        Dati raccolti tramite sondaggio svolto tra gli studenti. Da considerarsi indicativi e non ufficiali.
-      </p>
-    </DialogContent>
-  </Dialog>
-);
+interface SourcesBreakdown {
+  ministerial: number;
+  internal: number;
+  unimi: number;
+  logica: number;
+}
+
+const SurveyBadge = ({ sourcesBreakdown }: { sourcesBreakdown?: SourcesBreakdown }) => {
+  const total = sourcesBreakdown 
+    ? sourcesBreakdown.ministerial + sourcesBreakdown.internal + sourcesBreakdown.unimi + sourcesBreakdown.logica 
+    : 0;
+  const surveyTotal = sourcesBreakdown 
+    ? sourcesBreakdown.internal + sourcesBreakdown.unimi + sourcesBreakdown.logica 
+    : 0;
+  const isExclusivelySurvey = sourcesBreakdown && sourcesBreakdown.ministerial === 0;
+  
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
+          <ClipboardList className="h-3 w-3" />
+          <span>sondaggio</span>
+        </button>
+      </DialogTrigger>
+      <DialogContent className="max-w-sm">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2 text-purple-700">
+            <ClipboardList className="h-5 w-5" />
+            Dati da sondaggio
+          </DialogTitle>
+        </DialogHeader>
+        <p className="text-sm text-muted-foreground">
+          {isExclusivelySurvey 
+            ? "I dati di questa università provengono esclusivamente da sondaggi svolti tra gli studenti."
+            : "I dati di questa università provengono prevalentemente da sondaggi svolti tra gli studenti."
+          }
+          {" "}Da considerarsi indicativi e non ufficiali.
+        </p>
+        {sourcesBreakdown && total > 0 && (
+          <div className="text-sm border-t pt-3 mt-2 space-y-1.5">
+            <p className="font-medium text-foreground">Fonti dati:</p>
+            {sourcesBreakdown.ministerial > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Ministeriali</span>
+                <span className="font-mono">{sourcesBreakdown.ministerial} ({((sourcesBreakdown.ministerial / total) * 100).toFixed(0)}%)</span>
+              </div>
+            )}
+            {sourcesBreakdown.internal > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Sondaggio sito</span>
+                <span className="font-mono">{sourcesBreakdown.internal} ({((sourcesBreakdown.internal / total) * 100).toFixed(0)}%)</span>
+              </div>
+            )}
+            {sourcesBreakdown.unimi > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Sondaggio UniMi</span>
+                <span className="font-mono">{sourcesBreakdown.unimi} ({((sourcesBreakdown.unimi / total) * 100).toFixed(0)}%)</span>
+              </div>
+            )}
+            {sourcesBreakdown.logica > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Logica Test</span>
+                <span className="font-mono">{sourcesBreakdown.logica} ({((sourcesBreakdown.logica / total) * 100).toFixed(0)}%)</span>
+              </div>
+            )}
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const MediaIdoneiHelp = () => (
   <Dialog>
@@ -68,9 +120,76 @@ const MediaIdoneiHelp = () => (
   </Dialog>
 );
 
+const CoverageHelp = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+        <HelpCircle className="h-3.5 w-3.5" />
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-primary">
+          <HelpCircle className="h-5 w-5" />
+          Copertura dati
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Indica quanti dati abbiamo raccolto per questa università rispetto al totale degli iscritti. 
+        Ad esempio, una copertura del 10% significa che abbiamo i risultati di circa 1 studente su 10.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
+
+const IdoneiHelp = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+        <HelpCircle className="h-3.5 w-3.5" />
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-success">
+          <HelpCircle className="h-5 w-5" />
+          Idonei
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Studenti che hanno ottenuto almeno 18 in tutte e tre le materie (Fisica, Chimica e Biologia). 
+        Sono idonei e potranno partecipare alla graduatoria finale.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
+
+const PotenzialiHelp = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+        <HelpCircle className="h-3.5 w-3.5" />
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-warning">
+          <HelpCircle className="h-5 w-5" />
+          Potenzialmente idonei
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Studenti che hanno ottenuto almeno 18 in tutte le materie sostenute finora, ma non hanno ancora completato tutti e tre gli esami. 
+        Se manterranno la sufficienza anche nelle prove rimanenti, diventeranno idonei a tutti gli effetti.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
+
 interface UniversityTableProps {
   universities: UniversityStats[];
   studentAggregates: StudentAggregate[];
+  results?: Result[];
   limit?: number;
   showSubjectAverages?: boolean;
   showPassingOnly?: boolean;
@@ -84,22 +203,35 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
   <div className="p-4 rounded-lg border border-border bg-card/50 space-y-3">
     <div className="flex items-start justify-between gap-2">
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
-          <h4 className="font-medium truncate">{formatUniversityName(uni.nome)}</h4>
-          {uni.coverage !== null && (
-            <CircularProgress percentage={uni.coverage} size={32} strokeWidth={3} />
-          )}
-        </div>
+        <h4 className="font-medium truncate">{formatUniversityName(uni.nome)}</h4>
         <p className="text-xs text-muted-foreground">{uni.regione}</p>
-        {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-2"><SurveyBadge /></div>}
+        {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-2"><SurveyBadge sourcesBreakdown={uni.sourcesBreakdown} /></div>}
       </div>
-      {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
-        <div className="flex gap-1">
-          <SubjectBadge subject="F" active={uni.hasFisica} />
-          <SubjectBadge subject="C" active={uni.hasChimica} />
-          <SubjectBadge subject="B" active={uni.hasBiologia} />
-        </div>
-      )}
+      <div className="flex flex-col items-end gap-2">
+        {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
+          <div className="flex gap-1">
+            <SubjectBadge subject="F" active={uni.hasFisica} />
+            <SubjectBadge subject="C" active={uni.hasChimica} />
+            <SubjectBadge subject="B" active={uni.hasBiologia} />
+          </div>
+        )}
+        {uni.coverage !== null && uni.expectedExams !== null && (
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] text-muted-foreground">Copertura</span>
+            <CoverageHelp />
+            <CoverageDetailDialog
+              universityName={uni.nome}
+              coverage={uni.coverage}
+              sourcesBreakdown={uni.sourcesBreakdown}
+              totalExams={uni.actualExams}
+              expectedExams={uni.expectedExams}
+              uniqueStudents={uni.uniqueStudents}
+              size={32}
+              strokeWidth={3}
+            />
+          </div>
+        )}
+      </div>
     </div>
       <div className="flex gap-4 text-sm">
         <div className="flex-1 space-y-2 pr-3 border-r border-border">
@@ -143,14 +275,48 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
           </div>
         </div>
       )}
+      {uni.uniqueStudents > 0 && (
+        <Link 
+          to={`/graduatorie?universita=${encodeURIComponent(uni.nome)}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="mt-3 pt-3 border-t border-border flex items-center justify-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+        >
+          <ExternalLink className="h-4 w-4" />
+          Vedi graduatoria
+        </Link>
+      )}
   </div>
 );
 
-export const UniversityTable = ({ universities, studentAggregates, limit, showSubjectAverages = false, showPassingOnly = false }: UniversityTableProps) => {
+export const UniversityTable = ({ universities, studentAggregates, results = [], limit, showSubjectAverages = false, showPassingOnly = false }: UniversityTableProps) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("avgScore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const { getEnrollment } = useEnrollments();
+
+  // Calculate per-source exam counts per university
+  const sourceBreakdownByUni = useMemo(() => {
+    const breakdown = new Map<string, { ministerial: number; internal: number; unimi: number; logica: number }>();
+    
+    results.forEach((r) => {
+      const uniName = r.universita.nome;
+      const existing = breakdown.get(uniName) || { ministerial: 0, internal: 0, unimi: 0, logica: 0 };
+      
+      if (r.etichetta.startsWith("SRV-")) {
+        existing.internal++;
+      } else if (r.etichetta.startsWith("UNIMI-")) {
+        existing.unimi++;
+      } else if (r.etichetta.startsWith("LOGI-")) {
+        existing.logica++;
+      } else {
+        existing.ministerial++;
+      }
+      
+      breakdown.set(uniName, existing);
+    });
+    
+    return breakdown;
+  }, [results]);
 
   // Calculate students stats per university
   const universityData = useMemo(() => {
@@ -206,6 +372,9 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
         ? Math.min((actualExams / expectedExams) * 100, 100) 
         : null;
 
+      // Get source breakdown for this university
+      const sourcesBreakdown = sourceBreakdownByUni.get(uni.nome) || { ministerial: 0, internal: 0, unimi: 0, logica: 0 };
+
       return {
         ...uni,
         uniqueStudents,
@@ -225,9 +394,12 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
         avgBiologia: showPassingOnly ? avgBiologiaPassing : avgBiologiaAll,
         enrollment,
         coverage,
+        actualExams,
+        expectedExams,
+        sourcesBreakdown,
       };
     });
-  }, [universities, studentAggregates, showPassingOnly, getEnrollment]);
+  }, [universities, studentAggregates, showPassingOnly, getEnrollment, sourceBreakdownByUni]);
 
   const sortedData = useMemo(() => {
     const filtered = universityData.filter((uni) =>
@@ -343,14 +515,24 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                   </>
                 )}
                 <TableHead className="text-right">
-                  <SortButton column="idonei" label="Idonei" />
+                  <div className="flex items-center justify-end gap-1">
+                    <SortButton column="idonei" label="Idonei" />
+                    <IdoneiHelp />
+                  </div>
                 </TableHead>
                 <TableHead className="text-right">
-                  <SortButton column="potenzIdonei" label="Potenziali" />
+                  <div className="flex items-center justify-end gap-1">
+                    <SortButton column="potenzIdonei" label="Potenziali" />
+                    <PotenzialiHelp />
+                  </div>
                 </TableHead>
                 <TableHead className="text-center">
-                  <SortButton column="coverage" label="Copertura" />
+                  <div className="flex items-center justify-center gap-1">
+                    <SortButton column="coverage" label="Copertura" />
+                    <CoverageHelp />
+                  </div>
                 </TableHead>
+                <TableHead className="w-[80px]"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -359,7 +541,7 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                   <TableCell className="font-medium">
                     <div>
                       {formatUniversityName(uni.nome)}
-                      {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-1"><SurveyBadge /></div>}
+                      {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-1"><SurveyBadge sourcesBreakdown={uni.sourcesBreakdown} /></div>}
                     </div>
                   </TableCell>
                     <TableCell className="text-muted-foreground text-sm">
@@ -407,13 +589,34 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                     </Badge>
                   </TableCell>
                   <TableCell className="text-center">
-                    {uni.coverage !== null ? (
+                    {uni.coverage !== null && uni.expectedExams !== null ? (
                       <div className="flex justify-center">
-                        <CircularProgress percentage={uni.coverage} size={40} strokeWidth={4} />
+                        <CoverageDetailDialog
+                          universityName={uni.nome}
+                          coverage={uni.coverage}
+                          sourcesBreakdown={uni.sourcesBreakdown}
+                          totalExams={uni.actualExams}
+                          expectedExams={uni.expectedExams}
+                          uniqueStudents={uni.uniqueStudents}
+                          size={40}
+                          strokeWidth={4}
+                        />
                       </div>
                     ) : (
                       <span className="text-muted-foreground text-xs">-</span>
                     )}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {uni.uniqueStudents > 0 ? (
+                      <Link 
+                        to={`/graduatorie?universita=${encodeURIComponent(uni.nome)}`}
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        <span className="hidden lg:inline">Graduatoria</span>
+                      </Link>
+                    ) : null}
                   </TableCell>
                 </TableRow>
               ))}

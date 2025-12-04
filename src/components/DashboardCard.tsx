@@ -19,6 +19,7 @@ export const DashboardCard = ({ title, children, to, linkText = "Vedi tutto", cl
         {to && (
           <Link
             to={to}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-1 text-sm text-primary hover:underline"
           >
             {linkText}

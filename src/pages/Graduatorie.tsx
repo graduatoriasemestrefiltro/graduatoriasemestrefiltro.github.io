@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useProcessedData } from "@/hooks/useResults";
 import { Layout } from "@/components/Layout";
 import { RankingTable } from "@/components/RankingTable";
@@ -7,7 +7,8 @@ import { CommonStatsBar } from "@/components/CommonStatsBar";
 import { LoadingState } from "@/components/LoadingState";
 import { ErrorState } from "@/components/ErrorState";
 import { useQueryClient } from "@tanstack/react-query";
-import { FileText, X, Atom, Beaker, Dna, Calculator, Filter } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+import { X, Atom, Beaker, Dna, Calculator, Filter } from "lucide-react";
 import { formatUniversityName } from "@/lib/formatters";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -24,8 +25,10 @@ type ViewMode = "generale" | "fisica" | "chimica" | "biologia";
 
 const Graduatorie = () => {
   const queryClient = useQueryClient();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState<ViewMode>("generale");
   const [selectedUniversities, setSelectedUniversities] = useState<string[]>([]);
+  const [initialized, setInitialized] = useState(false);
   const {
     isLoading,
     error,
@@ -43,6 +46,38 @@ const Graduatorie = () => {
       .map(u => u.nome)
       .sort((a, b) => formatUniversityName(a).localeCompare(formatUniversityName(b)));
   }, [universityStats]);
+
+  // Initialize from URL on first load
+  useEffect(() => {
+    if (!initialized && availableUniversities.length > 0) {
+      const urlUni = searchParams.get("universita");
+      if (urlUni) {
+        // Find matching university (case-insensitive)
+        const matchedUni = availableUniversities.find(
+          u => u.toLowerCase() === urlUni.toLowerCase() || 
+               formatUniversityName(u).toLowerCase() === urlUni.toLowerCase()
+        );
+        if (matchedUni) {
+          setSelectedUniversities([matchedUni]);
+        }
+      }
+      setInitialized(true);
+    }
+  }, [availableUniversities, searchParams, initialized]);
+
+  // Update URL when selection changes
+  useEffect(() => {
+    if (!initialized) return;
+    
+    if (selectedUniversities.length === 1) {
+      setSearchParams({ universita: selectedUniversities[0] }, { replace: true });
+    } else if (selectedUniversities.length === 0) {
+      setSearchParams({}, { replace: true });
+    } else {
+      // Multiple universities - clear URL param
+      setSearchParams({}, { replace: true });
+    }
+  }, [selectedUniversities, initialized, setSearchParams]);
 
   const toggleUniversity = (uni: string) => {
     setSelectedUniversities(prev => 
@@ -130,21 +165,27 @@ const Graduatorie = () => {
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Graduatorie</h1>
-            <p className="text-muted-foreground text-sm">
-              Classifiche complete per materia e graduatoria generale
-            </p>
+            {selectedUniversities.length === 1 ? (
+              <>
+                <h1 className="text-2xl font-bold tracking-tight">
+                  {formatUniversityName(selectedUniversities[0])}
+                </h1>
+                <p className="text-muted-foreground text-sm">
+                  Graduatorie per materia e graduatoria generale
+                </p>
+              </>
+            ) : (
+              <>
+                <h1 className="text-2xl font-bold tracking-tight">Graduatorie</h1>
+                <p className="text-muted-foreground text-sm">
+                  Classifiche complete per materia e graduatoria generale
+                </p>
+              </>
+            )}
           </div>
           
-          {/* Contextual Stats */}
+          {/* University Filter */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-sm">
-              <FileText className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Risultati caricati:</span>
-              <span className="font-mono font-semibold">{globalStats.totalResults.toLocaleString("it-IT")}</span>
-            </div>
-            
-            {/* University Filter */}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm" className="gap-2">
@@ -187,33 +228,33 @@ const Graduatorie = () => {
         </div>
 
         {/* Selected Universities Tags and Filter Alert */}
+        {selectedUniversities.length > 1 && (
+          <div className="flex flex-wrap gap-2">
+            {selectedUniversities.map((uni) => (
+              <Badge key={uni} variant="secondary" className="gap-1 pr-1">
+                {formatUniversityName(uni)}
+                <button
+                  onClick={() => toggleUniversity(uni)}
+                  className="ml-1 rounded-full hover:bg-muted p-0.5"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
         {selectedUniversities.length > 0 && (
-          <>
-            <div className="flex flex-wrap gap-2">
-              {selectedUniversities.map((uni) => (
-                <Badge key={uni} variant="secondary" className="gap-1 pr-1">
-                  {formatUniversityName(uni)}
-                  <button
-                    onClick={() => toggleUniversity(uni)}
-                    className="ml-1 rounded-full hover:bg-muted p-0.5"
-                  >
-                    <X className="h-3 w-3" />
-                  </button>
-                </Badge>
-              ))}
-            </div>
-            <Alert className="bg-amber-50 border-amber-200">
-              <Filter className="h-4 w-4 text-amber-600" />
-              <AlertDescription className="flex items-center justify-between gap-4">
-                <span className="text-amber-800">
-                  Stai visualizzando i dati filtrati per {selectedUniversities.length} {selectedUniversities.length === 1 ? "università" : "università"}.
-                </span>
-                <Button variant="outline" size="sm" onClick={clearUniversities} className="shrink-0">
-                  Rimuovi filtri
-                </Button>
-              </AlertDescription>
-            </Alert>
-          </>
+          <Alert className="bg-amber-50 border-amber-200">
+            <Filter className="h-4 w-4 text-amber-600" />
+            <AlertDescription className="flex items-center justify-between gap-4">
+              <span className="text-amber-800">
+                Stai visualizzando i dati filtrati per {selectedUniversities.length} {selectedUniversities.length === 1 ? "università" : "università"}.
+              </span>
+              <Button variant="outline" size="sm" onClick={clearUniversities} className="shrink-0">
+                Rimuovi filtri
+              </Button>
+            </AlertDescription>
+          </Alert>
         )}
 
         {/* Common Stats Bar - hidden on mobile */}

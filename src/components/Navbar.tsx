@@ -36,7 +36,7 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2">
             <div className="p-1.5 rounded-lg gradient-primary">
               <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
@@ -53,6 +53,7 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
                 <Link
                   key={item.to}
                   to={item.to}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className={cn(
                     "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                     isActive

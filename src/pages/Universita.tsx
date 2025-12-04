@@ -6,7 +6,6 @@ import { CommonStatsBar } from "@/components/CommonStatsBar";
 import { LoadingState } from "@/components/LoadingState";
 import { ErrorState } from "@/components/ErrorState";
 import { useQueryClient } from "@tanstack/react-query";
-import { Building2, CheckCircle2 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
@@ -14,9 +13,10 @@ const Universita = () => {
   const queryClient = useQueryClient();
   const [showSubjectAverages, setShowSubjectAverages] = useState(false);
   const [showPassingOnly, setShowPassingOnly] = useState(false);
-  const {
+const {
     isLoading,
     error,
+    results,
     universityStats,
     studentAggregates,
     globalStats,
@@ -34,24 +34,11 @@ const Universita = () => {
     <Layout>
       <div className="space-y-5">
         {/* Page Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight">Statistiche università</h1>
-            <p className="text-muted-foreground text-sm">
-              Panoramica dettagliata delle statistiche per ogni università
-            </p>
-          </div>
-          
-          {/* Contextual Stats */}
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-sm w-full sm:w-auto">
-            <Building2 className="h-4 w-4 text-primary" />
-            <span className="text-muted-foreground">Con dati:</span>
-            <span className="font-mono font-semibold">{globalStats.universitiesWithData}/{globalStats.totalUniversities}</span>
-            <span className="text-border mx-2">|</span>
-            <CheckCircle2 className="h-4 w-4 text-success" />
-            <span className="text-muted-foreground">Complete:</span>
-            <span className="font-mono font-semibold text-success">{globalStats.universitiesComplete}</span>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Statistiche università</h1>
+          <p className="text-muted-foreground text-sm">
+            Panoramica dettagliata delle statistiche per ogni università
+          </p>
         </div>
 
         {/* Common Stats Bar - hidden on mobile */}
@@ -115,6 +102,7 @@ const Universita = () => {
             <UniversityTable
               universities={universityStats}
               studentAggregates={studentAggregates}
+              results={results}
               showSubjectAverages={showSubjectAverages}
               showPassingOnly={showPassingOnly}
             />

@@ -13,12 +13,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ClipboardList, ExternalLink, Mail } from "lucide-react";
 import { CONFIG } from "@/lib/config";
-import { useEnrollments, calculateEstimatedTotals } from "@/hooks/useEnrollments";
-import { useMemo } from "react";
+import { useEnrollments, calculateEstimatedTotals, ProjectionMethod } from "@/hooks/useEnrollments";
+import { useMemo, useState } from "react";
 
 
 const Index = () => {
   const queryClient = useQueryClient();
+  const [projectionMethod, setProjectionMethod] = useState<ProjectionMethod>("national");
   const {
     isLoading,
     error,
@@ -29,13 +30,13 @@ const Index = () => {
     globalStats,
   } = useProcessedData();
   
-  const { getEnrollment, loading: enrollmentsLoading } = useEnrollments();
+  const { getEnrollment, getTotalEnrollment, loading: enrollmentsLoading } = useEnrollments();
 
   // Calculate estimated totals
   const estimatedTotals = useMemo(() => {
     if (enrollmentsLoading || !studentAggregates.length) return null;
-    return calculateEstimatedTotals(studentAggregates, getEnrollment);
-  }, [studentAggregates, getEnrollment, enrollmentsLoading]);
+    return calculateEstimatedTotals(studentAggregates, getEnrollment, getTotalEnrollment, projectionMethod);
+  }, [studentAggregates, getEnrollment, getTotalEnrollment, enrollmentsLoading, projectionMethod]);
 
   if (isLoading) {
     return <LoadingState />;
@@ -56,6 +57,8 @@ const Index = () => {
           potentiallyQualified={globalStats.almostQualified}
           estimatedIdonei={estimatedTotals?.estimatedIdonei}
           estimatedPotenziali={estimatedTotals?.estimatedPotenziali}
+          projectionMethod={projectionMethod}
+          onProjectionMethodChange={setProjectionMethod}
         />
 
         {/* Data Loading Tracker or Data Collection Stats */}
@@ -134,6 +137,7 @@ const Index = () => {
               <UniversityTable
                 universities={universityStats}
                 studentAggregates={studentAggregates}
+                results={results}
                 limit={5}
               />
             </DashboardCard>

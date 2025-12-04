@@ -9,6 +9,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ProjectionMethod } from "@/hooks/useEnrollments";
 
 interface SpotsTrackerProps {
   totalSpots: number;
@@ -17,27 +25,39 @@ interface SpotsTrackerProps {
   potentiallyQualified: number;
   estimatedIdonei?: number;
   estimatedPotenziali?: number;
+  projectionMethod?: ProjectionMethod;
+  onProjectionMethodChange?: (method: ProjectionMethod) => void;
 }
 
-const EstimationHelp = () => (
+const EstimationHelp = ({ method }: { method: ProjectionMethod }) => (
   <Dialog>
     <DialogTrigger asChild>
       <button className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors ml-1">
         <HelpCircle className="h-3.5 w-3.5" />
       </button>
     </DialogTrigger>
-    <DialogContent className="max-w-sm">
+    <DialogContent className="max-w-md">
       <DialogHeader>
         <DialogTitle className="flex items-center gap-2 text-primary">
           <TrendingUp className="h-5 w-5" />
-          Stima proiettata
+          Metodi di proiezione
         </DialogTitle>
       </DialogHeader>
-      <p className="text-sm text-muted-foreground">
-        Stima basata sui dati raccolti, proiettata sul totale degli iscritti agli esami per ogni università. 
-        Assume che chi non ha compilato il sondaggio abbia risultati simili a chi l'ha compilato.
-        <span className="block mt-2 text-xs italic">Da considerarsi puramente indicativa. Alcuni studenti iscritti potrebbero aver scelto di non sostenere uno o più esami in questa sessione.</span>
-      </p>
+      <div className="text-sm text-muted-foreground space-y-4">
+        <div className={method === "national" ? "p-3 rounded-lg bg-primary/10 border border-primary/20" : ""}>
+          <p className={method === "national" ? "text-foreground" : ""}>
+            <strong>Nazionale {method === "national" && "(selezionato)"}</strong>: assume che tutti gli studenti che non hanno compilato il sondaggio, a livello nazionale, rispecchino la media nazionale di quelli che lo hanno compilato.
+          </p>
+        </div>
+        <div className={method === "per-university" ? "p-3 rounded-lg bg-primary/10 border border-primary/20" : ""}>
+          <p className={method === "per-university" ? "text-foreground" : ""}>
+            <strong>Per università {method === "per-university" && "(selezionato)"}</strong>: per ogni ateneo, assume che gli studenti che non hanno compilato il sondaggio abbiano in media lo stesso tasso di idoneità di quelli che l'hanno compilato nella stessa università.
+          </p>
+        </div>
+        <p className="text-xs italic">
+          Da considerarsi puramente indicativa: il campione potrebbe non essere rappresentativo, alcuni iscritti potrebbero non aver sostenuto tutti gli esami, e i risultati del sondaggio potrebbero contenere errori di inserimento.
+        </p>
+      </div>
     </DialogContent>
   </Dialog>
 );
@@ -49,6 +69,8 @@ export const SpotsTracker = ({
   potentiallyQualified,
   estimatedIdonei,
   estimatedPotenziali,
+  projectionMethod = "national",
+  onProjectionMethodChange,
 }: SpotsTrackerProps) => {
   const [showEstimate, setShowEstimate] = useState(false);
   
@@ -153,11 +175,28 @@ export const SpotsTracker = ({
 
         {/* Estimated data */}
         {hasEstimates && showEstimate && (
-          <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
+            {/* Projection method selector */}
+            <div className="flex items-center gap-2 justify-end">
+              <span className="text-xs text-muted-foreground">Metodo:</span>
+              <Select
+                value={projectionMethod}
+                onValueChange={(value) => onProjectionMethodChange?.(value as ProjectionMethod)}
+              >
+                <SelectTrigger className="w-[160px] h-8 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="national">Nazionale</SelectItem>
+                <SelectItem value="per-university">Per università</SelectItem>
+              </SelectContent>
+              </Select>
+              <EstimationHelp method={projectionMethod} />
+            </div>
+
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground flex items-center">
                 Riempimento (stima proiettata)
-                <EstimationHelp />
               </span>
               <span className="font-mono font-medium text-primary">
                 {estimatedPercent.toFixed(2)}%

@@ -140,10 +140,14 @@ export const useEnrollments = () => {
   return { enrollments, loading, getEnrollment, getTotalEnrollment };
 };
 
+export type ProjectionMethod = "per-university" | "national";
+
 // Calculate estimated totals based on coverage
 export const calculateEstimatedTotals = (
   studentAggregates: StudentAggregate[],
-  getEnrollment: (name: string) => number | null
+  getEnrollment: (name: string) => number | null,
+  getTotalEnrollment: () => number,
+  method: ProjectionMethod = "per-university"
 ) => {
   // Group students by university
   const byUniversity: { [key: string]: StudentAggregate[] } = {};
@@ -154,6 +158,28 @@ export const calculateEstimatedTotals = (
     byUniversity[student.universita].push(student);
   });
 
+  const totalEnrollment = getTotalEnrollment();
+  const totalActualStudents = studentAggregates.length;
+  const totalActualIdonei = studentAggregates.filter((s) => s.fullyQualified).length;
+  const totalActualPotenziali = studentAggregates.filter((s) => s.allPassed && !s.fullyQualified).length;
+
+  if (method === "national") {
+    // National projection: assume all non-respondents nationally have the same rates
+    if (totalActualStudents === 0) {
+      return { estimatedIdonei: 0, estimatedPotenziali: 0, estimatedStudents: 0, coveredUniversities: 0 };
+    }
+    const nationalRatioIdonei = totalActualIdonei / totalActualStudents;
+    const nationalRatioPotenziali = totalActualPotenziali / totalActualStudents;
+    
+    return {
+      estimatedIdonei: Math.round(totalEnrollment * nationalRatioIdonei),
+      estimatedPotenziali: Math.round(totalEnrollment * nationalRatioPotenziali),
+      estimatedStudents: totalEnrollment,
+      coveredUniversities: Object.keys(byUniversity).length,
+    };
+  }
+
+  // Per-university projection (original method)
   let estimatedIdonei = 0;
   let estimatedPotenziali = 0;
   let estimatedStudents = 0;
