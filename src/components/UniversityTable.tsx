@@ -622,7 +622,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                         className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
-                        <span className="hidden lg:inline">Graduatoria</span>
+                        <span className="hidden lg:inline">graduatoria</span>
                       </Link>
                     ) : null}
                   </TableCell>
