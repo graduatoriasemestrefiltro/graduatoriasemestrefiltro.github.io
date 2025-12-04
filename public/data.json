@@ -49659,6 +49659,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-18DB24",
+        "punteggio": "21.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-18DB24",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-18DB24",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-67CF78",
         "punteggio": "23.30",
         "materia": "fisica",
@@ -50409,6 +50442,39 @@
     {
         "etichetta": "UNIMI-487414",
         "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-AD5D2A",
+        "punteggio": "20.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-AD5D2A",
+        "punteggio": "22.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-AD5D2A",
+        "punteggio": "20.30",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -51540,6 +51606,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-9348EF",
+        "punteggio": "24.50",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-9348EF",
+        "punteggio": "21.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-9348EF",
+        "punteggio": "14.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-C6313E",
         "punteggio": "19.30",
         "materia": "fisica",
@@ -52389,6 +52488,39 @@
     {
         "etichetta": "UNIMI-2E67B8",
         "punteggio": "16.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-2111BA",
+        "punteggio": "20.50",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-2111BA",
+        "punteggio": "17.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-2111BA",
+        "punteggio": "19.30",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -53685,6 +53817,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-C61F50",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-C61F50",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-C61F50",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-68B076",
         "punteggio": "22.00",
         "materia": "fisica",
@@ -54180,6 +54345,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-341FE9",
+        "punteggio": "21.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-341FE9",
+        "punteggio": "13.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-341FE9",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-6429A6",
         "punteggio": "15.00",
         "materia": "fisica",
@@ -54303,6 +54501,39 @@
     {
         "etichetta": "UNIMI-E45C22",
         "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-4CDF05",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-4CDF05",
+        "punteggio": "16.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-4CDF05",
+        "punteggio": "19.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -55929,6 +56160,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-DCD3F3",
+        "punteggio": "19.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-DCD3F3",
+        "punteggio": "10.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-DCD3F3",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-C24B7B",
         "punteggio": "18.90",
         "materia": "fisica",
@@ -56118,6 +56382,39 @@
     {
         "etichetta": "UNIMI-D34A2A",
         "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-3C31AB",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-3C31AB",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-3C31AB",
+        "punteggio": "18.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -56415,6 +56712,39 @@
     {
         "etichetta": "UNIMI-184891",
         "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-43243E",
+        "punteggio": "18.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-43243E",
+        "punteggio": "13.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-43243E",
+        "punteggio": "17.40",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -58690,6 +59020,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-88B09E",
+        "punteggio": "18.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-88B09E",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-88B09E",
+        "punteggio": "11.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-C2D738",
         "punteggio": "11.00",
         "materia": "fisica",
@@ -58747,6 +59110,39 @@
     {
         "etichetta": "UNIMI-80A46A",
         "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-48EA89",
+        "punteggio": "14.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-48EA89",
+        "punteggio": "13.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-48EA89",
+        "punteggio": "17.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -58846,6 +59242,39 @@
     {
         "etichetta": "UNIMI-842A64",
         "punteggio": "17.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-B2B379",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-B2B379",
+        "punteggio": "14.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-B2B379",
+        "punteggio": "16.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -59176,6 +59605,39 @@
     {
         "etichetta": "UNIMI-2CA471",
         "punteggio": "11.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-EF3D67",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-EF3D67",
+        "punteggio": "11.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-EF3D67",
+        "punteggio": "16.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -60296,6 +60758,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-0377D1",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-0377D1",
+        "punteggio": "9.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-0377D1",
+        "punteggio": "10.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-0FA020",
         "punteggio": "13.00",
         "materia": "fisica",
@@ -60683,6 +61178,39 @@
     {
         "etichetta": "UNIMI-776C4F",
         "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-6B9EFC",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-6B9EFC",
+        "punteggio": "11.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-6B9EFC",
+        "punteggio": "15.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -61583,6 +62111,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-2C5DB8",
+        "punteggio": "12.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-2C5DB8",
+        "punteggio": "12.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-2C5DB8",
+        "punteggio": "7.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-21BBAB",
         "punteggio": "9.30",
         "materia": "fisica",
@@ -62078,6 +62639,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-009DD5",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-009DD5",
+        "punteggio": "8.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-009DD5",
+        "punteggio": "12.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-A4C5BD",
         "punteggio": "10.00",
         "materia": "fisica",
@@ -62520,6 +63114,39 @@
     {
         "etichetta": "UNIMI-05EAFB",
         "punteggio": "14.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-14A516",
+        "punteggio": "12.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-14A516",
+        "punteggio": "5.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-14A516",
+        "punteggio": "12.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -63464,6 +64091,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-04A2E0",
+        "punteggio": "7.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-04A2E0",
+        "punteggio": "6.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-04A2E0",
+        "punteggio": "9.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-44B87C",
         "punteggio": "8.00",
         "materia": "fisica",
@@ -63587,6 +64247,39 @@
     {
         "etichetta": "UNIMI-EB2CD6",
         "punteggio": "11.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-237B9B",
+        "punteggio": "11.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-237B9B",
+        "punteggio": "5.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-237B9B",
+        "punteggio": "4.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -64344,6 +65037,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-02FAEB",
+        "punteggio": "25.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-02FAEB",
+        "punteggio": "10.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-02FAEB",
+        "punteggio": "25.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-20B374",
         "punteggio": "23.00",
         "materia": "fisica",
@@ -64467,6 +65193,39 @@
     {
         "etichetta": "UNIMI-297226",
         "punteggio": "21.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-818A54",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-818A54",
+        "punteggio": "15.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-818A54",
+        "punteggio": "24.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -64665,6 +65424,39 @@
     {
         "etichetta": "UNIMI-3D34F8",
         "punteggio": "10.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-CBD05D",
+        "punteggio": "18.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-CBD05D",
+        "punteggio": "14.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-CBD05D",
+        "punteggio": "17.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -64905,6 +65697,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-661D60",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-661D60",
+        "punteggio": "7.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-661D60",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-CEB774",
         "punteggio": "13.00",
         "materia": "fisica",
@@ -65127,6 +65952,39 @@
     {
         "etichetta": "UNIMI-85A06A",
         "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-E431E6",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-E431E6",
+        "punteggio": "7.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-E431E6",
+        "punteggio": "16.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -66940,6 +67798,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-EA1706",
+        "punteggio": "21.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-EA1706",
+        "punteggio": "13.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-EA1706",
+        "punteggio": "21.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-13E7EE",
         "punteggio": "20.00",
         "materia": "fisica",
@@ -67534,6 +68425,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-7BC5FA",
+        "punteggio": "18.30",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-7BC5FA",
+        "punteggio": "15.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-7BC5FA",
+        "punteggio": "15.80",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-C93747",
         "punteggio": "17.20",
         "materia": "fisica",
@@ -67963,6 +68887,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-D0CEC8",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-D0CEC8",
+        "punteggio": "9.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-D0CEC8",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-100E54",
         "punteggio": "15.00",
         "materia": "fisica",
@@ -68251,6 +69208,39 @@
     {
         "etichetta": "UNIMI-5B1B66",
         "punteggio": "15.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-F29040",
+        "punteggio": "14.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-F29040",
+        "punteggio": "12.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-F29040",
+        "punteggio": "20.00",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -68755,6 +69745,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-19B125",
+        "punteggio": "15.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-19B125",
+        "punteggio": "12.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-19B125",
+        "punteggio": "16.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-0839E9",
         "punteggio": "12.00",
         "materia": "fisica",
@@ -69043,6 +70066,39 @@
     {
         "etichetta": "UNIMI-B5A2D7",
         "punteggio": "18.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-FC5719",
+        "punteggio": "13.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-FC5719",
+        "punteggio": "9.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-FC5719",
+        "punteggio": "17.10",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -70240,6 +71296,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-F71833",
+        "punteggio": "14.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-F71833",
+        "punteggio": "13.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-F71833",
+        "punteggio": "3.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-0E75C7",
         "punteggio": "10.30",
         "materia": "fisica",
@@ -71098,6 +72187,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-3D0EC5",
+        "punteggio": "9.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-3D0EC5",
+        "punteggio": "7.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-3D0EC5",
+        "punteggio": "7.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-D91700",
         "punteggio": "7.00",
         "materia": "fisica",
@@ -71187,6 +72309,39 @@
     },
     {
         "etichetta": "UNIMI-A788D6",
+        "punteggio": "7.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-0D1DF2",
+        "punteggio": "10.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-0D1DF2",
+        "punteggio": "5.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-0D1DF2",
         "punteggio": "7.00",
         "materia": "biologia",
         "is_from_survey": true,
@@ -71353,6 +72508,39 @@
     {
         "etichetta": "UNIMI-37A023",
         "punteggio": "6.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-79D5EB",
+        "punteggio": "7.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-79D5EB",
+        "punteggio": "4.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-79D5EB",
+        "punteggio": "7.80",
         "materia": "biologia",
         "is_from_survey": true,
         "universita": {
@@ -71637,6 +72825,39 @@
         }
     },
     {
+        "etichetta": "UNIMI-1F788C",
+        "punteggio": "4.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-1F788C",
+        "punteggio": "5.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "UNIMI-1F788C",
+        "punteggio": "6.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO",
+            "id": "15",
+            "region": "Lombardia"
+        }
+    },
+    {
         "etichetta": "UNIMI-2F4AE7",
         "punteggio": "5.00",
         "materia": "fisica",
@@ -71733,6 +72954,72 @@
             "nome": "Universit\u00e0 degli Studi di MILANO",
             "id": "15",
             "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB5EL",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB5EL",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZB5EL",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi INSUBRIA Varese-Como",
+            "id": "C7",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1DLX4",
+        "punteggio": "9.50",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1DLX4",
+        "punteggio": "8.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-RG1DLX4",
+        "punteggio": "21.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
         }
     },
     {
