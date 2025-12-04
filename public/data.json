@@ -71736,6 +71736,138 @@
         }
     },
     {
+        "etichetta": "SRV-1AZKOYO",
+        "punteggio": "21.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-1AZKOYO",
+        "punteggio": "21.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-1AZKOYO",
+        "punteggio": "24.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-NPVDEML",
+        "punteggio": "0.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-NPVDEML",
+        "punteggio": "6.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-NPVDEML",
+        "punteggio": "8.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 della CALABRIA",
+            "id": "05",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-1AZKOKO",
+        "punteggio": "20.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-1AZKOKO",
+        "punteggio": "23.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-1AZKOKO",
+        "punteggio": "24.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBEXB",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBEXB",
+        "punteggio": "19.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-44RBEXB",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
         "etichetta": "SRV-0QZ7A7A",
         "punteggio": "31.00",
         "materia": "fisica",
