@@ -22,6 +22,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { CircularProgress } from "./CircularProgress";
+import { useEnrollments } from "@/hooks/useEnrollments";
 
 const SurveyBadge = () => (
   <Dialog>
@@ -74,7 +76,7 @@ interface UniversityTableProps {
   showPassingOnly?: boolean;
 }
 
-type SortKey = "nome" | "totalStudents" | "avgScore" | "avgScoreIdonei" | "idonei" | "potenzIdonei" | "uniqueStudents" | "avgFisica" | "avgChimica" | "avgBiologia";
+type SortKey = "nome" | "totalStudents" | "avgScore" | "avgScoreIdonei" | "idonei" | "potenzIdonei" | "uniqueStudents" | "avgFisica" | "avgChimica" | "avgBiologia" | "coverage";
 type SortDir = "asc" | "desc";
 
 // Mobile card for university
@@ -82,9 +84,14 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
   <div className="p-4 rounded-lg border border-border bg-card/50 space-y-3">
     <div className="flex items-start justify-between gap-2">
       <div className="flex-1 min-w-0">
-        <h4 className="font-medium truncate">{formatUniversityName(uni.nome)}</h4>
+        <div className="flex items-center gap-2">
+          <h4 className="font-medium truncate">{formatUniversityName(uni.nome)}</h4>
+          {uni.coverage !== null && (
+            <CircularProgress percentage={uni.coverage} size={32} strokeWidth={3} />
+          )}
+        </div>
         <p className="text-xs text-muted-foreground">{uni.regione}</p>
-        {uni.isFromSurvey && <div className="mt-2"><SurveyBadge /></div>}
+        {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-2"><SurveyBadge /></div>}
       </div>
       {!CONFIG.HIDE_DATA_LOADING_TRACKER && (
         <div className="flex gap-1">
@@ -143,6 +150,7 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("avgScore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const { getEnrollment } = useEnrollments();
 
   // Calculate students stats per university
   const universityData = useMemo(() => {
@@ -189,6 +197,15 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
         ? passingBiologia.reduce((sum, s) => sum + (s.biologia || 0), 0) / passingBiologia.length 
         : 0;
 
+      // Calculate coverage percentage based on actual exams collected vs expected
+      // Enrollment is average students per exam, so total expected exams = enrollment * 3
+      const enrollment = getEnrollment(uni.nome);
+      const actualExams = studentsWithFisica.length + studentsWithChimica.length + studentsWithBiologia.length;
+      const expectedExams = enrollment ? enrollment * 3 : null;
+      const coverage = expectedExams && actualExams > 0 
+        ? Math.min((actualExams / expectedExams) * 100, 100) 
+        : null;
+
       return {
         ...uni,
         uniqueStudents,
@@ -206,9 +223,11 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
         avgFisica: showPassingOnly ? avgFisicaPassing : avgFisicaAll,
         avgChimica: showPassingOnly ? avgChimicaPassing : avgChimicaAll,
         avgBiologia: showPassingOnly ? avgBiologiaPassing : avgBiologiaAll,
+        enrollment,
+        coverage,
       };
     });
-  }, [universities, studentAggregates, showPassingOnly]);
+  }, [universities, studentAggregates, showPassingOnly, getEnrollment]);
 
   const sortedData = useMemo(() => {
     const filtered = universityData.filter((uni) =>
@@ -329,6 +348,9 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                 <TableHead className="text-right">
                   <SortButton column="potenzIdonei" label="Potenziali" />
                 </TableHead>
+                <TableHead className="text-center">
+                  <SortButton column="coverage" label="Copertura" />
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -337,7 +359,7 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                   <TableCell className="font-medium">
                     <div>
                       {formatUniversityName(uni.nome)}
-                      {uni.isFromSurvey && <div className="mt-1"><SurveyBadge /></div>}
+                      {!CONFIG.DISABLE_SURVEYS_GLOBALLY && uni.isFromSurvey && <div className="mt-1"><SurveyBadge /></div>}
                     </div>
                   </TableCell>
                     <TableCell className="text-muted-foreground text-sm">
@@ -383,6 +405,15 @@ export const UniversityTable = ({ universities, studentAggregates, limit, showSu
                     <Badge className="bg-warning/20 text-warning border-0 font-mono">
                       {uni.potenzIdonei}
                     </Badge>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {uni.coverage !== null ? (
+                      <div className="flex justify-center">
+                        <CircularProgress percentage={uni.coverage} size={40} strokeWidth={4} />
+                      </div>
+                    ) : (
+                      <span className="text-muted-foreground text-xs">-</span>
+                    )}
                   </TableCell>
                 </TableRow>
               ))}

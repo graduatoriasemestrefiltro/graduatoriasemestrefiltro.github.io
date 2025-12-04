@@ -16,6 +16,7 @@ import { Search, Trophy, Medal, Award, ChevronLeft, ChevronRight, ClipboardList,
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { formatUniversityName } from "@/lib/formatters";
+import { CONFIG } from "@/lib/config";
 import {
   Dialog,
   DialogContent,
@@ -147,7 +148,7 @@ const GeneralRankingCard = ({ student, position }: { student: any; position: num
         <PositionBadge position={position} />
         <div className="flex flex-col gap-1">
           <span className="font-mono text-xs">{student.etichetta}</span>
-          {student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
+          {!CONFIG.DISABLE_SURVEYS_GLOBALLY && student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
         </div>
       </div>
       {student.fullyQualified ? (
@@ -192,7 +193,7 @@ const SubjectRankingCard = ({ result, position }: { result: Result; position: nu
         <PositionBadge position={position} />
         <div className="flex flex-col gap-1">
           <span className="font-mono text-xs">{result.etichetta}</span>
-          {result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
+          {!CONFIG.DISABLE_SURVEYS_GLOBALLY && result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
         </div>
       </div>
       <span className="font-mono font-bold">{parseFloat(result.punteggio).toFixed(2)}</span>
@@ -369,7 +370,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                     <TableCell className="font-mono text-xs">
                       <div className="flex flex-col gap-1">
                         <span>{student.etichetta}</span>
-                        {student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
+                        {!CONFIG.DISABLE_SURVEYS_GLOBALLY && student.isFromSurvey && <SurveyBadge etichetta={student.etichetta} />}
                       </div>
                     </TableCell>
                     <TableCell className="text-xs max-w-[200px] truncate">
@@ -464,7 +465,7 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
                         <TableCell className="font-mono text-xs">
                           <div className="flex flex-col gap-1">
                             <span>{result.etichetta}</span>
-                            {result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
+                            {!CONFIG.DISABLE_SURVEYS_GLOBALLY && result.is_from_survey && <SurveyBadge etichetta={result.etichetta} />}
                           </div>
                         </TableCell>
                         <TableCell className="text-xs max-w-[200px] truncate">

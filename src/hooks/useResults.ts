@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Result, StudentAggregate, UniversityStats, RegionStats } from "@/types/results";
 import { useSurveyData } from "@/contexts/SurveyDataContext";
+import { CONFIG } from "@/lib/config";
 
 // Debug flag: set to true to simulate survey data for Bari Aldo Moro
 const DEBUG_SURVEY_BARI = false;
@@ -81,9 +82,21 @@ export const useProcessedData = () => {
       }))
     : results;
 
-  // Filter out survey data if toggle is off
-  if (!includeSurveyData) {
-    processedResults = processedResults.filter(r => !r.is_from_survey);
+  // Filter data based on survey toggle and global config
+  if (CONFIG.DISABLE_SURVEYS_GLOBALLY) {
+    // When global config is active: toggle switches between ONLY official or ONLY survey
+    if (includeSurveyData) {
+      // Show ONLY survey data
+      processedResults = processedResults.filter(r => r.is_from_survey);
+    } else {
+      // Show ONLY official data
+      processedResults = processedResults.filter(r => !r.is_from_survey);
+    }
+  } else {
+    // Normal mode: toggle off = only official, toggle on = merged (all data)
+    if (!includeSurveyData) {
+      processedResults = processedResults.filter(r => !r.is_from_survey);
+    }
   }
 
   // Aggregate by student

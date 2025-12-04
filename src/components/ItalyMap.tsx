@@ -39,28 +39,43 @@ const METRIC_COLORS: Record<MapMetric, { hue: number; saturation: number }> = {
   idonei: { hue: 142, saturation: 76 },        // Green (success color)
 };
 
-// Map region names from GeoJSON to our data
-const REGION_NAME_MAP: Record<string, string> = {
-  "Piemonte": "Piemonte",
-  "Valle d'Aosta/Vallée d'Aoste": "Valle d'Aosta",
-  "Lombardia": "Lombardia",
-  "Trentino-Alto Adige/Südtirol": "Trentino-Alto Adige",
-  "Veneto": "Veneto",
-  "Friuli-Venezia Giulia": "Friuli-Venezia Giulia",
-  "Liguria": "Liguria",
-  "Emilia-Romagna": "Emilia-Romagna",
-  "Toscana": "Toscana",
-  "Umbria": "Umbria",
-  "Marche": "Marche",
-  "Lazio": "Lazio",
-  "Abruzzo": "Abruzzo",
-  "Molise": "Molise",
-  "Campania": "Campania",
-  "Puglia": "Puglia",
-  "Basilicata": "Basilicata",
-  "Calabria": "Calabria",
-  "Sicilia": "Sicilia",
-  "Sardegna": "Sardegna",
+// Normalize region names for matching (handle various naming conventions)
+const normalizeRegionName = (name: string): string => {
+  // Direct mappings for known variations
+  const directMappings: Record<string, string> = {
+    "valle d'aosta/vallée d'aoste": "Valle d'Aosta",
+    "valle d'aosta": "Valle d'Aosta",
+    "trentino-alto adige/südtirol": "Trentino-Alto Adige",
+    "trentino-alto adige": "Trentino-Alto Adige",
+    "trentino alto adige": "Trentino-Alto Adige",
+    "provincia autonoma di trento": "Trentino-Alto Adige",
+    "provincia autonoma di bolzano": "Trentino-Alto Adige",
+    "provincia autonoma di bolzano/bozen": "Trentino-Alto Adige",
+    "friuli-venezia giulia": "Friuli-Venezia Giulia",
+    "friuli venezia giulia": "Friuli-Venezia Giulia",
+    "emilia-romagna": "Emilia-Romagna",
+    "emilia romagna": "Emilia-Romagna",
+  };
+  
+  const lowerName = name.toLowerCase().trim();
+  
+  // Check direct mappings
+  if (directMappings[lowerName]) {
+    return directMappings[lowerName];
+  }
+  
+  // Check for partial matches (for provinces)
+  if (lowerName.includes("trento") || lowerName.includes("bolzano") || lowerName.includes("bozen")) {
+    return "Trentino-Alto Adige";
+  }
+  if (lowerName.includes("friuli")) {
+    return "Friuli-Venezia Giulia";
+  }
+  
+  // Capitalize first letter of each word
+  return name.split(' ').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  ).join(' ');
 };
 
 export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyMapProps) => {
@@ -73,7 +88,9 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
   useEffect(() => {
     fetch("/data/regions_italy.json")
       .then((res) => res.json())
-      .then((data) => setGeoData(data))
+      .then((data) => {
+        setGeoData(data);
+      })
       .catch((err) => console.error("Failed to load GeoJSON:", err));
   }, []);
 
@@ -107,7 +124,7 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
   }, [regionStats, universityStats]);
 
   const getMetricValue = (regionName: string): number => {
-    const normalizedName = REGION_NAME_MAP[regionName] || regionName;
+    const normalizedName = normalizeRegionName(regionName);
     const region = extendedRegionStats.find(
       (r) => r.nome.toLowerCase() === normalizedName.toLowerCase()
     );
@@ -142,7 +159,7 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
   }, [extendedRegionStats, metric]);
 
   const getRegionData = (geoName: string) => {
-    const normalizedName = REGION_NAME_MAP[geoName] || geoName;
+    const normalizedName = normalizeRegionName(geoName);
     return extendedRegionStats.find(
       (r) => r.nome.toLowerCase() === normalizedName.toLowerCase()
     );
@@ -268,7 +285,7 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
                 }}
                 onMouseEnter={() => setHoveredRegion(regionName)}
                 onMouseLeave={() => setHoveredRegion(null)}
-                onClick={() => onRegionClick?.(REGION_NAME_MAP[regionName] || regionName)}
+                onClick={() => onRegionClick?.(normalizeRegionName(regionName))}
               />
             );
           })}
@@ -286,7 +303,7 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
           >
             {(() => {
               const data = getRegionData(hoveredRegion);
-              const regionName = REGION_NAME_MAP[hoveredRegion] || hoveredRegion;
+              const regionName = normalizeRegionName(hoveredRegion);
               return (
                 <div className="space-y-1.5">
                   <p className="font-semibold text-sm border-b border-border pb-1">{regionName}</p>

@@ -89,7 +89,7 @@ export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsPr
         </span>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-3 text-sm">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-x-4 sm:gap-y-2 mb-3 text-sm">
         {sources.map((source) => (
           <div key={source.label} className="flex items-center gap-1.5">
             <source.icon className={`h-3.5 w-3.5 ${source.color}`} />

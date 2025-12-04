@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useSurveyData } from "@/contexts/SurveyDataContext";
+import { CONFIG } from "@/lib/config";
 
 interface NavbarProps {
   onRefresh?: () => void;
@@ -28,6 +29,7 @@ const navItems = [
 export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
   const location = useLocation();
   const { includeSurveyData, setIncludeSurveyData } = useSurveyData();
+  const isExclusiveMode = CONFIG.DISABLE_SURVEYS_GLOBALLY;
 
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
@@ -93,20 +95,37 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
                   <DialogHeader>
                     <DialogTitle>Dati dei sondaggi</DialogTitle>
                     <DialogDescription className="text-left space-y-2 pt-2">
-                      <p>
-                        A oltre 24 ore dalla pubblicazione dei risultati, solo 7 università su 44 hanno reso disponibili 
-                        i dati su Universitaly, e in alcuni casi risultano incompleti.
-                      </p>
-                      <p>
-                        Per questo abbiamo deciso di raccogliere i risultati direttamente dagli studenti tramite sondaggi anonimi.
-                      </p>
-                      <p>
-                        Attivando questa opzione, vedrai anche i dati raccolti tramite i sondaggi. 
-                        Disattivandola, vedrai solo i dati ufficiali.
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
-                      </p>
+                      {isExclusiveMode ? (
+                        <>
+                          <p>
+                            I dati ufficiali sono ora disponibili per la maggior parte delle università.
+                          </p>
+                          <p>
+                            Attivando questa opzione, vedrai <strong>solo</strong> i dati raccolti tramite i sondaggi. 
+                            Disattivandola, vedrai <strong>solo</strong> i dati ufficiali.
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p>
+                            A oltre 24 ore dalla pubblicazione dei risultati, solo 7 università su 44 hanno reso disponibili 
+                            i dati su Universitaly, e in alcuni casi risultano incompleti.
+                          </p>
+                          <p>
+                            Per questo abbiamo deciso di raccogliere i risultati direttamente dagli studenti tramite sondaggi anonimi.
+                          </p>
+                          <p>
+                            Attivando questa opzione, vedrai anche i dati raccolti tramite i sondaggi. 
+                            Disattivandola, vedrai solo i dati ufficiali.
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
+                          </p>
+                        </>
+                      )}
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -152,20 +171,37 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
             <DialogHeader>
               <DialogTitle>Dati dei sondaggi</DialogTitle>
               <DialogDescription className="text-left space-y-2 pt-2">
-                <p>
-                  A oltre 24 ore dalla pubblicazione dei risultati, solo 7 università su 44 hanno reso disponibili 
-                  i dati su Universitaly, e in alcuni casi risultano incompleti.
-                </p>
-                <p>
-                  Per questo abbiamo deciso di raccogliere i risultati direttamente dagli studenti tramite sondaggi anonimi.
-                </p>
-                <p>
-                  Attivando questa opzione, vedrai anche i dati raccolti tramite i sondaggi. 
-                  Disattivandola, vedrai solo i dati ufficiali.
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
-                </p>
+                {isExclusiveMode ? (
+                  <>
+                    <p>
+                      I dati ufficiali sono ora disponibili per la maggior parte delle università.
+                    </p>
+                    <p>
+                      Attivando questa opzione, vedrai <strong>solo</strong> i dati raccolti tramite i sondaggi. 
+                      Disattivandola, vedrai <strong>solo</strong> i dati ufficiali.
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      A oltre 24 ore dalla pubblicazione dei risultati, solo 7 università su 44 hanno reso disponibili 
+                      i dati su Universitaly, e in alcuni casi risultano incompleti.
+                    </p>
+                    <p>
+                      Per questo abbiamo deciso di raccogliere i risultati direttamente dagli studenti tramite sondaggi anonimi.
+                    </p>
+                    <p>
+                      Attivando questa opzione, vedrai anche i dati raccolti tramite i sondaggi. 
+                      Disattivandola, vedrai solo i dati ufficiali.
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      I dati dei sondaggi sono da considerarsi indicativi e non ufficiali.
+                    </p>
+                  </>
+                )}
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
