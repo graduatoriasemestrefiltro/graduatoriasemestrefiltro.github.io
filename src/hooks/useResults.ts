@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Result, StudentAggregate, UniversityStats, RegionStats } from "@/types/results";
+import { useSurveyData } from "@/contexts/SurveyDataContext";
 
 // Debug flag: set to true to simulate survey data for Bari Aldo Moro
 const DEBUG_SURVEY_BARI = false;
@@ -47,6 +48,7 @@ export const useUniversities = () => {
 export const useProcessedData = () => {
   const { data: results, isLoading: resultsLoading, error: resultsError } = useResults();
   const { data: universities, isLoading: unisLoading, error: unisError } = useUniversities();
+  const { includeSurveyData } = useSurveyData();
 
   const isLoading = resultsLoading || unisLoading;
   const error = resultsError || unisError;
@@ -72,12 +74,17 @@ export const useProcessedData = () => {
   });
 
   // Debug: mark Bari data as survey if flag is enabled
-  const processedResults = DEBUG_SURVEY_BARI 
+  let processedResults = DEBUG_SURVEY_BARI 
     ? results.map(r => ({
         ...r,
         is_from_survey: r.universita.id === "02" ? true : r.is_from_survey
       }))
     : results;
+
+  // Filter out survey data if toggle is off
+  if (!includeSurveyData) {
+    processedResults = processedResults.filter(r => !r.is_from_survey);
+  }
 
   // Aggregate by student
   const studentMap = new Map<string, StudentAggregate>();
@@ -142,6 +149,9 @@ export const useProcessedData = () => {
     });
   });
   
+  // Track survey exam counts per university
+  const uniSurveyExamCounts = new Map<string, { total: number; survey: number }>();
+  
   // Update with actual data from results (track subject completion only, not avgScore yet)
   processedResults.forEach((r) => {
     // Convert ID to string to handle both string and number IDs from JSON
@@ -161,10 +171,22 @@ export const useProcessedData = () => {
         existing.hasBiologia = true;
         existing.studentsBiologia++;
       }
-      // If any result is from survey, mark university as from survey
+      
+      // Track survey exam counts
+      const counts = uniSurveyExamCounts.get(uniId) || { total: 0, survey: 0 };
+      counts.total++;
       if (r.is_from_survey) {
-        existing.isFromSurvey = true;
+        counts.survey++;
       }
+      uniSurveyExamCounts.set(uniId, counts);
+    }
+  });
+  
+  // Mark university as survey only if ≥50% of exams are from surveys
+  uniSurveyExamCounts.forEach((counts, uniId) => {
+    const uni = uniMap.get(uniId);
+    if (uni && counts.total > 0 && counts.survey / counts.total >= 0.5) {
+      uni.isFromSurvey = true;
     }
   });
 
