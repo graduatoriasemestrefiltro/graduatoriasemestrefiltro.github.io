@@ -72957,6 +72957,105 @@
         }
     },
     {
+        "etichetta": "SRV-Y5X0AMJ",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-Y5X0AMJ",
+        "punteggio": "20.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-Y5X0AMJ",
+        "punteggio": "22.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXAYDD",
+        "punteggio": "26.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXAYDD",
+        "punteggio": "24.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-DWXAYDD",
+        "punteggio": "13.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZAG69",
+        "punteggio": "8.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZAG69",
+        "punteggio": "14.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-2EZAG69",
+        "punteggio": "18.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
         "etichetta": "SRV-0QZBROZ",
         "punteggio": "25.70",
         "materia": "fisica",
