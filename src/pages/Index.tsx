@@ -72,7 +72,16 @@ const Index = () => {
                 asChild
                 className="bg-purple-600 hover:bg-purple-700 text-white shadow-md hover:shadow-lg transition-all"
               >
-                <a href="https://tally.so/r/eq5d0x" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://tally.so/r/eq5d0x" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).umami) {
+                      (window as any).umami.track('Survey button click');
+                    }
+                  }}
+                >
                   Compila il sondaggio
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
