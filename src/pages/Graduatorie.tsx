@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useUniversityIds } from "@/hooks/useUniversityIds";
 
 type ViewMode = "generale" | "fisica" | "chimica" | "biologia";
 
@@ -29,6 +30,7 @@ const Graduatorie = () => {
   const [activeTab, setActiveTab] = useState<ViewMode>("generale");
   const [selectedUniversities, setSelectedUniversities] = useState<string[]>([]);
   const [initialized, setInitialized] = useState(false);
+  const { getNameById, findUniversityByPartialMatch } = useUniversityIds();
   const {
     isLoading,
     error,
@@ -50,44 +52,64 @@ const Graduatorie = () => {
   // Initialize from URL on first load
   useEffect(() => {
     if (!initialized && availableUniversities.length > 0) {
-      const urlUni = searchParams.get("universita");
-      if (urlUni) {
-        // Find matching university (case-insensitive)
-        const matchedUni = availableUniversities.find(
-          u => u.toLowerCase() === urlUni.toLowerCase() || 
-               formatUniversityName(u).toLowerCase() === urlUni.toLowerCase()
-        );
-        if (matchedUni) {
-          setSelectedUniversities([matchedUni]);
+      const urlUniId = searchParams.get("uni");
+      if (urlUniId) {
+        // Resolve UUID to university name
+        const resolvedName = getNameById(urlUniId);
+        if (resolvedName) {
+          // Find matching university in available list
+          const matchedUni = availableUniversities.find(
+            u => u.toLowerCase() === resolvedName.toLowerCase() || 
+                 formatUniversityName(u).toLowerCase() === formatUniversityName(resolvedName).toLowerCase()
+          );
+          if (matchedUni) {
+            setSelectedUniversities([matchedUni]);
+          }
         }
       }
       setInitialized(true);
     }
-  }, [availableUniversities, searchParams, initialized]);
+  }, [availableUniversities, searchParams, initialized, getNameById]);
 
   // Update URL when selection changes
   useEffect(() => {
     if (!initialized) return;
     
     if (selectedUniversities.length === 1) {
-      setSearchParams({ universita: selectedUniversities[0] }, { replace: true });
+      const uniMapping = findUniversityByPartialMatch(selectedUniversities[0]);
+      if (uniMapping) {
+        setSearchParams({ uni: uniMapping.id }, { replace: true });
+      }
     } else if (selectedUniversities.length === 0) {
       setSearchParams({}, { replace: true });
     } else {
       // Multiple universities - clear URL param
       setSearchParams({}, { replace: true });
     }
-  }, [selectedUniversities, initialized, setSearchParams]);
+  }, [selectedUniversities, initialized, setSearchParams, findUniversityByPartialMatch]);
 
   const toggleUniversity = (uni: string) => {
-    setSelectedUniversities(prev => 
-      prev.includes(uni) 
+    setSelectedUniversities(prev => {
+      const newSelection = prev.includes(uni) 
         ? prev.filter(u => u !== uni)
-        : [...prev, uni]
-    );
+        : [...prev, uni];
+      
+      if (typeof window !== 'undefined' && (window as any).umami) {
+        (window as any).umami.track('graduatorie_filter_changed', { 
+          action: prev.includes(uni) ? 'removed' : 'added',
+          count: newSelection.length 
+        });
+      }
+      return newSelection;
+    });
   };
 
-  const clearUniversities = () => setSelectedUniversities([]);
+  const clearUniversities = () => {
+    setSelectedUniversities([]);
+    if (typeof window !== 'undefined' && (window as any).umami) {
+      (window as any).umami.track('graduatorie_filter_cleared');
+    }
+  };
 
   // Compute filtered averages and pass rates
   const filteredStats = useMemo(() => {

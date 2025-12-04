@@ -164,7 +164,13 @@ export const SpotsTracker = ({
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => setShowEstimate(!showEstimate)}
+            onClick={() => {
+              const newState = !showEstimate;
+              setShowEstimate(newState);
+              if (typeof window !== 'undefined' && (window as any).umami) {
+                (window as any).umami.track(newState ? 'estimate_expanded' : 'estimate_collapsed');
+              }
+            }}
             className="w-full text-muted-foreground hover:text-foreground"
           >
             <TrendingUp className="h-4 w-4 mr-2" />
@@ -181,7 +187,12 @@ export const SpotsTracker = ({
               <span className="text-xs text-muted-foreground">Metodo:</span>
               <Select
                 value={projectionMethod}
-                onValueChange={(value) => onProjectionMethodChange?.(value as ProjectionMethod)}
+                onValueChange={(value) => {
+                  onProjectionMethodChange?.(value as ProjectionMethod);
+                  if (typeof window !== 'undefined' && (window as any).umami) {
+                    (window as any).umami.track('projection_method_changed', { method: value });
+                  }
+                }}
               >
                 <SelectTrigger className="w-[160px] h-8 text-xs">
                   <SelectValue />

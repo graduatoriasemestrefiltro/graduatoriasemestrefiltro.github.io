@@ -241,7 +241,12 @@ export const ItalyMap = ({ regionStats, universityStats, onRegionClick }: ItalyM
           <span className="text-xl">🇮🇹</span>
           Mappa
         </h3>
-        <Select value={metric} onValueChange={(v) => setMetric(v as MapMetric)}>
+        <Select value={metric} onValueChange={(v) => {
+          setMetric(v as MapMetric);
+          if (typeof window !== 'undefined' && (window as any).umami) {
+            (window as any).umami.track('map_metric_changed', { metric: v });
+          }
+        }}>
           <SelectTrigger className="w-[140px] h-8 text-xs">
             <SelectValue />
           </SelectTrigger>

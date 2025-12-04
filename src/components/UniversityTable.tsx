@@ -26,6 +26,7 @@ import {
 import { CircularProgress } from "./CircularProgress";
 import { CoverageDetailDialog } from "./CoverageDetailDialog";
 import { useEnrollments } from "@/hooks/useEnrollments";
+import { useUniversityIds } from "@/hooks/useUniversityIds";
 
 interface SourcesBreakdown {
   ministerial: number;
@@ -35,23 +36,24 @@ interface SourcesBreakdown {
 }
 
 const SurveyBadge = ({ sourcesBreakdown }: { sourcesBreakdown?: SourcesBreakdown }) => {
-  const total = sourcesBreakdown 
-    ? sourcesBreakdown.ministerial + sourcesBreakdown.internal + sourcesBreakdown.unimi + sourcesBreakdown.logica 
-    : 0;
-  const surveyTotal = sourcesBreakdown 
-    ? sourcesBreakdown.internal + sourcesBreakdown.unimi + sourcesBreakdown.logica 
-    : 0;
   const isExclusivelySurvey = sourcesBreakdown && sourcesBreakdown.ministerial === 0;
   
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors">
+        <button 
+          className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs bg-purple-100 text-purple-700 border border-purple-200 font-sans w-fit cursor-pointer hover:bg-purple-200 transition-colors"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).umami) {
+              (window as any).umami.track('survey_badge_clicked_university');
+            }
+          }}
+        >
           <ClipboardList className="h-3 w-3" />
           <span>sondaggio</span>
         </button>
       </DialogTrigger>
-      <DialogContent className="max-w-sm">
+      <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-purple-700">
             <ClipboardList className="h-5 w-5" />
@@ -65,32 +67,17 @@ const SurveyBadge = ({ sourcesBreakdown }: { sourcesBreakdown?: SourcesBreakdown
           }
           {" "}Da considerarsi indicativi e non ufficiali.
         </p>
-        {sourcesBreakdown && total > 0 && (
-          <div className="text-sm border-t pt-3 mt-2 space-y-1.5">
-            <p className="font-medium text-foreground">Fonti dati:</p>
-            {sourcesBreakdown.ministerial > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Ministeriali</span>
-                <span className="font-mono">{sourcesBreakdown.ministerial} ({((sourcesBreakdown.ministerial / total) * 100).toFixed(0)}%)</span>
-              </div>
-            )}
+        {sourcesBreakdown && (sourcesBreakdown.internal > 0 || sourcesBreakdown.unimi > 0 || sourcesBreakdown.logica > 0) && (
+          <div className="text-xs text-muted-foreground border-t pt-3 mt-2 space-y-1.5">
+            <p className="font-medium text-foreground mb-2">Fonti presenti per questa università:</p>
             {sourcesBreakdown.internal > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Sondaggio sito</span>
-                <span className="font-mono">{sourcesBreakdown.internal} ({((sourcesBreakdown.internal / total) * 100).toFixed(0)}%)</span>
-              </div>
+              <p><strong>Sondaggio sito:</strong> dati raccolti tramite il sondaggio condotto direttamente su questo sito.</p>
             )}
             {sourcesBreakdown.unimi > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Sondaggio UniMi</span>
-                <span className="font-mono">{sourcesBreakdown.unimi} ({((sourcesBreakdown.unimi / total) * 100).toFixed(0)}%)</span>
-              </div>
+              <p><strong>Sondaggio UniMi:</strong> dati raccolti tramite sondaggio condotto interamente dai rappresentanti degli studenti dell{"'"}Università degli Studi di Milano.</p>
             )}
             {sourcesBreakdown.logica > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Logica Test</span>
-                <span className="font-mono">{sourcesBreakdown.logica} ({((sourcesBreakdown.logica / total) * 100).toFixed(0)}%)</span>
-              </div>
+              <p><strong>Logica Test:</strong> dati provenienti dal sondaggio di Logica Test.</p>
             )}
           </div>
         )}
@@ -199,7 +186,7 @@ type SortKey = "nome" | "totalStudents" | "avgScore" | "avgScoreIdonei" | "idone
 type SortDir = "asc" | "desc";
 
 // Mobile card for university
-const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAverages?: boolean }) => (
+const UniversityCard = ({ uni, showSubjectAverages, universityId }: { uni: any; showSubjectAverages?: boolean; universityId?: string }) => (
   <div className="p-4 rounded-lg border border-border bg-card/50 space-y-3">
     <div className="flex items-start justify-between gap-2">
       <div className="flex-1 min-w-0">
@@ -236,7 +223,7 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
       <div className="flex gap-4 text-sm">
         <div className="flex-1 space-y-2 pr-3 border-r border-border">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Studenti:</span>
+            <span className="text-muted-foreground">Studenti censiti:</span>
             <span className="font-mono">{uni.uniqueStudents.toLocaleString("it-IT")}</span>
           </div>
           <div className="flex justify-between">
@@ -275,10 +262,15 @@ const UniversityCard = ({ uni, showSubjectAverages }: { uni: any; showSubjectAve
           </div>
         </div>
       )}
-      {uni.uniqueStudents > 0 && (
+      {uni.uniqueStudents > 0 && universityId && (
         <Link 
-          to={`/graduatorie?universita=${encodeURIComponent(uni.nome)}`}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          to={`/graduatorie?uni=${universityId}`}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (typeof window !== 'undefined' && (window as any).umami) {
+              (window as any).umami.track('university_ranking_clicked', { university: uni.nome });
+            }
+          }}
           className="mt-3 pt-3 border-t border-border flex items-center justify-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
         >
           <ExternalLink className="h-4 w-4" />
@@ -293,6 +285,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
   const [sortKey, setSortKey] = useState<SortKey>("avgScore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const { getEnrollment } = useEnrollments();
+  const { findUniversityByPartialMatch } = useUniversityIds();
 
   // Calculate per-source exam counts per university
   const sourceBreakdownByUni = useMemo(() => {
@@ -471,9 +464,17 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
 
       {/* Mobile: Cards */}
       <div className="md:hidden space-y-3 pr-2">
-        {displayData.map((uni) => (
-          <UniversityCard key={uni.id} uni={uni} showSubjectAverages={showSubjectAverages} />
-        ))}
+        {displayData.map((uni) => {
+          const uniMapping = findUniversityByPartialMatch(uni.nome);
+          return (
+            <UniversityCard 
+              key={uni.id} 
+              uni={uni} 
+              showSubjectAverages={showSubjectAverages}
+              universityId={uniMapping?.id}
+            />
+          );
+        })}
       </div>
 
       {/* Desktop: Table */}
@@ -490,7 +491,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                   <TableHead className="text-center">Materie</TableHead>
                 )}
                 <TableHead className="text-right">
-                  <SortButton column="uniqueStudents" label="Studenti" />
+                  <SortButton column="uniqueStudents" label="Studenti censiti" />
                 </TableHead>
                 <TableHead className="text-right">
                   <SortButton column="avgScore" label="Media" />
@@ -536,7 +537,9 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
               </TableRow>
             </TableHeader>
             <TableBody>
-              {displayData.map((uni) => (
+              {displayData.map((uni) => {
+                const uniMapping = findUniversityByPartialMatch(uni.nome);
+                return (
                 <TableRow key={uni.id} className="hover:bg-secondary/20">
                   <TableCell className="font-medium">
                     <div>
@@ -607,10 +610,15 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                     )}
                   </TableCell>
                   <TableCell className="text-center">
-                    {uni.uniqueStudents > 0 ? (
+                    {uni.uniqueStudents > 0 && uniMapping ? (
                       <Link 
-                        to={`/graduatorie?universita=${encodeURIComponent(uni.nome)}`}
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        to={`/graduatorie?uni=${uniMapping.id}`}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                          if (typeof window !== 'undefined' && (window as any).umami) {
+                            (window as any).umami.track('university_ranking_clicked', { university: uni.nome });
+                          }
+                        }}
                         className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
@@ -619,7 +627,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                     ) : null}
                   </TableCell>
                 </TableRow>
-              ))}
+              )})}
             </TableBody>
           </Table>
         </div>

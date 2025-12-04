@@ -82,7 +82,14 @@ export const CoverageDetailDialog = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="hover:opacity-80 transition-opacity cursor-pointer">
+        <button 
+          className="hover:opacity-80 transition-opacity cursor-pointer"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).umami) {
+              (window as any).umami.track('coverage_details_opened', { university: universityName });
+            }
+          }}
+        >
           <CircularProgress percentage={coverage} size={size} strokeWidth={strokeWidth} />
         </button>
       </DialogTrigger>

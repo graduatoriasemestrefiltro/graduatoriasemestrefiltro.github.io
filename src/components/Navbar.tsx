@@ -77,7 +77,12 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
               <Switch
                 id="survey-toggle"
                 checked={includeSurveyData}
-                onCheckedChange={setIncludeSurveyData}
+                onCheckedChange={(checked) => {
+                  setIncludeSurveyData(checked);
+                  if (typeof window !== 'undefined' && (window as any).umami) {
+                    (window as any).umami.track('survey_toggle_changed', { enabled: checked });
+                  }
+                }}
                 className="data-[state=checked]:bg-purple-600"
               />
               <Label 
@@ -152,7 +157,13 @@ export const Navbar = ({ onRefresh, isLoading }: NavbarProps) => {
       {/* Survey Data Toggle - Mobile */}
       <div className="sm:hidden border-t border-border/50 px-4 py-2 flex items-center justify-center gap-2">
         <button
-          onClick={() => setIncludeSurveyData(!includeSurveyData)}
+          onClick={() => {
+            const newState = !includeSurveyData;
+            setIncludeSurveyData(newState);
+            if (typeof window !== 'undefined' && (window as any).umami) {
+              (window as any).umami.track('survey_toggle_changed', { enabled: newState });
+            }
+          }}
           className={cn(
             "px-3 py-1 rounded-full text-xs font-medium transition-colors",
             includeSurveyData

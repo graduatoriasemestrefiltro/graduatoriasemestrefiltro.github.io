@@ -220,6 +220,9 @@ export const RankingTable = ({ results, studentAggregates, activeTab: externalTa
     } else {
       setInternalTab(tab);
     }
+    if (typeof window !== 'undefined' && (window as any).umami) {
+      (window as any).umami.track('ranking_tab_changed', { tab });
+    }
   };
 
   const filterResults = (items: any[], searchTerm: string) => {
