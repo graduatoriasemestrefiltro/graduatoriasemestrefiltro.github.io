@@ -71736,6 +71736,39 @@
         }
     },
     {
+        "etichetta": "SRV-PDLDBZ1",
+        "punteggio": "22.50",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-PDLDBZ1",
+        "punteggio": "21.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-PDLDBZ1",
+        "punteggio": "19.10",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
         "etichetta": "SRV-GDXEJOK",
         "punteggio": "15.00",
         "materia": "fisica",
