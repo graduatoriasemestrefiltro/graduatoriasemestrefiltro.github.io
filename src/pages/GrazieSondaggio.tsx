@@ -1,19 +1,166 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Copy, MessageCircle, Send, Heart, AlertTriangle, Github } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Check, Copy, MessageCircle, Send, Heart, AlertTriangle, Github, Trophy, MapPin, Users, CheckCircle, XCircle, Clock, AlertCircle } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useProcessedData } from '@/hooks/useResults';
+import { useEnrollments, calculateEstimatedTotals } from '@/hooks/useEnrollments';
+import { formatUniversityName } from '@/lib/formatters';
+import { universityEnrollments } from '@/data/universityEnrollments';
+import { simulateAdmission } from '@/lib/admissionSimulation';
 
 const SURVEY_URL = 'https://graduatoriasemestrefiltro.github.io/#/sondaggio';
 const HOME_URL = 'https://graduatoriasemestrefiltro.github.io';
 const SHARE_MESSAGE = `Hai sostenuto gli esami del semestre filtro? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n🔗 Compila il sondaggio: ${SURVEY_URL}\n📈 Guarda le statistiche: ${HOME_URL}`;
+const TOTAL_SPOTS = 19196;
 
 const GrazieSondaggio = () => {
   const [searchParams] = useSearchParams();
   const submissionId = searchParams.get('id');
   const formattedId = submissionId ? `SRV-${submissionId.toUpperCase()}` : null;
   
+  // Get scores from URL parameters
+  const fisica = searchParams.get('fisica');
+  const chimica = searchParams.get('chimica');
+  const biologia = searchParams.get('biologia');
+  const uni = searchParams.get('uni');
+  
   const [copied, setCopied] = useState(false);
+  
+  // Fetch existing data for position calculation
+  const { studentAggregates, universityStats, isLoading } = useProcessedData();
+  const { getEnrollment, getTotalEnrollment } = useEnrollments();
+
+  // Parse user scores - treat 0 as "not taken", not as failed
+  const userScores = useMemo(() => {
+    const fis = fisica ? parseFloat(fisica) : null;
+    const chi = chimica ? parseFloat(chimica) : null;
+    const bio = biologia ? parseFloat(biologia) : null;
+    
+    // Filter out null/NaN and also 0 (which means not taken)
+    const takenScores = [fis, chi, bio].filter((s): s is number => s !== null && !isNaN(s) && s > 0);
+    const media = takenScores.length > 0 ? takenScores.reduce((a, b) => a + b, 0) / takenScores.length : null;
+    const completedExams = takenScores.length;
+    const allPassed = takenScores.length > 0 && takenScores.every(s => s >= 18);
+    const fullyQualified = completedExams === 3 && allPassed;
+    
+    // Check if any taken exam is failed (< 18)
+    const hasFailedExam = takenScores.some(s => s < 18);
+    
+    return {
+      fisica: fis && fis > 0 ? fis : null,
+      chimica: chi && chi > 0 ? chi : null,
+      biologia: bio && bio > 0 ? bio : null,
+      media,
+      completedExams,
+      allPassed,
+      fullyQualified,
+      hasFailedExam,
+    };
+  }, [fisica, chimica, biologia]);
+
+  // Calculate positions
+  const positions = useMemo(() => {
+    if (!userScores.media || isLoading) return null;
+    
+    // ALL students with media (for general/university rankings)
+    const allStudentsWithMedia = studentAggregates
+      .filter(s => s.media !== undefined)
+      .map(s => ({ media: s.media!, universita: s.universita, fullyQualified: s.fullyQualified, allPassed: s.allPassed }));
+    
+    // ELIGIBLE students only (for projected admission ranking)
+    const eligibleStudents = studentAggregates
+      .filter(s => s.media !== undefined && s.allPassed)
+      .map(s => ({ media: s.media!, universita: s.universita, fullyQualified: s.fullyQualified, allPassed: s.allPassed }));
+    
+    const userEntry = {
+      media: userScores.media,
+      universita: uni || '',
+      fullyQualified: userScores.fullyQualified,
+      allPassed: userScores.allPassed,
+    };
+    
+    // General ranking: among ALL students
+    const sortedAll = [...allStudentsWithMedia, userEntry].sort((a, b) => b.media - a.media);
+    const generalPosition = sortedAll.findIndex(s => s === userEntry) + 1;
+    
+    // University ranking: among ALL students at that uni
+    let universityPosition: number | null = null;
+    let universityTotal: number | null = null;
+    if (uni) {
+      const uniStudents = allStudentsWithMedia.filter(s => s.universita === uni);
+      const sortedUni = [...uniStudents, userEntry].sort((a, b) => b.media - a.media);
+      universityPosition = sortedUni.findIndex(s => s === userEntry) + 1;
+      universityTotal = sortedUni.length;
+    }
+    
+    // Projected position among ELIGIBLE students (only they compete for spots)
+    const { estimatedIdonei, estimatedPotenziali } = calculateEstimatedTotals(
+      studentAggregates,
+      getEnrollment,
+      getTotalEnrollment,
+      'national'
+    );
+    const estimatedEligible = estimatedIdonei + estimatedPotenziali;
+    const totalEnrollment = getTotalEnrollment();
+    
+    // Calculate position among eligible students only
+    const eligibleSorted = [...eligibleStudents, userEntry].sort((a, b) => b.media - a.media);
+    const eligiblePosition = eligibleSorted.findIndex(s => s === userEntry) + 1;
+    
+    // Project to estimated eligible total
+    const actualEligibleWithUser = eligibleStudents.length + 1;
+    const eligibleRatio = actualEligibleWithUser > 0 ? estimatedEligible / actualEligibleWithUser : 1;
+    const projectedPosition = Math.round(eligiblePosition * eligibleRatio);
+    
+    // Show total enrollment for context, but position is among eligibles
+    const projectedTotal = totalEnrollment;
+    const projectedEligibleTotal = estimatedEligible;
+    
+    // Check if projected position would mean admission
+    const wouldBeAdmitted = userScores.allPassed && projectedPosition <= TOTAL_SPOTS;
+    
+    // University-specific admission analysis using simulation
+    let uniAdmissionStatus: 'guaranteed' | 'at_risk' | 'unlikely' | null = null;
+    let uniSpots: number | null = null;
+    let projectedUniPosition: number | null = null;
+    let displacedCount: number | null = null;
+    let worstCasePosition: number | null = null;
+    
+    if (uni && wouldBeAdmitted && userScores.media) {
+      // Run admission simulation with dynamic programming
+      const simulation = simulateAdmission(
+        studentAggregates,
+        userScores.media,
+        uni,
+        eligibleRatio
+      );
+      
+      if (simulation) {
+        uniAdmissionStatus = simulation.status;
+        uniSpots = simulation.realUniSpots;
+        projectedUniPosition = simulation.userUniPosition;
+        displacedCount = simulation.displacedAboveUser;
+        worstCasePosition = simulation.userUniPosition + simulation.displacedAboveUser;
+      }
+    }
+    
+    return {
+      generalPosition,
+      generalTotal: sortedAll.length,
+      universityPosition,
+      universityTotal,
+      projectedPosition,
+      projectedTotal,
+      wouldBeAdmitted,
+      uniAdmissionStatus,
+      uniSpots,
+      projectedUniPosition,
+      displacedCount,
+      worstCasePosition,
+    };
+  }, [studentAggregates, userScores, uni, isLoading, getEnrollment, getTotalEnrollment]);
 
   const trackEvent = (eventName: string) => {
     if (typeof window !== 'undefined' && (window as any).umami) {
@@ -24,6 +171,39 @@ const GrazieSondaggio = () => {
   useEffect(() => {
     trackEvent('Thank you page view');
   }, []);
+
+  // Track admission status events
+  useEffect(() => {
+    if (!positions || userScores.completedExams === 0) return;
+    
+    // Track admission status
+    if (userScores.fullyQualified) {
+      if (positions.wouldBeAdmitted) {
+        if (positions.uniAdmissionStatus === 'guaranteed') {
+          trackEvent('Status: Ammesso nella sede');
+        } else {
+          trackEvent('Status: Ammesso ma non nella sede');
+        }
+      } else {
+        trackEvent('Status: Fuori dal numero di posti');
+      }
+    } else if (userScores.allPassed && !userScores.hasFailedExam) {
+      trackEvent('Status: Esami da completare');
+    } else {
+      trackEvent('Status: Non idoneo');
+    }
+    
+    // Track motivational messages shown
+    if (userScores.fullyQualified && positions.wouldBeAdmitted && positions.uniAdmissionStatus === 'guaranteed') {
+      trackEvent('Motivational: Congratulazioni ammesso');
+    } else if (userScores.fullyQualified && positions.wouldBeAdmitted && positions.uniAdmissionStatus !== 'guaranteed') {
+      trackEvent('Motivational: Migliora per la sede');
+    } else if (userScores.allPassed && !userScores.hasFailedExam) {
+      trackEvent('Motivational: Esami da completare');
+    } else if (userScores.hasFailedExam) {
+      trackEvent('Motivational: Non arrenderti');
+    }
+  }, [positions, userScores]);
 
   const handleCopyLink = async () => {
     trackEvent('Share: Copy link');
@@ -48,6 +228,8 @@ const GrazieSondaggio = () => {
     window.open(url, '_blank');
   };
 
+  const hasScores = userScores.completedExams > 0;
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white flex flex-col">
       {/* Top Disclaimer */}
@@ -61,20 +243,20 @@ const GrazieSondaggio = () => {
 
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="max-w-lg w-full shadow-xl border-purple-100">
-          <CardContent className="pt-8 pb-6 px-6 text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Heart className="h-8 w-8 text-purple-600" fill="currentColor" />
+          <CardContent className="pt-5 pb-5 px-5 text-center">
+            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Heart className="h-6 w-6 text-purple-600" fill="currentColor" />
             </div>
             
-            <h1 className="text-2xl font-bold text-gray-900 mb-3">
+            <h1 className="text-lg font-bold text-gray-900 mb-1">
               Grazie per aver compilato il sondaggio!
             </h1>
             
-            <p className="text-gray-600 mb-4 text-sm">
-              <span className="font-semibold text-purple-700">Condividi il sondaggio con i tuoi compagni di corso</span> per rendere i dati ancora più utili! 💜
+            <p className="text-gray-600 mb-3 text-sm">
+              <span className="font-semibold text-purple-700">Condividi con i tuoi compagni</span> per rendere i dati più utili! 💜
             </p>
 
-            <div className="flex gap-2 mb-6">
+            <div className="flex gap-2 mb-4">
               <Button
                 onClick={handleWhatsAppShare}
                 className="flex-1 bg-green-500 hover:bg-green-600 text-white"
@@ -105,7 +287,178 @@ const GrazieSondaggio = () => {
               </Button>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 mb-3">
+            {/* Position Estimates Section - Compact with dividers */}
+            {hasScores && !isLoading && positions && (
+              <>
+                <Separator className="my-4" />
+                <div className="space-y-3">
+                  {/* Positions grid - only show projected for eligible students */}
+                  <div className={`grid gap-1.5 ${
+                    userScores.allPassed 
+                      ? (uni && positions.universityPosition ? 'grid-cols-3' : 'grid-cols-2')
+                      : (uni && positions.universityPosition ? 'grid-cols-2' : 'grid-cols-1')
+                  }`}>
+                    <div className="bg-gray-50 border border-gray-200 rounded-md px-2 py-1.5 text-center">
+                      <div className="flex items-center justify-center gap-1 text-[9px] text-gray-500">
+                        <Trophy className="h-2.5 w-2.5" />
+                        <span>Generale</span>
+                      </div>
+                      <p className="text-base font-bold text-gray-700">
+                        {positions.generalPosition}°<span className="text-[10px] font-normal text-gray-500">/{positions.generalTotal.toLocaleString()}</span>
+                      </p>
+                    </div>
+
+                    {uni && positions.universityPosition && positions.universityTotal && (
+                      <div className="bg-gray-50 border border-gray-200 rounded-md px-2 py-1.5 text-center">
+                        <div className="flex items-center justify-center gap-1 text-[9px] text-gray-500">
+                          <MapPin className="h-2.5 w-2.5" />
+                          <span className="truncate max-w-[60px]">{formatUniversityName(uni)}</span>
+                        </div>
+                        <p className="text-base font-bold text-gray-700">
+                          {positions.universityPosition}°<span className="text-[10px] font-normal text-gray-500">/{positions.universityTotal.toLocaleString()}</span>
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Only show projected position for eligible students */}
+                    {userScores.allPassed && (
+                      <div className="bg-gray-50 border border-gray-200 rounded-md px-2 py-1.5 text-center">
+                        <div className="flex items-center justify-center gap-1 text-[9px] text-gray-500">
+                          <Users className="h-2.5 w-2.5" />
+                          <span>Proiettata</span>
+                        </div>
+                        <p className="text-base font-bold text-gray-700">
+                          ~{positions.projectedPosition.toLocaleString()}°
+                          {positions.projectedTotal && <span className="text-[10px] font-normal text-gray-500">/~{positions.projectedTotal.toLocaleString()}</span>}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <Separator className="my-2" />
+
+                  {/* Final status - all cases */}
+                  {userScores.fullyQualified ? (
+                    // Case: Fully qualified (all 3 exams ≥18) - Combined admission block
+                    <>
+                      <div className={`border-2 rounded-lg p-3 text-center ${
+                        positions.wouldBeAdmitted 
+                          ? (positions.uniAdmissionStatus === 'guaranteed'
+                              ? 'bg-green-50 border-green-400'
+                              : 'bg-amber-50 border-amber-400')
+                          : 'bg-red-50 border-red-400'
+                      }`}>
+                        {positions.wouldBeAdmitted ? (
+                          <>
+                            <div className="flex items-center justify-center gap-2 mb-1">
+                              <CheckCircle className="h-5 w-5 text-green-600" />
+                              <span className="text-sm font-semibold text-green-700">
+                                Secondo le nostre stime sei ammesso
+                              </span>
+                            </div>
+                            {uni && positions.uniSpots && (
+                              <p className={`text-xs ${
+                                positions.uniAdmissionStatus === 'guaranteed' 
+                                  ? 'text-green-600'
+                                  : 'text-amber-700'
+                              }`}>
+                                {positions.uniAdmissionStatus === 'guaranteed' 
+                                  ? `probabilmente a ${formatUniversityName(uni)}`
+                                  : `ma probabilmente non a ${formatUniversityName(uni)}`}
+                              </p>
+                            )}
+                          </>
+                        ) : (
+                          <div className="flex items-center justify-center gap-2">
+                            <XCircle className="h-5 w-5 text-red-600" />
+                            <span className="text-sm font-semibold text-red-700">Fuori dal numero di posti ({TOTAL_SPOTS.toLocaleString()})</span>
+                          </div>
+                        )}
+                      </div>
+                      {/* Congratulations for guaranteed admission */}
+                      {positions.wouldBeAdmitted && positions.uniAdmissionStatus === 'guaranteed' && (
+                        <div className="bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-300 rounded-xl p-4 text-center mt-3">
+                          <p className="text-sm font-medium text-green-800 leading-relaxed">
+                            🎉 <strong className="text-green-900">Sembra che tu ce l'abbia fatta!</strong>
+                          </p>
+                          <p className="text-sm text-green-700 mt-2 leading-relaxed">
+                            Secondo le nostre stime, dovresti essere ammesso. Inizia ora un percorso bellissimo e impegnativo — sarai il medico che avresti voluto incontrare. In bocca al lupo! 🩺💚
+                          </p>
+                          <p className="text-[10px] text-green-600/70 mt-2 italic">
+                            Ricorda: questa è solo una stima basata sui dati raccolti. La graduatoria ufficiale potrebbe differire.
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  ) : userScores.allPassed && !userScores.hasFailedExam ? (
+                    // Case: All taken exams are ≥18 but not all 3 done yet
+                    <>
+                      <div className="bg-amber-50 border-2 border-amber-400 rounded-lg p-3 text-center">
+                        <div className="flex items-center justify-center gap-2">
+                          <Clock className="h-5 w-5 text-amber-600" />
+                          <span className="text-sm font-semibold text-amber-700">
+                            Devi ancora sostenere {3 - userScores.completedExams} {userScores.completedExams === 2 ? 'esame' : 'esami'} per essere ammesso
+                          </span>
+                        </div>
+                      </div>
+                      {/* Motivational message for pending exams */}
+                      <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
+                        <p className="text-sm font-medium text-purple-800 leading-relaxed">
+                          💪 <strong className="text-purple-900">Prossimo appello: 10 dicembre!</strong>
+                        </p>
+                        <p className="text-sm text-purple-700 mt-2 leading-relaxed">
+                          Hai già dimostrato di avere tutte le capacità per farcela. Ogni esame superato è una conquista enorme — sei più vicino di quanto pensi! 🌟
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    // Case: Not qualified (at least one exam <18)
+                    <>
+                      <div className="bg-red-50 border-2 border-red-400 rounded-lg p-3 text-center">
+                        <div className="flex items-center justify-center gap-2">
+                          <AlertCircle className="h-5 w-5 text-red-600" />
+                          <span className="text-sm font-semibold text-red-700">Non idoneo (voto &lt;18 in almeno un esame)</span>
+                        </div>
+                      </div>
+                      {/* Motivational message for failed exam */}
+                      <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
+                        <p className="text-sm font-medium text-purple-800 leading-relaxed">
+                          🔥 <strong className="text-purple-900">Non arrenderti!</strong>
+                        </p>
+                        <p className="text-sm text-purple-700 mt-2 leading-relaxed">
+                          Il 10 dicembre hai una nuova occasione. Tantissimi studenti ce l'hanno fatta al secondo tentativo — questo percorso è difficile per tutti, ma tu hai la forza per superarlo. Credi in te stesso! 💜
+                        </p>
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Motivational message for eligible but not at preferred uni */}
+                  {userScores.fullyQualified && positions.wouldBeAdmitted && uni && positions.uniAdmissionStatus !== 'guaranteed' && (
+                    <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
+                      <p className="text-sm font-medium text-purple-800 leading-relaxed">
+                        🎯 <strong className="text-purple-900">Vuoi entrare a {formatUniversityName(uni)}?</strong>
+                      </p>
+                      <p className="text-sm text-purple-700 mt-2 leading-relaxed">
+                        Il 10 dicembre puoi migliorare il tuo punteggio! Ogni punto in più ti avvicina alla tua università dei sogni. Ce la puoi fare! 🚀
+                      </p>
+                    </div>
+                  )}
+
+                  <p className="text-[9px] text-gray-400 text-center">
+                    * Stime basate sui sondaggi, non graduatoria ufficiale.
+                  </p>
+                </div>
+                <Separator className="my-4" />
+              </>
+            )}
+
+            {isLoading && hasScores && (
+              <div className="mb-4 py-2">
+                <p className="text-xs text-gray-500">Calcolo posizione...</p>
+              </div>
+            )}
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3">
               <p className="text-xs text-blue-700">
                 ⏱️ I tuoi risultati saranno visibili sul sito entro <strong>5 minuti</strong>.
               </p>
@@ -118,7 +471,7 @@ const GrazieSondaggio = () => {
                   {formattedId}
                 </code>
                 <p className="text-xs text-gray-500">
-                  Se vuoi, salvalo per ritrovarti nella colonna "etichetta". Ricorda: questa è una stima basata sui sondaggi, non la graduatoria ufficiale.
+                  Se vuoi, salvalo per ritrovarti nella colonna "etichetta".
                 </p>
               </div>
             )}

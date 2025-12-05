@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { StudentAggregate } from "@/types/results";
-import { universityEnrollments } from "@/data/universityEnrollments";
+import { universityEnrollments, UniversityEnrollmentData } from "@/data/universityEnrollments";
 
 // Normalize university name for matching
 const normalizeUniName = (name: string): string => {
@@ -13,99 +13,38 @@ const normalizeUniName = (name: string): string => {
     .replace(/UNIVERSITA (DI |DEL |DELLA |DELL)?/g, "")
     .replace(/UNIVERSITA'/g, "")
     .replace(/UNIVERSITÀ/g, "")
+    .replace(/ALMA MATER STUDIORUM -?\s*/g, "")
     .replace(/\s+/g, " ")
     .trim();
 };
 
-// Special mappings for universities with unusual naming in enrollment data
-// Format: enrollmentKey -> { aliases: string[], excludeIf: string[] }
-const SPECIAL_MAPPINGS: Record<string, { aliases: string[], excludeIf?: string[] }> = {
-  'Roma "Sapienza"': { 
-    aliases: ["SAPIENZA", "ROMA SAPIENZA", "LA SAPIENZA"],
-    excludeIf: ["TOR VERGATA"]
-  },
-  'Roma "Tor Vergata"': { 
-    aliases: ["TOR VERGATA", "ROMA TOR VERGATA"] 
-  },
-  "Universita' di Catania": { 
-    aliases: ["CATANIA"] 
-  },
-  "Universita' di Bologna": { 
-    aliases: ["BOLOGNA", "ALMA MATER"] 
-  },
-  "Universita' di Genova": { 
-    aliases: ["GENOVA"] 
-  },
-  "Universita' degli Studi di Milano": { 
-    aliases: ["STATALE MILANO", "STATALE DI MILANO"],
-    excludeIf: ["BICOCCA", "POLITECNICO"]  // Don't match Milano-Bicocca or Politecnico
-  },
-  "UNIVERSITA' DEGLI STUDI DI MILANO-BICOCCA": {
-    aliases: ["BICOCCA", "MILANO-BICOCCA", "MILANO BICOCCA"]
-  },
-  "Universita' degli Studi di Palermo": { 
-    aliases: ["PALERMO"] 
-  },
-  "Universita' degli Studi di Napoli Federico II": { 
-    aliases: ["NAPOLI FEDERICO II", "FEDERICO II"],
-    excludeIf: ["PARTHENOPE", "VANVITELLI", "CAMPANIA"]
-  },
-  "UNIVERSITA' DEGLI STUDI DI NAPOLI PARTHENOPE": {
-    aliases: ["PARTHENOPE", "NAPOLI PARTHENOPE"]
-  },
-  "UNIVERSITA' DEGLI STUDI DELLA CAMPANIA \"LUIGI VANVITELLI\"": {
-    aliases: ["VANVITELLI", "CAMPANIA VANVITELLI", "LUIGI VANVITELLI"]
-  },
-};
-
 export const useEnrollments = () => {
+  // Get enrollment count (iscrittiAppello) by university name
   const getEnrollment = useMemo(() => (universityName: string): number | null => {
-    // Direct match
-    if (universityEnrollments[universityName]) {
-      return universityEnrollments[universityName];
-    }
-    
     const normalizedSearch = normalizeUniName(universityName);
     
-    // Check special mappings first (with exclusions)
-    for (const [enrollmentKey, config] of Object.entries(SPECIAL_MAPPINGS)) {
-      if (universityEnrollments[enrollmentKey]) {
-        // Check if any exclusion term is present
-        const hasExclusion = config.excludeIf?.some(excl => 
-          normalizedSearch.includes(excl)
-        );
-        
-        if (!hasExclusion) {
-          for (const alias of config.aliases) {
-            if (normalizedSearch.includes(alias) || alias === normalizedSearch) {
-              return universityEnrollments[enrollmentKey];
-            }
-          }
-        }
+    // Try to find by normalized name match
+    for (const uni of universityEnrollments) {
+      const normalizedUniName = normalizeUniName(uni.nome);
+      if (normalizedUniName === normalizedSearch || 
+          normalizedSearch.includes(normalizedUniName) || 
+          normalizedUniName.includes(normalizedSearch)) {
+        return uni.iscrittiAppello;
       }
     }
     
-    // Exact normalized match
-    for (const [key, value] of Object.entries(universityEnrollments)) {
-      if (normalizeUniName(key) === normalizedSearch) {
-        return value;
-      }
-    }
-    
-    // Strict partial match - only if a unique identifying word matches
-    // and it's not a common word like "MILANO", "NAPOLI", "ROMA"
+    // Try partial match on key identifying words
     const commonCityWords = ["MILANO", "NAPOLI", "ROMA", "TORINO", "FIRENZE", "BOLOGNA", "PALERMO", "CATANIA", "GENOVA"];
+    const searchWords = normalizedSearch.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
     
-    for (const [key, value] of Object.entries(universityEnrollments)) {
-      const normalizedKey = normalizeUniName(key);
-      const searchWords = normalizedSearch.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
-      const keyWords = normalizedKey.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
+    for (const uni of universityEnrollments) {
+      const normalizedUniName = normalizeUniName(uni.nome);
+      const uniWords = normalizedUniName.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
       
-      // Match on unique identifying words (not city names)
       for (const searchWord of searchWords) {
-        for (const keyWord of keyWords) {
-          if (searchWord === keyWord) {
-            return value;
+        for (const uniWord of uniWords) {
+          if (searchWord === uniWord) {
+            return uni.iscrittiAppello;
           }
         }
       }
@@ -114,11 +53,65 @@ export const useEnrollments = () => {
     return null;
   }, []);
 
-  const getTotalEnrollment = useMemo(() => (): number => {
-    return Object.values(universityEnrollments).reduce((sum, val) => sum + val, 0);
+  // Get total enrollment across all universities (returns null if no data)
+  const getTotalEnrollment = useMemo(() => (): number | null => {
+    const total = universityEnrollments.reduce((sum, uni) => sum + (uni.iscrittiAppello || 0), 0);
+    return total > 0 ? total : null;
   }, []);
 
-  return { enrollments: universityEnrollments, loading: false, getEnrollment, getTotalEnrollment };
+  // Get full enrollment data by university ID
+  const getEnrollmentById = useMemo(() => (id: string): UniversityEnrollmentData | undefined => {
+    return universityEnrollments.find(u => u.id === id);
+  }, []);
+
+  // Get total available spots across all universities
+  const getTotalSpots = useMemo(() => (): number => {
+    return universityEnrollments.reduce((sum, uni) => sum + (uni.postiDisponibili || 0), 0);
+  }, []);
+
+  // Get available spots (postiDisponibili) by university name
+  const getSpots = useMemo(() => (universityName: string): number | null => {
+    const normalizedSearch = normalizeUniName(universityName);
+    
+    // Try to find by normalized name match
+    for (const uni of universityEnrollments) {
+      const normalizedUniName = normalizeUniName(uni.nome);
+      if (normalizedUniName === normalizedSearch || 
+          normalizedSearch.includes(normalizedUniName) || 
+          normalizedUniName.includes(normalizedSearch)) {
+        return uni.postiDisponibili;
+      }
+    }
+    
+    // Try partial match on key identifying words
+    const commonCityWords = ["MILANO", "NAPOLI", "ROMA", "TORINO", "FIRENZE", "BOLOGNA", "PALERMO", "CATANIA", "GENOVA"];
+    const searchWords = normalizedSearch.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
+    
+    for (const uni of universityEnrollments) {
+      const normalizedUniName = normalizeUniName(uni.nome);
+      const uniWords = normalizedUniName.split(" ").filter(w => w.length > 4 && !commonCityWords.includes(w));
+      
+      for (const searchWord of searchWords) {
+        for (const uniWord of uniWords) {
+          if (searchWord === uniWord) {
+            return uni.postiDisponibili;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }, []);
+
+  return { 
+    enrollments: universityEnrollments, 
+    loading: false, 
+    getEnrollment, 
+    getTotalEnrollment,
+    getEnrollmentById,
+    getTotalSpots,
+    getSpots,
+  };
 };
 
 export type ProjectionMethod = "per-university" | "national";
@@ -127,7 +120,7 @@ export type ProjectionMethod = "per-university" | "national";
 export const calculateEstimatedTotals = (
   studentAggregates: StudentAggregate[],
   getEnrollment: (name: string) => number | null,
-  getTotalEnrollment: () => number,
+  getTotalEnrollment: () => number | null,
   method: ProjectionMethod = "per-university"
 ) => {
   // Group students by university
@@ -143,6 +136,16 @@ export const calculateEstimatedTotals = (
   const totalActualStudents = studentAggregates.length;
   const totalActualIdonei = studentAggregates.filter((s) => s.fullyQualified).length;
   const totalActualPotenziali = studentAggregates.filter((s) => s.allPassed && !s.fullyQualified).length;
+
+  // If no enrollment data available, return actual values without projection
+  if (!totalEnrollment || totalEnrollment === 0) {
+    return {
+      estimatedIdonei: totalActualIdonei,
+      estimatedPotenziali: totalActualPotenziali,
+      estimatedStudents: totalActualStudents,
+      coveredUniversities: Object.keys(byUniversity).length,
+    };
+  }
 
   if (method === "national") {
     // National projection: assume all non-respondents nationally have the same rates

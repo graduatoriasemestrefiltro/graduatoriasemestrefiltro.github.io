@@ -3,20 +3,23 @@ interface CircularProgressProps {
   size?: number;
   strokeWidth?: number;
   className?: string;
+  colorClass?: string;
 }
 
 export const CircularProgress = ({ 
   percentage, 
   size = 40, 
   strokeWidth = 4,
-  className = ""
+  className = "",
+  colorClass
 }: CircularProgressProps) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
-  const offset = circumference - (percentage / 100) * circumference;
+  const offset = circumference - (Math.min(percentage, 100) / 100) * circumference;
   
-  // Color based on percentage
+  // Color based on percentage (or use custom color)
   const getColor = () => {
+    if (colorClass) return colorClass;
     if (percentage >= 80) return "text-success";
     if (percentage >= 50) return "text-warning";
     return "text-muted-foreground";
@@ -50,7 +53,7 @@ export const CircularProgress = ({
         />
       </svg>
       <span className={`absolute text-[10px] font-mono font-medium ${getColor()}`}>
-        {Math.round(percentage)}%
+        {Math.round(percentage)}{percentage > 100 ? "+" : ""}%
       </span>
     </div>
   );

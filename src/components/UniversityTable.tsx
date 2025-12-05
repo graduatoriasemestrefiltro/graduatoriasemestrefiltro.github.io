@@ -172,6 +172,29 @@ const PotenzialiHelp = () => (
   </Dialog>
 );
 
+const OccupancyHelp = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <button className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+        <HelpCircle className="h-3.5 w-3.5" />
+      </button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle className="flex items-center gap-2 text-orange-600">
+          <HelpCircle className="h-5 w-5" />
+          Occupazione stimata
+        </DialogTitle>
+      </DialogHeader>
+      <p className="text-sm text-muted-foreground">
+        Stima proiettata di quanti posti di questa sede verrebbero occupati, assumendo che tutti gli iscritti abbiano tassi di idoneità simili a chi ha compilato il sondaggio. 
+        <strong className="block mt-2">Attenzione:</strong> non considera le seconde scelte degli altri studenti, 
+        che potrebbero "invadere" questa sede se non entrano nella loro prima scelta.
+      </p>
+    </DialogContent>
+  </Dialog>
+);
+
 interface UniversityTableProps {
   universities: UniversityStats[];
   studentAggregates: StudentAggregate[];
@@ -181,7 +204,7 @@ interface UniversityTableProps {
   showPassingOnly?: boolean;
 }
 
-type SortKey = "nome" | "totalStudents" | "avgScore" | "avgScoreIdonei" | "idonei" | "potenzIdonei" | "uniqueStudents" | "avgFisica" | "avgChimica" | "avgBiologia" | "coverage";
+type SortKey = "nome" | "totalStudents" | "avgScore" | "avgScoreIdonei" | "idonei" | "potenzIdonei" | "uniqueStudents" | "avgFisica" | "avgChimica" | "avgBiologia" | "coverage" | "occupancy";
 type SortDir = "asc" | "desc";
 
 // Mobile card for university
@@ -214,6 +237,18 @@ const UniversityCard = ({ uni, showSubjectAverages, universityId }: { uni: any; 
               uniqueStudents={uni.uniqueStudents}
               size={32}
               strokeWidth={3}
+            />
+          </div>
+        )}
+        {uni.occupancy !== null && (
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] text-muted-foreground">Occ. stimata</span>
+            <OccupancyHelp />
+            <CircularProgress 
+              percentage={Math.min(uni.occupancy, 100)} 
+              size={32} 
+              strokeWidth={3} 
+              colorClass={uni.occupancy > 100 ? "text-red-500" : uni.occupancy > 80 ? "text-orange-500" : "text-emerald-500"}
             />
           </div>
         )}
@@ -283,7 +318,7 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("avgScore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
-  const { getEnrollment } = useEnrollments();
+  const { getEnrollment, getSpots } = useEnrollments();
 
   // Calculate per-source exam counts per university
   const sourceBreakdownByUni = useMemo(() => {
@@ -366,6 +401,13 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
       // Get source breakdown for this university
       const sourcesBreakdown = sourceBreakdownByUni.get(uni.nome) || { ministerial: 0, internal: 0, unimi: 0, logica: 0 };
 
+      // Calculate projected occupancy: project qualified students to full enrollment
+      const spots = getSpots(uni.nome);
+      const qualifiedCount = idonei + potenzIdonei;
+      const projectionRatio = enrollment && uniqueStudents > 0 ? enrollment / uniqueStudents : 1;
+      const projectedQualified = Math.round(qualifiedCount * projectionRatio);
+      const occupancy = spots && spots > 0 ? (projectedQualified / spots) * 100 : null;
+
       return {
         ...uni,
         uniqueStudents,
@@ -388,9 +430,11 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
         actualExams,
         expectedExams,
         sourcesBreakdown,
+        spots,
+        occupancy,
       };
     });
-  }, [universities, studentAggregates, showPassingOnly, getEnrollment, sourceBreakdownByUni]);
+  }, [universities, studentAggregates, showPassingOnly, getEnrollment, getSpots, sourceBreakdownByUni]);
 
   const sortedData = useMemo(() => {
     const filtered = universityData.filter((uni) =>
@@ -528,6 +572,12 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                     <CoverageHelp />
                   </div>
                 </TableHead>
+                <TableHead className="text-center">
+                  <div className="flex items-center justify-center gap-1">
+                    <SortButton column="occupancy" label="Occupazione stimata" />
+                    <OccupancyHelp />
+                  </div>
+                </TableHead>
                 <TableHead className="w-[80px]"></TableHead>
               </TableRow>
             </TableHeader>
@@ -596,6 +646,20 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
                           uniqueStudents={uni.uniqueStudents}
                           size={40}
                           strokeWidth={4}
+                        />
+                      </div>
+                    ) : (
+                      <span className="text-muted-foreground text-xs">-</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {uni.occupancy !== null ? (
+                      <div className="flex justify-center">
+                        <CircularProgress 
+                          percentage={Math.min(uni.occupancy, 100)} 
+                          size={40} 
+                          strokeWidth={4} 
+                          colorClass={uni.occupancy > 100 ? "text-red-500" : uni.occupancy > 80 ? "text-orange-500" : "text-emerald-500"}
                         />
                       </div>
                     ) : (
