@@ -312,7 +312,7 @@ const GrazieSondaggio = () => {
                       <div className="bg-gray-50 border border-gray-200 rounded-md px-2 py-1.5 text-center">
                         <div className="flex items-center justify-center gap-1 text-[9px] text-gray-500">
                           <MapPin className="h-2.5 w-2.5" />
-                          <span className="truncate max-w-[60px]">{formatUniversityName(uni)}</span>
+                          <span>{formatUniversityName(uni)}</span>
                         </div>
                         <p className="text-base font-bold text-gray-700">
                           {positions.universityPosition}°<span className="text-[10px] font-normal text-gray-500">/{positions.universityTotal.toLocaleString()}</span>
