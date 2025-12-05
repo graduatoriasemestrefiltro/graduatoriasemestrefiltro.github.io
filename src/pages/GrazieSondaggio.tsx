@@ -390,6 +390,14 @@ const GrazieSondaggio = () => {
                           </p>
                         </div>
                       )}
+                      {/* Reminder for fuori dal numero di posti */}
+                      {!positions.wouldBeAdmitted && (
+                        <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
+                          <p className="text-xs text-cyan-700 leading-relaxed">
+                            📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                          </p>
+                        </div>
+                      )}
                     </>
                   ) : userScores.allPassed && !userScores.hasFailedExam ? (
                     // Case: All taken exams are ≥18 but not all 3 done yet
@@ -411,6 +419,12 @@ const GrazieSondaggio = () => {
                           Hai già dimostrato di avere tutte le capacità per farcela. Ogni esame superato è una conquista enorme — sei più vicino di quanto pensi! 🌟
                         </p>
                       </div>
+                      {/* Reminder for December 23 survey */}
+                      <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
+                        <p className="text-xs text-cyan-700 leading-relaxed">
+                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                        </p>
+                      </div>
                     </>
                   ) : (
                     // Case: Not qualified (at least one exam <18)
@@ -430,19 +444,33 @@ const GrazieSondaggio = () => {
                           Il 10 dicembre hai una nuova occasione. Tantissimi studenti ce l'hanno fatta al secondo tentativo — questo percorso è difficile per tutti, ma tu hai la forza per superarlo. Credi in te stesso! 💜
                         </p>
                       </div>
+                      {/* Reminder for December 23 survey */}
+                      <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
+                        <p className="text-xs text-cyan-700 leading-relaxed">
+                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                        </p>
+                      </div>
                     </>
                   )}
                   
                   {/* Motivational message for eligible but not at preferred uni */}
                   {userScores.fullyQualified && positions.wouldBeAdmitted && uni && positions.uniAdmissionStatus !== 'guaranteed' && (
-                    <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
-                      <p className="text-sm font-medium text-purple-800 leading-relaxed">
-                        🎯 <strong className="text-purple-900">Vuoi entrare a {formatUniversityName(uni)}?</strong>
-                      </p>
-                      <p className="text-sm text-purple-700 mt-2 leading-relaxed">
-                        Il 10 dicembre puoi migliorare il tuo punteggio! Ogni punto in più ti avvicina alla tua università dei sogni. Ce la puoi fare! 🚀
-                      </p>
-                    </div>
+                    <>
+                      <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
+                        <p className="text-sm font-medium text-purple-800 leading-relaxed">
+                          🎯 <strong className="text-purple-900">Vuoi entrare a {formatUniversityName(uni)}?</strong>
+                        </p>
+                        <p className="text-sm text-purple-700 mt-2 leading-relaxed">
+                          Il 10 dicembre puoi migliorare il tuo punteggio! Ogni punto in più ti avvicina alla tua università dei sogni. Ce la puoi fare! 🚀
+                        </p>
+                      </div>
+                      {/* Reminder for December 23 survey */}
+                      <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
+                        <p className="text-xs text-cyan-700 leading-relaxed">
+                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                        </p>
+                      </div>
+                    </>
                   )}
 
                   <p className="text-[9px] text-gray-400 text-center">
@@ -459,22 +487,24 @@ const GrazieSondaggio = () => {
               </div>
             )}
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3">
-              <p className="text-xs text-blue-700">
-                ⏱️ I tuoi risultati saranno visibili sul sito entro <strong>5 minuti</strong>.
-              </p>
-            </div>
-
             {formattedId && (
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
-                <p className="text-xs text-gray-600 mb-1">Il tuo codice identificativo anonimo:</p>
-                <code className="block bg-white px-3 py-1.5 rounded-md text-base font-mono font-bold text-purple-700 border border-purple-200 mb-1.5">
-                  {formattedId}
-                </code>
-                <p className="text-xs text-gray-500">
-                  Se vuoi, salvalo per ritrovarti nella colonna "etichetta".
-                </p>
-              </div>
+              <>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3">
+                  <p className="text-xs text-blue-700">
+                    ⏱️ I tuoi risultati saranno visibili sul sito entro <strong>5 minuti</strong>.
+                  </p>
+                </div>
+            
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
+                  <p className="text-xs text-gray-600 mb-1">Il tuo codice identificativo anonimo:</p>
+                  <code className="block bg-white px-3 py-1.5 rounded-md text-base font-mono font-bold text-purple-700 border border-purple-200 mb-1.5">
+                    {formattedId}
+                  </code>
+                  <p className="text-xs text-gray-500">
+                    Se vuoi, salvalo per ritrovarti nella colonna "etichetta".
+                  </p>
+                </div>
+              </>
             )}
 
             <div className="pt-4 border-t border-gray-100">
