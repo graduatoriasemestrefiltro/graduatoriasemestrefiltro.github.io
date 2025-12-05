@@ -253,7 +253,7 @@ const GrazieSondaggio = () => {
             </h1>
             
             <p className="text-gray-600 mb-3 text-sm">
-              <span className="font-semibold text-purple-700">Condividi con i tuoi compagni</span> per rendere i dati più utili! 💜
+              <span className="font-semibold text-purple-700">Condividi il sondaggio con i tuoi compagni</span> per rendere i dati più utili e completi! 💜
             </p>
 
             <div className="flex gap-2 mb-4">
