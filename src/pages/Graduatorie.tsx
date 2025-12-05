@@ -129,7 +129,8 @@ const Graduatorie = () => {
       : studentAggregates;
 
     const calcAvg = (arr: number[]) => arr.length > 0 ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
-    const calcPassRate = (arr: number[]) => arr.length > 0 ? (arr.filter(x => x >= 18).length / arr.length) * 100 : 0;
+    // Score ≥17.5 rounds to 18, so it's considered passing
+    const calcPassRate = (arr: number[]) => arr.length > 0 ? (arr.filter(x => x >= 17.5).length / arr.length) * 100 : 0;
 
     const fisicaScores = filteredResults.filter(r => r.materia === "fisica").map(r => parseFloat(r.punteggio));
     const chimicaScores = filteredResults.filter(r => r.materia === "chimica").map(r => parseFloat(r.punteggio));
@@ -150,10 +151,10 @@ const Graduatorie = () => {
     const qualifiedAggregates = filteredAggregates.filter(s => s.allPassed);
     const qualifiedMediaScores = qualifiedAggregates.filter(s => s.media !== undefined).map(s => s.media!);
 
-    // Stats for students who passed each subject (≥18 in that subject)
-    const passedFisicaScores = fisicaScores.filter(s => s >= 18);
-    const passedChimicaScores = chimicaScores.filter(s => s >= 18);
-    const passedBiologiaScores = biologiaScores.filter(s => s >= 18);
+    // Stats for students who passed each subject (≥17.5 rounds to 18)
+    const passedFisicaScores = fisicaScores.filter(s => s >= 17.5);
+    const passedChimicaScores = chimicaScores.filter(s => s >= 17.5);
+    const passedBiologiaScores = biologiaScores.filter(s => s >= 17.5);
 
     return {
       avgMedia: calcAvg(mediaScores),

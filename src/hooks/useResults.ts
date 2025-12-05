@@ -115,7 +115,8 @@ export const useProcessedData = () => {
 
     existing[r.materia] = score;
     existing.completedExams++;
-    if (score < 18) {
+    // Score ≥17.5 rounds to 18, so it's considered passing
+    if (score < 17.5) {
       existing.allPassed = false;
     }
     existing.universita = r.universita.nome;

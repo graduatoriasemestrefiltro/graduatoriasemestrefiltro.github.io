@@ -374,10 +374,10 @@ export const UniversityTable = ({ universities, studentAggregates, results = [],
         ? studentsWithBiologia.reduce((sum, s) => sum + (s.biologia || 0), 0) / studentsWithBiologia.length 
         : 0;
 
-      // Calculate average per subject (only passing scores ≥18)
-      const passingFisica = students.filter((s) => s.fisica !== null && s.fisica !== undefined && s.fisica >= 18);
-      const passingChimica = students.filter((s) => s.chimica !== null && s.chimica !== undefined && s.chimica >= 18);
-      const passingBiologia = students.filter((s) => s.biologia !== null && s.biologia !== undefined && s.biologia >= 18);
+      // Calculate average per subject (only passing scores ≥17.5, which rounds to 18)
+      const passingFisica = students.filter((s) => s.fisica !== null && s.fisica !== undefined && s.fisica >= 17.5);
+      const passingChimica = students.filter((s) => s.chimica !== null && s.chimica !== undefined && s.chimica >= 17.5);
+      const passingBiologia = students.filter((s) => s.biologia !== null && s.biologia !== undefined && s.biologia >= 17.5);
       
       const avgFisicaPassing = passingFisica.length > 0 
         ? passingFisica.reduce((sum, s) => sum + (s.fisica || 0), 0) / passingFisica.length 

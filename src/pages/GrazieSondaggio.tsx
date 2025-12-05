@@ -42,7 +42,8 @@ const GrazieSondaggio = () => {
     const takenScores = [fis, chi, bio].filter((s): s is number => s !== null && !isNaN(s) && s > 0);
     const media = takenScores.length > 0 ? takenScores.reduce((a, b) => a + b, 0) / takenScores.length : null;
     const completedExams = takenScores.length;
-    const allPassed = takenScores.length > 0 && takenScores.every(s => s >= 18);
+    // Score ≥17.5 rounds to 18, so it's considered passing
+    const allPassed = takenScores.length > 0 && takenScores.every(s => s >= 17.5);
     const fullyQualified = completedExams === 3 && allPassed;
     
     // Check if any taken exam is failed (< 18)
