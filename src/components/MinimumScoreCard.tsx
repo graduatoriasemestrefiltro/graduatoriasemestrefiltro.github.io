@@ -512,13 +512,6 @@ export const MinimumScoreCard = ({
         )}
       </div>
 
-      {/* Alert if minimum is below 18 */}
-      {minimumScores.nationalMinMedia && minimumScores.nationalMinMedia < 18 && (
-        <div className="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-800">
-          <strong>Nota:</strong> Da decreto ministeriale, salvo modifiche, è necessario almeno 18 a ciascun esame per essere ammessi in graduatoria. 
-          Pertanto la media minima effettiva sarà comunque ≥18, indipendentemente dalla stima teorica.
-        </div>
-      )}
     </div>
   );
 };

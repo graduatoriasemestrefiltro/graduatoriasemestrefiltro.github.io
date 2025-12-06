@@ -15,7 +15,17 @@ const HOME_URL = 'https://graduatoriasemestrefiltro.github.io';
 const SHARE_MESSAGE = `Hai sostenuto gli esami del semestre filtro? Compila questo breve sondaggio anonimo per aiutare tutti a capire come stanno andando le graduatorie! 📊\n\n🔗 Compila il sondaggio: ${SURVEY_URL}\n📈 Guarda le statistiche: ${HOME_URL}`;
 const TOTAL_SPOTS = 19196;
 
+// Check if we're after December 10th 11:00 AM (second exam session completed)
+const isAfterSecondExam = (): boolean => {
+  const now = new Date();
+  const cutoff = new Date('2025-12-10T11:00:00+01:00'); // 11:00 CET
+  return now >= cutoff;
+};
+
 const GrazieSondaggio = () => {
+  // ⚠️ TEMPORARY: Toggle for testing post-second-exam messages
+  const [forceAfterSecondExam, setForceAfterSecondExam] = useState(false);
+  const afterSecondExam = forceAfterSecondExam || isAfterSecondExam();
   const [searchParams] = useSearchParams();
   const submissionId = searchParams.get('id');
   const formattedId = submissionId ? `SRV-${submissionId.toUpperCase()}` : null;
@@ -245,6 +255,21 @@ const GrazieSondaggio = () => {
         </p>
       </div>
 
+      {/* ⚠️ TEMPORARY: Test toggle for post-second-exam messages */}
+      <div className="bg-pink-100 border-b border-pink-300 px-4 py-2 flex items-center justify-center gap-3">
+        <span className="text-xs text-pink-700 font-medium">🧪 Test: simula post 10 dicembre</span>
+        <button
+          onClick={() => setForceAfterSecondExam(!forceAfterSecondExam)}
+          className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+            forceAfterSecondExam 
+              ? 'bg-pink-600 text-white' 
+              : 'bg-white text-pink-600 border border-pink-300'
+          }`}
+        >
+          {forceAfterSecondExam ? 'ON' : 'OFF'}
+        </button>
+      </div>
+
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="max-w-lg w-full shadow-xl border-purple-100">
           <CardContent className="pt-5 pb-5 px-5 text-center">
@@ -415,10 +440,14 @@ const GrazieSondaggio = () => {
                               Ricorda: questa è solo una stima basata sui dati raccolti. La graduatoria ufficiale potrebbe differire.
                             </p>
                           </div>
-                          {/* Reminder for retake - even for admitted students */}
+                          {/* Reminder for retake/survey */}
                           <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
                             <p className="text-xs text-cyan-700 leading-relaxed">
-                              📅 <strong>Vuoi alzare la media?</strong> Se deciderai di ritentare uno o più esami il 10 dicembre, ti aspettiamo il <strong>23 dicembre</strong> per aggiornare i tuoi dati — ogni risposta rende le stime più affidabili per tutti! 🤗💜
+                              {afterSecondExam ? (
+                                <>📅 <strong>Hai sostenuto il secondo appello?</strong> Ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ogni risposta rende le stime più affidabili per tutti! 🤗💜</>
+                              ) : (
+                                <>📅 <strong>Vuoi alzare la media?</strong> Se deciderai di ritentare uno o più esami il 10 dicembre, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ogni risposta rende le stime più affidabili per tutti! 🤗💜</>
+                              )}
                             </p>
                           </div>
                         </>
@@ -427,7 +456,11 @@ const GrazieSondaggio = () => {
                       {!positions.wouldBeAdmitted && (
                         <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
                           <p className="text-xs text-cyan-700 leading-relaxed">
-                            📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                            {afterSecondExam ? (
+                              <>📅 <strong>Hai sostenuto il secondo appello?</strong> Torna il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                            ) : (
+                              <>📅 Se sosterrai il secondo appello, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                            )}
                           </p>
                         </div>
                       )}
@@ -446,16 +479,28 @@ const GrazieSondaggio = () => {
                       {/* Motivational message for pending exams */}
                       <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
                         <p className="text-sm font-medium text-purple-800 leading-relaxed">
-                          💪 <strong className="text-purple-900">Prossimo appello: 10 dicembre!</strong>
+                          {afterSecondExam ? (
+                            <>💪 <strong className="text-purple-900">Esame sostenuto!</strong></>
+                          ) : (
+                            <>💪 <strong className="text-purple-900">Prossimo appello: 10 dicembre!</strong> (esiti il 23 dicembre)</>
+                          )}
                         </p>
                         <p className="text-sm text-purple-700 mt-2 leading-relaxed">
-                          Hai già dimostrato di avere tutte le capacità per farcela. Ogni esame superato è una conquista enorme — sei più vicino di quanto pensi! 🌟
+                          {afterSecondExam ? (
+                            <>Hai già dimostrato di avere le capacità per farcela — ora non ti resta che aspettare gli esiti del 23 dicembre. Tieni duro, sei quasi al traguardo! 🌟</>
+                          ) : (
+                            <>Hai già dimostrato di avere tutte le capacità per farcela. Ogni esame superato è una conquista enorme — sei più vicino di quanto pensi! 🌟</>
+                          )}
                         </p>
                       </div>
                       {/* Reminder for December 23 survey */}
                       <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
                         <p className="text-xs text-cyan-700 leading-relaxed">
-                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                          {afterSecondExam ? (
+                            <>📅 <strong>Hai sostenuto il secondo appello?</strong> Torna il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          ) : (
+                            <>📅 Se sosterrai il secondo appello, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          )}
                         </p>
                       </div>
                     </>
@@ -480,7 +525,11 @@ const GrazieSondaggio = () => {
                       {/* Reminder for December 23 survey */}
                       <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
                         <p className="text-xs text-cyan-700 leading-relaxed">
-                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                          {afterSecondExam ? (
+                            <>📅 <strong>Hai sostenuto il secondo appello?</strong> Torna il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          ) : (
+                            <>📅 Se sosterrai il secondo appello, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          )}
                         </p>
                       </div>
                     </>
@@ -491,16 +540,28 @@ const GrazieSondaggio = () => {
                     <>
                       <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 rounded-xl p-4 text-center mt-3">
                         <p className="text-sm font-medium text-purple-800 leading-relaxed">
-                          🎯 <strong className="text-purple-900">Vuoi entrare a {formatUniversityName(uni)}?</strong>
+                          {afterSecondExam ? (
+                            <>🎯 <strong className="text-purple-900">Hai ritentato per {formatUniversityName(uni)}?</strong></>
+                          ) : (
+                            <>🎯 <strong className="text-purple-900">Vuoi entrare a {formatUniversityName(uni)}?</strong></>
+                          )}
                         </p>
                         <p className="text-sm text-purple-700 mt-2 leading-relaxed">
-                          Il 10 dicembre puoi migliorare il tuo punteggio! Ogni punto in più ti avvicina alla tua università dei sogni. Ce la puoi fare! 🚀
+                          {afterSecondExam ? (
+                            <>Hai fatto la tua parte — aspetta gli esiti del 23 dicembre e incrocia le dita! Ogni punto guadagnato ti avvicina al tuo obiettivo. 🚀</>
+                          ) : (
+                            <>Il 10 dicembre puoi migliorare il tuo punteggio (esiti il 23 dicembre)! Ogni punto in più ti avvicina alla tua università dei sogni. Ce la puoi fare! 🚀</>
+                          )}
                         </p>
                       </div>
                       {/* Reminder for December 23 survey */}
                       <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
                         <p className="text-xs text-cyan-700 leading-relaxed">
-                          📅 <strong>Ci rivediamo il 23 dicembre!</strong> Torna su questo sito per compilare il sondaggio del secondo appello — ci aiuterai a tenere aggiornate le stime per tutti. Ti aspettiamo! 🤗
+                          {afterSecondExam ? (
+                            <>📅 <strong>Hai sostenuto il secondo appello?</strong> Torna il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          ) : (
+                            <>📅 Se sosterrai il secondo appello, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                          )}
                         </p>
                       </div>
                     </>
