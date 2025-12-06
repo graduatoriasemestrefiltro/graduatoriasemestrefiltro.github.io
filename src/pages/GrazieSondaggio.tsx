@@ -23,9 +23,7 @@ const isAfterSecondExam = (): boolean => {
 };
 
 const GrazieSondaggio = () => {
-  // ⚠️ TEMPORARY: Toggle for testing post-second-exam messages
-  const [forceAfterSecondExam, setForceAfterSecondExam] = useState(false);
-  const afterSecondExam = forceAfterSecondExam || isAfterSecondExam();
+  const afterSecondExam = isAfterSecondExam();
   const [searchParams] = useSearchParams();
   const submissionId = searchParams.get('id');
   const formattedId = submissionId ? `SRV-${submissionId.toUpperCase()}` : null;
@@ -255,20 +253,6 @@ const GrazieSondaggio = () => {
         </p>
       </div>
 
-      {/* ⚠️ TEMPORARY: Test toggle for post-second-exam messages */}
-      <div className="bg-pink-100 border-b border-pink-300 px-4 py-2 flex items-center justify-center gap-3">
-        <span className="text-xs text-pink-700 font-medium">🧪 Test: simula post 10 dicembre</span>
-        <button
-          onClick={() => setForceAfterSecondExam(!forceAfterSecondExam)}
-          className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-            forceAfterSecondExam 
-              ? 'bg-pink-600 text-white' 
-              : 'bg-white text-pink-600 border border-pink-300'
-          }`}
-        >
-          {forceAfterSecondExam ? 'ON' : 'OFF'}
-        </button>
-      </div>
 
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="max-w-lg w-full shadow-xl border-purple-100">
