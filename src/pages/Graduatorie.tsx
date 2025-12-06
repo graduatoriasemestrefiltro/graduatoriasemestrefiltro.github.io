@@ -6,6 +6,7 @@ import { ScoreDistributionChart } from "@/components/ScoreDistributionChart";
 import { CommonStatsBar } from "@/components/CommonStatsBar";
 import { LoadingState } from "@/components/LoadingState";
 import { ErrorState } from "@/components/ErrorState";
+import { MinimumScoreCard } from "@/components/MinimumScoreCard";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { X, Atom, Beaker, Dna, Calculator, Filter } from "lucide-react";
@@ -400,6 +401,14 @@ const Graduatorie = () => {
             </div>
           </div>
         </div>
+
+        {/* Minimum Score Card */}
+        <MinimumScoreCard 
+          studentAggregates={studentAggregates}
+          selectedUniversityId={selectedUniversities.length === 1 ? nameToId.get(selectedUniversities[0]) : undefined}
+          selectedUniversityName={selectedUniversities.length === 1 ? selectedUniversities[0] : undefined}
+          universityNameToId={nameToId}
+        />
 
         {/* Score Distribution */}
         <ScoreDistributionChart 
