@@ -1,7 +1,7 @@
 import { Database, Building2, ClipboardList, Globe, Info } from "lucide-react";
-import { CONFIG } from "@/lib/config";
 import { StudentAggregate } from "@/types/results";
 import { useSurveyData } from "@/contexts/SurveyDataContext";
+import { useEnrollments } from "@/hooks/useEnrollments";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +16,8 @@ interface DataCollectionStatsProps {
 
 export const DataCollectionStats = ({ studentAggregates }: DataCollectionStatsProps) => {
   const { includeSurveyData } = useSurveyData();
-  const totalEnrolled = CONFIG.TOTAL_ENROLLED_STUDENTS;
+  const { getTotalEnrollment } = useEnrollments();
+  const totalEnrolled = getTotalEnrollment() || 0;
   const totalCollected = studentAggregates.length;
   
   // Count by source based on etichetta prefix
