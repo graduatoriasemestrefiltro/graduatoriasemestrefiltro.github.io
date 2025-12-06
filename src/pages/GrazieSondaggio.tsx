@@ -512,7 +512,7 @@ const GrazieSondaggio = () => {
                           {afterSecondExam ? (
                             <>📅 <strong>Hai sostenuto il secondo appello?</strong> Torna il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
                           ) : (
-                            <>📅 Se sosterrai il secondo appello, ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
+                            <>📅 Ti aspettiamo il <strong>23 dicembre</strong> (quando usciranno gli esiti del secondo appello) per aggiornare i tuoi dati — ci aiuterai a tenere aggiornate le stime per tutti! 🤗</>
                           )}
                         </p>
                       </div>
