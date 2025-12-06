@@ -403,17 +403,25 @@ const GrazieSondaggio = () => {
                       </div>
                       {/* Congratulations for guaranteed admission */}
                       {positions.wouldBeAdmitted && positions.uniAdmissionStatus === 'guaranteed' && (
-                        <div className="bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-300 rounded-xl p-4 text-center mt-3">
-                          <p className="text-sm font-medium text-green-800 leading-relaxed">
-                            🎉 <strong className="text-green-900">Sembra che tu ce l'abbia fatta!</strong>
-                          </p>
-                          <p className="text-sm text-green-700 mt-2 leading-relaxed">
-                            Secondo le nostre stime, dovresti essere ammesso. Inizia ora un percorso bellissimo e impegnativo — sarai il medico che avresti voluto incontrare. In bocca al lupo! 🩺💚
-                          </p>
-                          <p className="text-[10px] text-green-600/70 mt-2 italic">
-                            Ricorda: questa è solo una stima basata sui dati raccolti. La graduatoria ufficiale potrebbe differire.
-                          </p>
-                        </div>
+                        <>
+                          <div className="bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-300 rounded-xl p-4 text-center mt-3">
+                            <p className="text-sm font-medium text-green-800 leading-relaxed">
+                              🎉 <strong className="text-green-900">Sembra che tu ce l'abbia fatta!</strong>
+                            </p>
+                            <p className="text-sm text-green-700 mt-2 leading-relaxed">
+                              Secondo le nostre stime, dovresti essere ammesso. Inizia ora un percorso bellissimo e impegnativo — sarai il medico che avresti voluto incontrare. In bocca al lupo! 🩺💚
+                            </p>
+                            <p className="text-[10px] text-green-600/70 mt-2 italic">
+                              Ricorda: questa è solo una stima basata sui dati raccolti. La graduatoria ufficiale potrebbe differire.
+                            </p>
+                          </div>
+                          {/* Reminder for retake - even for admitted students */}
+                          <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200 rounded-xl p-3 text-center mt-3">
+                            <p className="text-xs text-cyan-700 leading-relaxed">
+                              📅 <strong>Vuoi alzare la media?</strong> Se deciderai di ritentare uno o più esami il 10 dicembre, ti aspettiamo il <strong>23 dicembre</strong> per aggiornare i tuoi dati — ogni risposta rende le stime più affidabili per tutti! 🤗💜
+                            </p>
+                          </div>
+                        </>
                       )}
                       {/* Reminder for fuori dal numero di posti */}
                       {!positions.wouldBeAdmitted && (
