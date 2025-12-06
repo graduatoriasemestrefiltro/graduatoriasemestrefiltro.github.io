@@ -15,7 +15,8 @@ $tallyKey = getenv('TALLY_API_KEY');
 $hasAnotherPage = true;
 $page = 1;
 
-$finalData = json_decode(file_get_contents('data_before_internl_survey.json'), true);
+$oldData = json_decode(file_get_contents('data_before_internl_survey.json'), true);
+$finalData = [];
 $logicaData = explode(PHP_EOL, file_get_contents('logica_data.txt'));
 
 while ($hasAnotherPage) {
@@ -62,13 +63,13 @@ while ($hasAnotherPage) {
             if (stripos($row, $universityObj['id'] . '-' . number_format($fisica, 1) . '-' . number_format($chimica, 1) . '-' . number_format($biologia, 1)) === 0) {
                 $etichettaLogi = explode('*', $row)[1];
 
-                $prevSize = count($finalData);
-                $finalData = array_filter($finalData, function ($q) use ($etichettaLogi) {
+                $prevSize = count($oldData);
+                $oldData = array_filter($oldData, function ($q) use ($etichettaLogi) {
                     return $q['etichetta'] !== $etichettaLogi;
                 });
 
-                $finalData = array_values($finalData);
-                $newSize = count($finalData);
+                $oldData = array_values($oldData);
+                $newSize = count($oldData);
 
                 if ($prevSize !== $newSize) {
                     echo 'deleted ' . ($prevSize - $newSize) . ' rows (same exam grades)! ' . json_encode([$universityObj['id'], $fisica, $chimica, $biologia, $row]) . PHP_EOL;
@@ -81,12 +82,12 @@ while ($hasAnotherPage) {
             $nickname = strtolower(preg_replace("/[^A-Za-z0-9]/", '', $username));
             $etichettaLogi = 'LOGI-' . substr(strtoupper(md5($nickname)), 0, 6);
 
-            $prevSize = count($finalData);
-            $finalData = array_filter($finalData, function ($q) use ($etichettaLogi) {
+            $prevSize = count($oldData);
+            $oldData = array_filter($oldData, function ($q) use ($etichettaLogi) {
                 return $q['etichetta'] !== $etichettaLogi;
             });
-            $finalData = array_values($finalData);
-            $newSize = count($finalData);
+            $oldData = array_values($oldData);
+            $newSize = count($oldData);
 
             if ($prevSize !== $newSize) {
                 echo 'deleted ' . ($prevSize - $newSize) . ' rows! ' . $nickname . PHP_EOL;
@@ -131,5 +132,8 @@ while ($hasAnotherPage) {
 }
 
 if ($page < 30) die;
+
+$finalData = array_reverse($finalData);
+$finalData = array_merge($oldData, $finalData);
 
 file_put_contents('../public/data.json', json_encode(array_values($finalData), JSON_PRETTY_PRINT));
