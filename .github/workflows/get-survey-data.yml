@@ -23,7 +23,7 @@ jobs:
       - name: Esegui script PHP
         working-directory: ./scripts
         env:
-          MY_SECRET: ${{ secrets.TALLY_API_KEY }}
+          TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
         run: php get_from_tally.php
 
       - name: Set-up git
