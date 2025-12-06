@@ -1,0 +1,38 @@
+name: Get survey data from Tally
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set-up git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Update packages
+        run: sudo apt-get update
+
+      - name: Esegui script PHP
+        working-directory: ./scripts
+        env:
+          MY_SECRET: ${{ secrets.TALLY_API_KEY }}
+        run: php get_from_tally.php
+
+      - name: Set-up git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
