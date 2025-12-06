@@ -4,16 +4,16 @@ import { universityEnrollments, UniversityEnrollmentData } from '@/data/universi
 interface SimulatedStudent {
   media: number;
   universityId: string;
-  isUser?: boolean;
 }
 
-interface AdmissionSimulationResult {
+export interface AdmissionSimulationResult {
   userGlobalPosition: number;
   userUniPosition: number;
   displacedAboveUser: number;
   scaledUniSpots: number;
   realUniSpots: number;
   status: 'guaranteed' | 'at_risk' | 'unlikely';
+  worstCaseCompetitors: number;
 }
 
 /**
@@ -62,15 +62,14 @@ const getUniversityId = (name: string): string | null => {
 };
 
 /**
- * SIMPLIFIED admission simulation - works entirely with sample data.
+ * Admission simulation aligned with MinimumScoreCard logic.
  * 
- * Logic:
- * 1. Scale each university's spots based on ITS coverage (sampleCount/enrollment)
- * 2. Simulate assignment in score order using scaled spots
- * 3. Count displaced students (couldn't get first choice)
- * 4. Check: userPositionAtUni + displacedAboveUser > scaledSpots → at risk
- * 
- * No projections - direct calculation with sample data.
+ * Uses the SAME worst-case calculation as MinimumScoreCard:
+ * 1. Build list of ELIGIBLE students only (allPassed = true)
+ * 2. Scale spots per-university based on coverage
+ * 3. Simulate assignment - track displaced students at each score level
+ * 4. For user: calculate (positionInUni - 1) + displacedAboveUser
+ * 5. Compare against scaledSpots to determine status
  */
 export const simulateAdmission = (
   studentAggregates: StudentAggregate[],
@@ -86,14 +85,15 @@ export const simulateAdmission = (
   
   const userUniId = userUniData.id;
   const realUniSpots = userUniData.postiDisponibili;
-  const userUniEnrollment = userUniData.iscrittiAppello;
   
-  // Build student list with university IDs
+  // Build student list with university IDs - ONLY eligible students (allPassed = true)
+  // This aligns with MinimumScoreCard calculation methodology
   const students: SimulatedStudent[] = [];
   const sampleCountByUni: Record<string, number> = {};
   
   for (const student of studentAggregates) {
     if (student.media === undefined || student.media <= 0) continue;
+    if (!student.allPassed) continue; // Only eligible students
     
     const uniId = getUniversityId(student.universita);
     if (!uniId) continue;
@@ -106,75 +106,84 @@ export const simulateAdmission = (
     sampleCountByUni[uniId] = (sampleCountByUni[uniId] || 0) + 1;
   }
   
-  // Add user
+  // Add user (assumed eligible since they're checking admission)
   const userStudent: SimulatedStudent = {
     media: userMedia,
     universityId: userUniId,
-    isUser: true,
   };
   students.push(userStudent);
   sampleCountByUni[userUniId] = (sampleCountByUni[userUniId] || 0) + 1;
   
   // Sort by media descending
-  students.sort((a, b) => b.media - a.media);
+  const sortedStudents = [...students].sort((a, b) => b.media - a.media);
   
   // Find user positions
-  const userGlobalPosition = students.findIndex(s => s.isUser) + 1;
-  const sameUniStudents = students.filter(s => s.universityId === userUniId);
-  const userUniPosition = sameUniStudents.findIndex(s => s.isUser) + 1;
+  const userGlobalPosition = sortedStudents.findIndex(s => s === userStudent) + 1;
+  const sameUniStudents = sortedStudents.filter(s => s.universityId === userUniId);
+  const userUniPosition = sameUniStudents.findIndex(s => s === userStudent) + 1;
   
   // Scale spots per-university based on coverage
   const scaledSpots: Record<string, number> = {};
-  const coverageByUni: Record<string, number> = {};
   
   for (const uni of universityEnrollments) {
     if (uni.postiDisponibili && uni.iscrittiAppello) {
       const sampleCount = sampleCountByUni[uni.id] || 0;
       const coverage = sampleCount / uni.iscrittiAppello;
-      coverageByUni[uni.id] = coverage;
-      
-      // Scale spots proportionally to coverage
-      // If we have 30% of students, we use 30% of spots
-      const scaled = Math.max(0, Math.round(uni.postiDisponibili * coverage));
-      scaledSpots[uni.id] = scaled;
+      scaledSpots[uni.id] = Math.max(0, Math.round(uni.postiDisponibili * coverage));
     }
   }
   
   const scaledUniSpots = scaledSpots[userUniId] || 0;
   
-  // Simulate assignment - count displaced
-  let displacedAboveUser = 0;
+  // ========================================
+  // WORST CASE SIMULATION (same as MinimumScoreCard)
+  // Track displaced students above each score level
+  // ========================================
   const remainingSpots = { ...scaledSpots };
+  const displacedAboveScore: { score: number; displaced: number }[] = [];
+  let cumulativeDisplaced = 0;
   
-  for (let i = 0; i < userGlobalPosition - 1; i++) {
-    const student = students[i];
+  for (const student of sortedStudents) {
     const spots = remainingSpots[student.universityId];
-    
     if (spots === undefined) continue;
     
     if (spots > 0) {
       remainingSpots[student.universityId]--;
     } else {
-      // Displaced - first choice was full
-      displacedAboveUser++;
+      cumulativeDisplaced++;
+    }
+    
+    displacedAboveScore.push({ score: student.media, displaced: cumulativeDisplaced });
+  }
+  
+  // Find how many displaced are above user's score
+  let displacedAboveUser = 0;
+  for (const entry of displacedAboveScore) {
+    if (entry.score > userMedia) {
+      displacedAboveUser = entry.displaced;
+    } else {
+      break;
     }
   }
   
-  // Key calculation: can user get into their university?
-  // Students competing for user's uni = students at that uni above user + displaced who might choose it
-  const competitorsForUserUni = (userUniPosition - 1) + displacedAboveUser;
+  // Calculate worst-case competitors: (positionInUni - 1) + displacedAboveUser
+  const worstCaseCompetitors = (userUniPosition - 1) + displacedAboveUser;
   
-  // Determine status
+  // Determine status based on same logic as MinimumScoreCard cutoff
   let status: 'guaranteed' | 'at_risk' | 'unlikely';
   
-  if (userUniPosition - 1 >= scaledUniSpots) {
-    // Even without displaced, user doesn't fit
-    status = 'unlikely';
-  } else if (competitorsForUserUni >= scaledUniSpots) {
-    // User fits without displaced, but not with them
-    status = 'at_risk';
+  if (worstCaseCompetitors >= scaledUniSpots) {
+    // User doesn't get in even in worst case calculation
+    // But check if they might get in without displaced (at_risk vs unlikely)
+    if (userUniPosition - 1 >= scaledUniSpots) {
+      // Even without displaced, user doesn't fit
+      status = 'unlikely';
+    } else {
+      // User fits without displaced, but not with them
+      status = 'at_risk';
+    }
   } else {
-    // User fits even with all displaced
+    // User fits even with all displaced above them
     status = 'guaranteed';
   }
   
@@ -185,5 +194,6 @@ export const simulateAdmission = (
     scaledUniSpots,
     realUniSpots,
     status,
+    worstCaseCompetitors,
   };
 };

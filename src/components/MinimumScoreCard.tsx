@@ -264,51 +264,124 @@ export const MinimumScoreCard = ({
           
           
           // ========================================
-          // STEP 3: Calculate cutoff using ADMISSION RATE approach
-          // More competitors = lower admission rate = higher cutoff
+          // STEP 3: Calculate cutoff - simulate who gets in
           // ========================================
           const scaledUniSpots = scaledSpots[uniId] || 0;
-          const firstChoiceCount = uniStudents.length;
-          const totalDisplaced = allDisplacedWorstCase.length;
           
-          // Calculate attractiveness share for realistic estimate
-          const thisUniAttractiveness = attractivenessScores[uniId] || 1;
-          let totalAttr = 0;
-          for (const id of Object.keys(scaledSpots)) {
-            totalAttr += attractivenessScores[id] || 1;
-          }
-          const displacedShareForThisUni = thisUniAttractiveness / totalAttr;
-          
-          // REALISTIC: Proportional share of displaced based on attractiveness
-          const numDisplacedRealistic = Math.round(totalDisplaced * displacedShareForThisUni);
-          
-          // WORST CASE: ALL displaced compete for this university
-          const numDisplacedWorstCase = totalDisplaced;
-          
-          // Total competitors
-          const competitorsRealistic = firstChoiceCount + numDisplacedRealistic;
-          const competitorsWorstCase = firstChoiceCount + numDisplacedWorstCase;
-          
-          // Admission rate: what fraction gets in
-          const admissionRateRealistic = scaledUniSpots > 0 ? Math.min(1, scaledUniSpots / competitorsRealistic) : 0;
-          const admissionRateWorstCase = scaledUniSpots > 0 ? Math.min(1, scaledUniSpots / competitorsWorstCase) : 0;
-          
-          // Sort first-choice students by score
-          const sortedUniStudents = [...uniStudents].sort((a, b) => b.media - a.media);
-          
-          // Apply admission rate to the sample to find cutoff
-          // Higher competition = lower admission rate = look at higher-ranked students
-          const cutoffIndexRealistic = Math.max(1, Math.ceil(admissionRateRealistic * sortedUniStudents.length));
-          const cutoffIndexWorstCase = Math.max(1, Math.ceil(admissionRateWorstCase * sortedUniStudents.length));
-          
-          
-          // Get cutoff scores
-          if (cutoffIndexRealistic > 0 && cutoffIndexRealistic <= sortedUniStudents.length) {
-            uniMinMedia = sortedUniStudents[cutoffIndexRealistic - 1]?.media;
-          }
-          
-          if (cutoffIndexWorstCase > 0 && cutoffIndexWorstCase <= sortedUniStudents.length) {
-            uniMinMediaWorstCase = sortedUniStudents[cutoffIndexWorstCase - 1]?.media;
+          if (scaledUniSpots > 0) {
+            // Sort first-choice students by score
+            const sortedUniStudents = [...uniStudents].sort((a, b) => b.media - a.media);
+            
+            // ========================================
+            // REALISTIC: Based on cascading simulation results
+            // Already calculated how many got assigned via cascading
+            // ========================================
+            // Total assigned to target = first choice who got in + cascaded who got in
+            // The cutoff is the score of the last person who got in
+            
+            // For realistic: use the cascading simulation result
+            // Count how many first-choice students got in (until spots ran out)
+            const firstChoiceAssigned = Math.min(sortedUniStudents.length, Math.ceil(scaledUniSpots));
+            
+            // Check remaining spots after cascading simulation
+            const remainingAfterCascade = remainingSpotsRealistic[uniId] || 0;
+            const spotsUsedByCascade = scaledUniSpots - remainingAfterCascade;
+            
+            // If there are still spots after first-choice, the cutoff is lower
+            // If not all first-choice fit, cutoff is the last admitted first-choice
+            if (sortedUniStudents.length > 0) {
+              if (sortedUniStudents.length <= scaledUniSpots) {
+                // All first-choice students get in
+                // Cutoff is determined by cascaded displaced students
+                if (remainingAfterCascade > 0) {
+                  // Not all spots filled - minimum is the lowest first-choice score
+                  uniMinMedia = sortedUniStudents[sortedUniStudents.length - 1]?.media;
+                } else {
+                  // Spots filled by cascade - need to find the cutoff among cascaded
+                  // For simplicity, use lowest first-choice as conservative estimate
+                  uniMinMedia = sortedUniStudents[sortedUniStudents.length - 1]?.media;
+                }
+              } else {
+                // More first-choice than spots - cutoff is at spot position
+                const cutoffIdx = Math.ceil(scaledUniSpots) - 1;
+                uniMinMedia = sortedUniStudents[cutoffIdx]?.media;
+              }
+            }
+            
+            // ========================================
+            // WORST CASE: Same logic as admissionSimulation.ts
+            // For each position, count displaced ABOVE that position
+            // competitorsForPosition = (positionInUni - 1) + displacedAbovePosition
+            // Find the position where competitorsForPosition >= scaledSpots
+            // ========================================
+            
+            // We need to find the cutoff score using the same logic as thank you page:
+            // For a student at position P in their uni ranking:
+            // - There are (P-1) first-choice students above them at this uni
+            // - There are D displaced students (from other unis) ranked above them nationally
+            // - They get in if (P-1) + D < scaledSpots
+            
+            // To find cutoff: iterate through sorted uni students and find where
+            // (position-1) + displacedAboveThisStudent >= scaledSpots
+            
+            const allStudentsSorted = [...eligibleStudents].sort((a, b) => b.media - a.media);
+            
+            // Build a map of "how many displaced are above each score"
+            // A student is "displaced" if their first-choice uni had no spots when they were processed
+            const remainingForWorstCase = { ...scaledSpots };
+            const displacedAboveScore: { score: number; displaced: number }[] = [];
+            let cumulativeDisplaced = 0;
+            
+            for (const student of allStudentsSorted) {
+              if (!student.uniId) continue;
+              const spots = remainingForWorstCase[student.uniId];
+              if (spots === undefined) continue;
+              
+              if (spots > 0) {
+                remainingForWorstCase[student.uniId]--;
+              } else {
+                cumulativeDisplaced++;
+              }
+              
+              displacedAboveScore.push({ score: student.media, displaced: cumulativeDisplaced });
+            }
+            
+            // Now find cutoff for this university
+            // For each first-choice student at this uni, check if they would get in
+            for (let i = 0; i < sortedUniStudents.length; i++) {
+              const student = sortedUniStudents[i];
+              const positionInUni = i + 1; // 1-indexed
+              
+              // Find how many displaced are above this student's score nationally
+              let displacedAbove = 0;
+              for (const entry of displacedAboveScore) {
+                if (entry.score > student.media) {
+                  displacedAbove = entry.displaced;
+                } else {
+                  break;
+                }
+              }
+              
+              // Total competitors = (position in uni - 1) + displaced above
+              const competitors = (positionInUni - 1) + displacedAbove;
+              
+              // If competitors >= scaledSpots, this student doesn't get in
+              // So the cutoff is the previous student's score
+              if (competitors >= scaledUniSpots) {
+                if (i > 0) {
+                  uniMinMediaWorstCase = sortedUniStudents[i - 1]?.media;
+                } else {
+                  // Even first student doesn't fit - use their score as minimum
+                  uniMinMediaWorstCase = student.media;
+                }
+                break;
+              }
+              
+              // If we reach the end and everyone fits
+              if (i === sortedUniStudents.length - 1) {
+                uniMinMediaWorstCase = student.media;
+              }
+            }
           }
         }
       }
