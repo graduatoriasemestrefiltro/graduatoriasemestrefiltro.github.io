@@ -32,27 +32,30 @@ const GrazieSondaggio = () => {
   const { studentAggregates, universityStats, isLoading } = useProcessedData();
   const { getEnrollment, getTotalEnrollment } = useEnrollments();
 
-  // Parse user scores - treat 0 as "not taken", not as failed
+  // Parse user scores - treat 0 as "not taken", negative scores are valid (wrong answers deduct points)
   const userScores = useMemo(() => {
     const fis = fisica ? parseFloat(fisica) : null;
     const chi = chimica ? parseFloat(chimica) : null;
     const bio = biologia ? parseFloat(biologia) : null;
     
-    // Filter out null/NaN and also 0 (which means not taken)
-    const takenScores = [fis, chi, bio].filter((s): s is number => s !== null && !isNaN(s) && s > 0);
+    // Helper to check if exam was taken (0 = not taken, any other number including negative = taken)
+    const wasTaken = (s: number | null): s is number => s !== null && !isNaN(s) && s !== 0;
+    
+    // Filter out null/NaN and 0 (which means not taken) - negative scores ARE valid
+    const takenScores = [fis, chi, bio].filter(wasTaken);
     const media = takenScores.length > 0 ? takenScores.reduce((a, b) => a + b, 0) / takenScores.length : null;
     const completedExams = takenScores.length;
     // Score ≥17.5 rounds to 18, so it's considered passing
     const allPassed = takenScores.length > 0 && takenScores.every(s => s >= 17.5);
     const fullyQualified = completedExams === 3 && allPassed;
     
-    // Check if any taken exam is failed (< 18)
-    const hasFailedExam = takenScores.some(s => s < 18);
+    // Check if any taken exam is failed (< 17.5, which rounds to <18)
+    const hasFailedExam = takenScores.some(s => s < 17.5);
     
     return {
-      fisica: fis && fis > 0 ? fis : null,
-      chimica: chi && chi > 0 ? chi : null,
-      biologia: bio && bio > 0 ? bio : null,
+      fisica: wasTaken(fis) ? fis : null,
+      chimica: wasTaken(chi) ? chi : null,
+      biologia: wasTaken(bio) ? bio : null,
       media,
       completedExams,
       allPassed,
@@ -293,6 +296,28 @@ const GrazieSondaggio = () => {
               <>
                 <Separator className="my-4" />
                 <div className="space-y-3">
+                  {/* Exam scores display */}
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className={`rounded-md px-2 py-1.5 text-center ${userScores.fisica && userScores.fisica >= 17.5 ? 'bg-green-50 border border-green-200' : userScores.fisica ? 'bg-red-50 border border-red-200' : 'bg-gray-100 border border-gray-200'}`}>
+                      <p className="text-[9px] text-gray-500 font-medium">Fisica</p>
+                      <p className={`text-base font-bold ${userScores.fisica && userScores.fisica >= 17.5 ? 'text-green-700' : userScores.fisica ? 'text-red-600' : 'text-gray-400'}`}>
+                        {userScores.fisica ? userScores.fisica.toFixed(1) : '—'}
+                      </p>
+                    </div>
+                    <div className={`rounded-md px-2 py-1.5 text-center ${userScores.chimica && userScores.chimica >= 17.5 ? 'bg-green-50 border border-green-200' : userScores.chimica ? 'bg-red-50 border border-red-200' : 'bg-gray-100 border border-gray-200'}`}>
+                      <p className="text-[9px] text-gray-500 font-medium">Chimica</p>
+                      <p className={`text-base font-bold ${userScores.chimica && userScores.chimica >= 17.5 ? 'text-green-700' : userScores.chimica ? 'text-red-600' : 'text-gray-400'}`}>
+                        {userScores.chimica ? userScores.chimica.toFixed(1) : '—'}
+                      </p>
+                    </div>
+                    <div className={`rounded-md px-2 py-1.5 text-center ${userScores.biologia && userScores.biologia >= 17.5 ? 'bg-green-50 border border-green-200' : userScores.biologia ? 'bg-red-50 border border-red-200' : 'bg-gray-100 border border-gray-200'}`}>
+                      <p className="text-[9px] text-gray-500 font-medium">Biologia</p>
+                      <p className={`text-base font-bold ${userScores.biologia && userScores.biologia >= 17.5 ? 'text-green-700' : userScores.biologia ? 'text-red-600' : 'text-gray-400'}`}>
+                        {userScores.biologia ? userScores.biologia.toFixed(1) : '—'}
+                      </p>
+                    </div>
+                  </div>
+
                   {/* Positions grid - only show projected for eligible students */}
                   <div className={`grid gap-1.5 ${
                     userScores.allPassed 
