@@ -220522,6 +220522,39 @@
         }
     },
     {
+        "etichetta": "SRV-GXARZWZ",
+        "punteggio": "26.80",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-GXARZWZ",
+        "punteggio": "28.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-GXARZWZ",
+        "punteggio": "28.80",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
         "etichetta": "SRV-2EZKEQJ",
         "punteggio": "22.30",
         "materia": "biologia",
@@ -254875,6 +254908,39 @@
         }
     },
     {
+        "etichetta": "SRV-2ED5D8D",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-2ED5D8D",
+        "punteggio": "23.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-2ED5D8D",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
+    },
+    {
         "etichetta": "SRV-D4OYOQZ",
         "punteggio": "23.30",
         "materia": "biologia",
@@ -256401,6 +256467,39 @@
             "nome": "Universit\u00e0 degli Studi di FIRENZE",
             "id": "10",
             "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-440YZEB",
+        "punteggio": "22.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-440YZEB",
+        "punteggio": "25.70",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-440YZEB",
+        "punteggio": "18.10",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
         }
     }
 ]
