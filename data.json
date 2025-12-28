@@ -256875,5 +256875,38 @@
             "id": "40",
             "region": "Veneto"
         }
+    },
+    {
+        "etichetta": "SRV-ODQE08K",
+        "punteggio": "21.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-ODQE08K",
+        "punteggio": "21.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-ODQE08K",
+        "punteggio": "8.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SASSARI",
+            "id": "29",
+            "region": "Sardegna"
+        }
     }
 ]
