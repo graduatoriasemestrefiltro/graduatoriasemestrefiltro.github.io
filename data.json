@@ -256908,5 +256908,137 @@
             "id": "29",
             "region": "Sardegna"
         }
+    },
+    {
+        "etichetta": "SRV-7R0GV79",
+        "punteggio": "18.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-7R0GV79",
+        "punteggio": "18.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-7R0GV79",
+        "punteggio": "13.90",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQYB8",
+        "punteggio": "24.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQYB8",
+        "punteggio": "24.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQYB8",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-XXAVMAO",
+        "punteggio": "17.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-XXAVMAO",
+        "punteggio": "19.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-XXAVMAO",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-OBNA0Z1",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-OBNA0Z1",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-OBNA0Z1",
+        "punteggio": "17.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
     }
 ]
