@@ -256776,5 +256776,71 @@
             "id": "49",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-2EDGX9P",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-2EDGX9P",
+        "punteggio": "26.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-2EDGX9P",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-7R0GL20",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-7R0GL20",
+        "punteggio": "26.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-7R0GL20",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
     }
 ]
