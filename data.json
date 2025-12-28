@@ -256644,5 +256644,38 @@
             "id": "19",
             "region": "Veneto"
         }
+    },
+    {
+        "etichetta": "SRV-GXE4G0L",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-GXE4G0L",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-GXE4G0L",
+        "punteggio": "25.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
     }
 ]
