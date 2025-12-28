@@ -256127,5 +256127,71 @@
             "id": "19",
             "region": "Veneto"
         }
+    },
+    {
+        "etichetta": "SRV-JA4YPY1",
+        "punteggio": "28.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-JA4YPY1",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-JA4YPY1",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQR2E",
+        "punteggio": "17.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"Tor Vergata\"",
+            "id": "27",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQR2E",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"Tor Vergata\"",
+            "id": "27",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZQR2E",
+        "punteggio": "18.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"Tor Vergata\"",
+            "id": "27",
+            "region": "Lazio"
+        }
     }
 ]
