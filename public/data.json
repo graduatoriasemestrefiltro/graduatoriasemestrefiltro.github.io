@@ -257711,5 +257711,38 @@
             "id": "18",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-PDQZGEP",
+        "punteggio": "28.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-PDQZGEP",
+        "punteggio": "17.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
+    },
+    {
+        "etichetta": "SRV-PDQZGEP",
+        "punteggio": "23.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"Magna Graecia\" di CATANZARO",
+            "id": "C5",
+            "region": "Calabria"
+        }
     }
 ]
