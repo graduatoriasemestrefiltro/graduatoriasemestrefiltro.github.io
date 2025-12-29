@@ -257777,5 +257777,38 @@
             "id": "05",
             "region": "Calabria"
         }
+    },
+    {
+        "etichetta": "SRV-ODQMBZ7",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-ODQMBZ7",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-ODQMBZ7",
+        "punteggio": "17.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MODENA e REGGIO EMILIA",
+            "id": "17",
+            "region": "Emilia-Romagna"
+        }
     }
 ]
