@@ -257612,5 +257612,104 @@
             "id": "14",
             "region": "Sicilia"
         }
+    },
+    {
+        "etichetta": "SRV-QK9N5Z8",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-QK9N5Z8",
+        "punteggio": "22.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-QK9N5Z8",
+        "punteggio": "17.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-OBN8MJN",
+        "punteggio": "20.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-OBN8MJN",
+        "punteggio": "20.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-OBN8MJN",
+        "punteggio": "19.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-LB28RG5",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LB28RG5",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-LB28RG5",
+        "punteggio": "14.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
     }
 ]
