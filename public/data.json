@@ -257238,5 +257238,82 @@
             "id": "10",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-OBNARVP",
+        "punteggio": "18.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CATANIA",
+            "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-XXBEXGY",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-XXBEXGY",
+        "punteggio": "18.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-XXBEXGY",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FIRENZE",
+            "id": "10",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZLAPK",
+        "punteggio": "26.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZLAPK",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-MEZLAPK",
+        "punteggio": "15.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
     }
 ]
