@@ -83880,39 +83880,6 @@
         }
     },
     {
-        "etichetta": "LOGI-EFF5B3",
-        "punteggio": "19.00",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di BRESCIA",
-            "id": "46",
-            "region": "Lombardia"
-        }
-    },
-    {
-        "etichetta": "LOGI-EFF5B3",
-        "punteggio": "23.00",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di BRESCIA",
-            "id": "46",
-            "region": "Lombardia"
-        }
-    },
-    {
-        "etichetta": "LOGI-EFF5B3",
-        "punteggio": "19.00",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di BRESCIA",
-            "id": "46",
-            "region": "Lombardia"
-        }
-    },
-    {
         "etichetta": "LOGI-B9D7FA",
         "punteggio": "18.40",
         "materia": "fisica",
@@ -257968,6 +257935,138 @@
     {
         "etichetta": "SRV-EKV2LAL",
         "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-ZJKML6Y",
+        "punteggio": "19.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-ZJKML6Y",
+        "punteggio": "23.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-ZJKML6Y",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BRESCIA",
+            "id": "46",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-AQJREXX",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-AQJREXX",
+        "punteggio": "22.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-AQJREXX",
+        "punteggio": "24.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-1A0LGDO",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-1A0LGDO",
+        "punteggio": "28.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-1A0LGDO",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PAVIA",
+            "id": "22",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-ZXBK1E8",
+        "punteggio": "22.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-ZXBK1E8",
+        "punteggio": "24.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-ZXBK1E8",
+        "punteggio": "17.30",
         "materia": "fisica",
         "is_from_survey": true,
         "universita": {
