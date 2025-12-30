@@ -258107,5 +258107,60 @@
             "id": "24",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-RJ9XKRN",
+        "punteggio": "25.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FOGGIA",
+            "id": "C9",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ9XKRN",
+        "punteggio": "18.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di FOGGIA",
+            "id": "C9",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-5B0NEOO",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-5B0NEOO",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-5B0NEOO",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 Politecnica delle MARCHE",
+            "id": "01",
+            "region": "Marche"
+        }
     }
 ]
