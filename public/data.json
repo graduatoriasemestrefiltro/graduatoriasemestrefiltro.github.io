@@ -258294,5 +258294,38 @@
             "id": "18",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-PDQK5B1",
+        "punteggio": "25.70",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-PDQK5B1",
+        "punteggio": "22.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-PDQK5B1",
+        "punteggio": "20.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
     }
 ]
