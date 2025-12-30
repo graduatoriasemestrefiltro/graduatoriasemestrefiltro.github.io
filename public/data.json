@@ -237209,39 +237209,6 @@
         }
     },
     {
-        "etichetta": "SRV-RJR68DP",
-        "punteggio": "21.20",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di FIRENZE",
-            "id": "10",
-            "region": "Toscana"
-        }
-    },
-    {
-        "etichetta": "SRV-RJR68DP",
-        "punteggio": "26.70",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di FIRENZE",
-            "id": "10",
-            "region": "Toscana"
-        }
-    },
-    {
-        "etichetta": "SRV-RJR68DP",
-        "punteggio": "23.50",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di FIRENZE",
-            "id": "10",
-            "region": "Toscana"
-        }
-    },
-    {
         "etichetta": "SRV-WOXNAAJ",
         "punteggio": "21.40",
         "materia": "biologia",
@@ -258386,6 +258353,39 @@
     {
         "etichetta": "SRV-KDJQYRZ",
         "punteggio": "20.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ97LY5",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ97LY5",
+        "punteggio": "17.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ97LY5",
+        "punteggio": "15.00",
         "materia": "fisica",
         "is_from_survey": true,
         "universita": {
