@@ -258690,5 +258690,71 @@
             "id": "04",
             "region": "Sardegna"
         }
+    },
+    {
+        "etichetta": "SRV-ZXBPDVK",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-ZXBPDVK",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-ZXBPDVK",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-PBQJKLZ",
+        "punteggio": "15.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-PBQJKLZ",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
+    },
+    {
+        "etichetta": "SRV-PBQJKLZ",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PERUGIA",
+            "id": "23",
+            "region": "Umbria"
+        }
     }
 ]
