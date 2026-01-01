@@ -48207,39 +48207,6 @@
         }
     },
     {
-        "etichetta": "LOGI-E58B02",
-        "punteggio": "26.60",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di MESSINA",
-            "id": "14",
-            "region": "Sicilia"
-        }
-    },
-    {
-        "etichetta": "LOGI-E58B02",
-        "punteggio": "23.30",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di MESSINA",
-            "id": "14",
-            "region": "Sicilia"
-        }
-    },
-    {
-        "etichetta": "LOGI-E58B02",
-        "punteggio": "29.90",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di MESSINA",
-            "id": "14",
-            "region": "Sicilia"
-        }
-    },
-    {
         "etichetta": "LOGI-2EB383",
         "punteggio": "24.40",
         "materia": "fisica",
@@ -258815,6 +258782,39 @@
     {
         "etichetta": "SRV-MEJ1LMX",
         "punteggio": "27.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYRZAEX",
+        "punteggio": "29.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYRZAEX",
+        "punteggio": "23.30",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-KYRZAEX",
+        "punteggio": "26.60",
         "materia": "fisica",
         "is_from_survey": true,
         "universita": {
