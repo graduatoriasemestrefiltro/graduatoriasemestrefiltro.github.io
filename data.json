@@ -196938,39 +196938,6 @@
         }
     },
     {
-        "etichetta": "SRV-OBYE915",
-        "punteggio": "7.60",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PERUGIA",
-            "id": "23",
-            "region": "Umbria"
-        }
-    },
-    {
-        "etichetta": "SRV-OBYE915",
-        "punteggio": "10.40",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PERUGIA",
-            "id": "23",
-            "region": "Umbria"
-        }
-    },
-    {
-        "etichetta": "SRV-OBYE915",
-        "punteggio": "0.90",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PERUGIA",
-            "id": "23",
-            "region": "Umbria"
-        }
-    },
-    {
         "etichetta": "SRV-EQ8Q5JQ",
         "punteggio": "23.40",
         "materia": "biologia",
@@ -259030,6 +258997,39 @@
             "nome": "Universit\u00e0 degli Studi di CATANIA",
             "id": "08",
             "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-J9EO0A7",
+        "punteggio": "18.90",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-J9EO0A7",
+        "punteggio": "24.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-J9EO0A7",
+        "punteggio": "22.50",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
         }
     }
 ]
