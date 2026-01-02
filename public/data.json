@@ -258899,5 +258899,38 @@
             "id": "31",
             "region": "Piemonte"
         }
+    },
+    {
+        "etichetta": "SRV-EKOLR9N",
+        "punteggio": "18.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-EKOLR9N",
+        "punteggio": "17.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
+    },
+    {
+        "etichetta": "SRV-EKOLR9N",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di CAGLIARI",
+            "id": "04",
+            "region": "Sardegna"
+        }
     }
 ]
