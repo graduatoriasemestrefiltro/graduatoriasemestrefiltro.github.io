@@ -258888,5 +258888,16 @@
             "id": "18",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-Q48GPLO",
+        "punteggio": "23.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di TORINO",
+            "id": "31",
+            "region": "Piemonte"
+        }
     }
 ]
