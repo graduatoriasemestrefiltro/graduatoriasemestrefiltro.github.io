@@ -259097,5 +259097,38 @@
             "id": "04",
             "region": "Sardegna"
         }
+    },
+    {
+        "etichetta": "SRV-OB8M64M",
+        "punteggio": "19.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-OB8M64M",
+        "punteggio": "22.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-OB8M64M",
+        "punteggio": "16.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
     }
 ]
