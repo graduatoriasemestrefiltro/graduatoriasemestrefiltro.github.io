@@ -259273,5 +259273,104 @@
             "id": "18",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-686KLJO",
+        "punteggio": "18.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-686KLJO",
+        "punteggio": "24.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-686KLJO",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-QKNRE17",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-QKNRE17",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-QKNRE17",
+        "punteggio": "25.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-XX8QMZJ",
+        "punteggio": "22.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-XX8QMZJ",
+        "punteggio": "21.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
+    },
+    {
+        "etichetta": "SRV-XX8QMZJ",
+        "punteggio": "25.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del PIEMONTE ORIENTALE",
+            "id": "C8",
+            "region": "Piemonte"
+        }
     }
 ]
