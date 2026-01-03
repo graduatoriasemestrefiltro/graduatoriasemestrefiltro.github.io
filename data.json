@@ -259471,5 +259471,16 @@
             "id": "24",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-PBYV2K1",
+        "punteggio": "23.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi della Campania \"Luigi Vanvitelli\"",
+            "id": "49",
+            "region": "Campania"
+        }
     }
 ]
