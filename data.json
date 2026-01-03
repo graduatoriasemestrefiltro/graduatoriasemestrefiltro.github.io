@@ -259196,5 +259196,16 @@
             "id": "08",
             "region": "Sicilia"
         }
+    },
+    {
+        "etichetta": "SRV-Y57ZDLJ",
+        "punteggio": "24.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di Napoli Federico II",
+            "id": "18",
+            "region": "Campania"
+        }
     }
 ]
