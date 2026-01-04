@@ -259768,5 +259768,16 @@
             "id": "23",
             "region": "Umbria"
         }
+    },
+    {
+        "etichetta": "SRV-BZJLP8Q",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
     }
 ]
