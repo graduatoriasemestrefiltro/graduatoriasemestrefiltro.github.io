@@ -259647,5 +259647,27 @@
             "id": "03",
             "region": "Emilia-Romagna"
         }
+    },
+    {
+        "etichetta": "SRV-GD87GEL",
+        "punteggio": "19.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SALERNO",
+            "id": "28",
+            "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-GD87GEL",
+        "punteggio": "18.20",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SALERNO",
+            "id": "28",
+            "region": "Campania"
+        }
     }
 ]
