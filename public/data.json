@@ -217299,39 +217299,6 @@
         }
     },
     {
-        "etichetta": "SRV-KYAX2QA",
-        "punteggio": "27.80",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di VERONA",
-            "id": "40",
-            "region": "Veneto"
-        }
-    },
-    {
-        "etichetta": "SRV-KYAX2QA",
-        "punteggio": "21.40",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di VERONA",
-            "id": "40",
-            "region": "Veneto"
-        }
-    },
-    {
-        "etichetta": "SRV-KYAX2QA",
-        "punteggio": "22.40",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di VERONA",
-            "id": "40",
-            "region": "Veneto"
-        }
-    },
-    {
         "etichetta": "SRV-LZBK4O1",
         "punteggio": "10.00",
         "materia": "biologia",
@@ -259701,6 +259668,39 @@
             "nome": "Universit\u00e0 degli Studi del MOLISE",
             "id": "39",
             "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-B514V6O",
+        "punteggio": "16.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-B514V6O",
+        "punteggio": "24.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-B514V6O",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
         }
     }
 ]
