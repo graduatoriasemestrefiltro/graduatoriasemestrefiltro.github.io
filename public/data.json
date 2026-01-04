@@ -259482,5 +259482,104 @@
             "id": "49",
             "region": "Campania"
         }
+    },
+    {
+        "etichetta": "SRV-QKND0E7",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi dell'AQUILA",
+            "id": "55",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-QKND0E7",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi dell'AQUILA",
+            "id": "55",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-QKND0E7",
+        "punteggio": "22.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi dell'AQUILA",
+            "id": "55",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZL0B0",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZL0B0",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZL0B0",
+        "punteggio": "22.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi \"G. d'Annunzio\" CHIETI-PESCARA",
+            "id": "53",
+            "region": "Abruzzo"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOLOE",
+        "punteggio": "20.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOLOE",
+        "punteggio": "25.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOLOE",
+        "punteggio": "22.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
     }
 ]
