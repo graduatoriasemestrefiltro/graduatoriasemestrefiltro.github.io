@@ -63255,39 +63255,6 @@
         }
     },
     {
-        "etichetta": "LOGI-723B58",
-        "punteggio": "20.30",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi del MOLISE",
-            "id": "39",
-            "region": "Molise"
-        }
-    },
-    {
-        "etichetta": "LOGI-723B58",
-        "punteggio": "25.50",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi del MOLISE",
-            "id": "39",
-            "region": "Molise"
-        }
-    },
-    {
-        "etichetta": "LOGI-723B58",
-        "punteggio": "22.40",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi del MOLISE",
-            "id": "39",
-            "region": "Molise"
-        }
-    },
-    {
         "etichetta": "LOGI-25359B",
         "punteggio": "23.30",
         "materia": "fisica",
@@ -259668,6 +259635,39 @@
             "nome": "Universit\u00e0 degli Studi di SALERNO",
             "id": "28",
             "region": "Campania"
+        }
+    },
+    {
+        "etichetta": "SRV-44LOM7Y",
+        "punteggio": "22.40",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-44LOM7Y",
+        "punteggio": "25.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
+        }
+    },
+    {
+        "etichetta": "SRV-44LOM7Y",
+        "punteggio": "20.30",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi del MOLISE",
+            "id": "39",
+            "region": "Molise"
         }
     }
 ]
