@@ -217299,6 +217299,39 @@
         }
     },
     {
+        "etichetta": "SRV-KYAX2QA",
+        "punteggio": "27.80",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-KYAX2QA",
+        "punteggio": "21.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-KYAX2QA",
+        "punteggio": "22.40",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di VERONA",
+            "id": "40",
+            "region": "Veneto"
+        }
+    },
+    {
         "etichetta": "SRV-LZBK4O1",
         "punteggio": "10.00",
         "materia": "biologia",
