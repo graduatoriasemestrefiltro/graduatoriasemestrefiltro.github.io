@@ -259581,5 +259581,38 @@
             "id": "C6",
             "region": "Lombardia"
         }
+    },
+    {
+        "etichetta": "SRV-ZJBZE00",
+        "punteggio": "20.50",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-ZJBZE00",
+        "punteggio": "21.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-ZJBZE00",
+        "punteggio": "21.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
     }
 ]
