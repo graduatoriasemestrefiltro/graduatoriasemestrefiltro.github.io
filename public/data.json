@@ -196476,39 +196476,6 @@
         }
     },
     {
-        "etichetta": "SRV-JAX6EX4",
-        "punteggio": "4.00",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 del SALENTO",
-            "id": "12",
-            "region": "Puglia"
-        }
-    },
-    {
-        "etichetta": "SRV-JAX6EX4",
-        "punteggio": "5.00",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 del SALENTO",
-            "id": "12",
-            "region": "Puglia"
-        }
-    },
-    {
-        "etichetta": "SRV-JAX6EX4",
-        "punteggio": "2.00",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 del SALENTO",
-            "id": "12",
-            "region": "Puglia"
-        }
-    },
-    {
         "etichetta": "SRV-JAX6ELA",
         "punteggio": "17.00",
         "materia": "biologia",
@@ -260140,6 +260107,39 @@
         "universita": {
             "nome": "Universit\u00e0 degli Studi di CATANIA",
             "id": "08",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-Q48Z6XK",
+        "punteggio": "20.20",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-Q48Z6XK",
+        "punteggio": "25.90",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-Q48Z6XK",
+        "punteggio": "19.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PALERMO",
+            "id": "20",
             "region": "Sicilia"
         }
     }
