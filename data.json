@@ -259911,5 +259911,38 @@
             "id": "40",
             "region": "Veneto"
         }
+    },
+    {
+        "etichetta": "SRV-0QQDBX9",
+        "punteggio": "27.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-0QQDBX9",
+        "punteggio": "27.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
+    },
+    {
+        "etichetta": "SRV-0QQDBX9",
+        "punteggio": "21.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MILANO-BICOCCA",
+            "id": "C6",
+            "region": "Lombardia"
+        }
     }
 ]
