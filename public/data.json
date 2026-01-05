@@ -48504,39 +48504,6 @@
         }
     },
     {
-        "etichetta": "LOGI-3BF856",
-        "punteggio": "25.60",
-        "materia": "fisica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PADOVA",
-            "id": "19",
-            "region": "Veneto"
-        }
-    },
-    {
-        "etichetta": "LOGI-3BF856",
-        "punteggio": "26.80",
-        "materia": "chimica",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PADOVA",
-            "id": "19",
-            "region": "Veneto"
-        }
-    },
-    {
-        "etichetta": "LOGI-3BF856",
-        "punteggio": "26.60",
-        "materia": "biologia",
-        "is_from_survey": true,
-        "universita": {
-            "nome": "Universit\u00e0 degli Studi di PADOVA",
-            "id": "19",
-            "region": "Veneto"
-        }
-    },
-    {
         "etichetta": "LOGI-B6A573",
         "punteggio": "24.50",
         "materia": "fisica",
@@ -259844,6 +259811,72 @@
             "nome": "Universit\u00e0 Politecnica delle MARCHE",
             "id": "01",
             "region": "Marche"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZBPR5",
+        "punteggio": "26.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BARI ALDO MORO",
+            "id": "02",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZBPR5",
+        "punteggio": "22.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BARI ALDO MORO",
+            "id": "02",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-PDZBPR5",
+        "punteggio": "16.20",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di BARI ALDO MORO",
+            "id": "02",
+            "region": "Puglia"
+        }
+    },
+    {
+        "etichetta": "SRV-2E9LVEV",
+        "punteggio": "26.60",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-2E9LVEV",
+        "punteggio": "26.80",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
+        }
+    },
+    {
+        "etichetta": "SRV-2E9LVEV",
+        "punteggio": "25.60",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di PADOVA",
+            "id": "19",
+            "region": "Veneto"
         }
     }
 ]
