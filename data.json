@@ -260043,5 +260043,38 @@
             "id": "10",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-Q48V6X8",
+        "punteggio": "23.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-Q48V6X8",
+        "punteggio": "25.60",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-Q48V6X8",
+        "punteggio": "16.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
     }
 ]
