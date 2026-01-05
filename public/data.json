@@ -259944,5 +259944,71 @@
             "id": "C6",
             "region": "Lombardia"
         }
+    },
+    {
+        "etichetta": "SRV-KD8K2ED",
+        "punteggio": "30.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-KD8K2ED",
+        "punteggio": "30.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-KD8K2ED",
+        "punteggio": "30.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di UDINE",
+            "id": "34",
+            "region": "Friuli-Venezia Giulia"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOVRE",
+        "punteggio": "22.30",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOVRE",
+        "punteggio": "22.40",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-9QAOVRE",
+        "punteggio": "13.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di SIENA",
+            "id": "30",
+            "region": "Toscana"
+        }
     }
 ]
