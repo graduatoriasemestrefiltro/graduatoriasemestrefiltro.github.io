@@ -260549,5 +260549,38 @@
             "id": "24",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-RJ8R48R",
+        "punteggio": "20.60",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ8R48R",
+        "punteggio": "19.50",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
+    },
+    {
+        "etichetta": "SRV-RJ8R48R",
+        "punteggio": "21.70",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Alma Mater Studiorum - Universit\u00e0 di BOLOGNA",
+            "id": "03",
+            "region": "Emilia-Romagna"
+        }
     }
 ]
