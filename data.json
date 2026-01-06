@@ -260307,5 +260307,38 @@
             "id": "19",
             "region": "Veneto"
         }
+    },
+    {
+        "etichetta": "SRV-A7M00RO",
+        "punteggio": "24.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-A7M00RO",
+        "punteggio": "22.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
+    },
+    {
+        "etichetta": "SRV-A7M00RO",
+        "punteggio": "20.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di ROMA \"La Sapienza\"",
+            "id": "26",
+            "region": "Lazio"
+        }
     }
 ]
