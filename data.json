@@ -260439,5 +260439,38 @@
             "id": "03",
             "region": "Emilia-Romagna"
         }
+    },
+    {
+        "etichetta": "SRV-JA8XPV4",
+        "punteggio": "23.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-JA8XPV4",
+        "punteggio": "20.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-JA8XPV4",
+        "punteggio": "17.30",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
     }
 ]
