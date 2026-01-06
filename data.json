@@ -260208,5 +260208,38 @@
             "id": "03",
             "region": "Emilia-Romagna"
         }
+    },
+    {
+        "etichetta": "SRV-1AQB6EG",
+        "punteggio": "21.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-1AQB6EG",
+        "punteggio": "24.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
+    },
+    {
+        "etichetta": "SRV-1AQB6EG",
+        "punteggio": "18.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 degli Studi di MESSINA",
+            "id": "14",
+            "region": "Sicilia"
+        }
     }
 ]
