@@ -260780,5 +260780,71 @@
             "id": "10",
             "region": "Toscana"
         }
+    },
+    {
+        "etichetta": "SRV-686E8ZB",
+        "punteggio": "30.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-686E8ZB",
+        "punteggio": "28.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-686E8ZB",
+        "punteggio": "24.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-ZX85XPZ",
+        "punteggio": "12.00",
+        "materia": "biologia",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-ZX85XPZ",
+        "punteggio": "22.00",
+        "materia": "chimica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
+    },
+    {
+        "etichetta": "SRV-ZX85XPZ",
+        "punteggio": "19.00",
+        "materia": "fisica",
+        "is_from_survey": true,
+        "universita": {
+            "nome": "Universit\u00e0 di PISA",
+            "id": "24",
+            "region": "Toscana"
+        }
     }
 ]
